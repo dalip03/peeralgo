@@ -46,7 +46,7 @@ export default function GetStartedSteps() {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="flex flex-col bg-white rounded-xl border border-gray-200 px-6 py-9 items-start md:items-start shadow-sm transition-all"
+              className="flex flex-col bg-white rounded-xl border border-gray-200/40 px-6 py-9 items-start md:items-start shadow-sm transition-all"
             >
               <div className="mb-4 self-start">
                 <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-[#3686FD] text-white font-bold text-lg">

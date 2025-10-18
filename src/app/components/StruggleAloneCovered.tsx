@@ -36,7 +36,7 @@ export default function StruggleAloneCovered() {
 
   return (
     <section className="w-full bg-white py-14 px-2">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 text-[#232323]">
           No need to Struggle Alone Anymore
         </h2>
@@ -44,11 +44,11 @@ export default function StruggleAloneCovered() {
           Long term mentorship gets fully covered
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[10px]">
           {features.map((f, i) => (
             <div
               key={f.title}
-              className="bg-white border border-gray-200 rounded-lg px-7 py-7 flex flex-col items-start"
+              className="bg-white border border-gray-200 px-7 py-7 flex flex-col items-start"
             >
               <img
                 src={f.icon}

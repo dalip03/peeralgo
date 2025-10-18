@@ -19,7 +19,7 @@ export default function WhyEdumentorStandsOut() {
 
   return (
     <section className="w-full bg-[#e7f2fe] py-16 px-3">
-      <div className="max-w-4xl mx-auto rounded-2xl py-8 px-2 md:px-8 bg-[#e7f2fe] border border-[#c7e0fd]">
+      <div className="max-w-4xl mx-auto rounded-2xl py-8 px-2 md:px-8 bg-[#e7f2fe] ">
         <div className="flex flex-col items-center text-center">
           <span className="inline-block px-5 py-1 mb-3 text-xs font-semibold border border-blue-200 rounded-full text-[#3686FD] bg-white">
             COMPARISON

@@ -29,11 +29,11 @@ export default function DomainsCovered() {
         <p className="text-center text-gray-500 mb-10 text-sm">
           Our mentors are equipped to guide you in any field you&apos;re passionate about
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[4px]">
           {domains.map((domain) => (
             <div
               key={domain.title}
-              className="flex items-center gap-4 bg-white rounded-md border border-gray-200 py-7 px-6 shadow-sm"
+              className="flex items-center gap-4 bg-white border border-gray-200 py-7 px-6 shadow-sm"
             >
               <img src={domain.icon} alt="" className="w-5 h-5 object-contain" />
               <div>

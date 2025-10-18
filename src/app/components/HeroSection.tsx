@@ -28,7 +28,7 @@ const domains = [
   { name: "Fullstack Developer", icon: "/icons/fullstack.svg" },
   { name: "QA Engineer", icon: "/icons/qa.svg" },
   { name: "Data Engineer", icon: "/icons/de.svg" },
-  { name: "UI/UX Designer", icon: "/icons/ui.svg" },
+  { name: "UI/UX Designer", icon: "/icons/uiux.svg" },
 ];
 
 export default function HeroSection() {
