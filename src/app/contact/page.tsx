@@ -18,10 +18,10 @@ export default function ContactForm() {
       <span className="bg-blue-100 text-blue-600 text-xs font-semibold rounded-full px-4 py-2 mb-4 inline-block">
         Contact Us
       </span>
-      <h2 className="text-5xl md:text-4xl font-bold mb-3 leading-14 text-[#191C20] text-center">
-        Have Questions about <br /> EduMentor?
-      </h2>
-      <p className="text-[#1C1C1C66] mb-7 max-w-2xl px-28 mx-auto text-sm text-center">
+    <h2 className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-[#191C20] text-center">
+  Have Questions about <br className="hidden md:block" /> EduMentor?
+</h2>
+      <p className="text-[#1C1C1C66] mb-7 max-w-2xl md:px-28 px-12 mx-auto text-sm text-center">
         Start trading with powerful tools, real-time insights, and a
         secure platform for better profits
       </p>

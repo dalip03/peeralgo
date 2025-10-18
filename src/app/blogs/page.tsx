@@ -78,10 +78,10 @@ export default function LatestArticles() {
         <span className="bg-blue-100 text-blue-600 text-xs font-semibold rounded-full px-4 py-2 mb-4 inline-block">
           Expert Insights
         </span>
-        <h2 className="text-5xl md:text-4xl font-bold mb-3 leading-14 text-[#191C20]">
+        <h2 className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-[#191C20] text-center">
           What’s New at EduMentor
         </h2>
-        <p className="text-[#1C1C1C66] max-w-2xl px-28 mx-auto text-sm text-center mb-1">
+        <p className="text-[#1C1C1C66] max-w-2xl md:px-28 mx-auto text-sm text-center mb-1">
           Discover the latest articles on learning strategies, industry trends,
           and career growth.
         </p>

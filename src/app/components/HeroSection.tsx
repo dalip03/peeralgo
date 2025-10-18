@@ -66,12 +66,12 @@ export default function HeroSection() {
       {/* Hero Content */}
       <div className="relative w-full flex flex-col items-center text-center max-w-3xl mx-auto z-10">
         <motion.h2
-          className="text-5xl md:text-4xl font-bold mb-3 leading-14 text-[#191C20]"
+          className="text-3xl md:text-5xl font-bold mb-3 leading-tight text-[#191C20] text-center"
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Supercharge your career with <br />
+          Supercharge your career with <br className="hidden md:block" />
           <span className="block">Long Term Mentorship</span>
         </motion.h2>
         <motion.p

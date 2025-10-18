@@ -2,7 +2,7 @@ import DomainsCovered from "./components/DomainsCovered";
 import FAQs from "./components/FAQs";
 import GetStartedSteps from "./components/GetStartedSteps";
 import HeroSection from "./components/HeroSection";
-import Mentors from "./components/Mentors";
+import MentorsSection from "./components/MentorsSection";
 import ProgressStats from "./components/ProgressStats";
 import StruggleAloneCovered from "./components/StruggleAloneCovered";
 import WhyChooseUs from "./components/WhyChooseUs";
@@ -15,7 +15,7 @@ export default function Home() {
       <ProgressStats />
       <WhyChooseUs />
       <GetStartedSteps />
-      <Mentors />
+      <MentorsSection />
 
       <StruggleAloneCovered />
       <WhyEdumentorStandsOut />

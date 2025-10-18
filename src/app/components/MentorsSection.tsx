@@ -60,7 +60,7 @@ const mentors = [
 
 const categories = ["Engineering", "Data Science", "Business", "Product"];
 
-export default function Mentors() {
+export default function MentorsSection() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const filteredMentors = mentors.filter(
     mentor => mentor.category === activeCategory
@@ -69,10 +69,10 @@ export default function Mentors() {
   return (
     <div className="min-h-screen bg-[#e3f0fd] flex flex-col items-center py-10 w-full">
       <div className="text-center mb-6">
-        <h1 className="text-5xl md:text-4xl font-bold mb-3 leading-14 text-[#191C20]">
+        <h1 className="text-2xl md:text-3xl font-bold text-center mb-2 text-[#232323]">
           600+ mentors are just a Free Trial Session away!
         </h1>
-        <p className="text-gray-700 mb-4">
+        <p className="text-gray-700 mb-4 px-4">
           Choose your ideal mentor and get started with a FREE trial session
         </p>
         <div className="flex flex-wrap justify-center gap-2">
