@@ -3,50 +3,20 @@ import React, { useState, useMemo } from "react";
 import { mentors } from "../data/mentorsData";
 import { useRouter } from "next/navigation";
 import {
-  FaStar,
-  FaMapMarkerAlt,
-  FaBuilding,
-  FaLanguage,
-  FaUserTie,
-  FaBook,
-  FaChevronDown,
-  FaChevronUp,
+  FaStar, FaMapMarkerAlt, FaBuilding, FaLanguage, FaUserTie, FaBook, FaChevronDown, FaChevronUp,
 } from "react-icons/fa";
 import { MdReviews } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
 
-const allDomains = [
-  "Frontend",
-  "Backend",
-  "Fullstack",
-  "DevOps & Sec",
-  "Cloud",
-  "QA / Automation Testing",
-  "Data Scientist",
-  "Data Analyst",
-];
-const allCompanies = [
-  "Amazon",
-  "Microsoft",
-  "Tata Consultancy Services",
-  "Google",
-  "Adobe",
-];
-const allSkills = [
-  "Leadership & Communication",
-  "SQL",
-  "DSA",
-  "Java",
-  "System Design",
-];
+const allDomains = [ "Frontend", "Backend", "Fullstack", "DevOps & Sec", "Cloud", "QA / Automation Testing", "Data Scientist", "Data Analyst" ];
+const allCompanies = [ "Amazon", "Microsoft", "Tata Consultancy Services", "Google", "Adobe" ];
+const allSkills = [ "Leadership & Communication", "SQL", "DSA", "Java", "System Design" ];
 const allTools = ["Postman", "Visual Studio Code", "Docker", "GitHub"];
 const allLanguages = ["English", "Hindi", "Telugu", "Tamil", "Marathi"];
 
 export default function MentorSearchPage() {
   const router = useRouter();
-
-  // Filter states
   const [search, setSearch] = useState("");
   const [domain, setDomain] = useState("");
   const [company, setCompany] = useState("");
@@ -55,29 +25,21 @@ export default function MentorSearchPage() {
   const [language, setLanguage] = useState("");
   const [minPrice, setMinPrice] = useState(150);
   const [maxPrice, setMaxPrice] = useState(7000);
+  const [expandedMentor, setExpandedMentor] = useState<{ [id: string]: boolean }>({});
 
-  // Read more toggling
-  const [expandedMentor, setExpandedMentor] = useState<{
-    [id: string]: boolean;
-  }>({});
-
-  // Filtering mentors
-  const filteredMentors = useMemo(
-    () =>
-      mentors.filter(
-        (mentor) =>
-          (!search ||
-            mentor.name.toLowerCase().includes(search.toLowerCase()) ||
-            mentor.title.toLowerCase().includes(search.toLowerCase())) &&
-          (!domain || mentor.domain.includes(domain)) &&
-          (!company || mentor.companies.includes(company)) &&
-          (!skill || mentor.skills.includes(skill)) &&
-          (!tool || mentor.tools.includes(tool)) &&
-          (!language || mentor.languages.includes(language)) &&
-          mentor.price >= minPrice &&
-          mentor.price <= maxPrice
-      ),
-    [search, domain, company, skill, tool, language, minPrice, maxPrice]
+  const filteredMentors = useMemo(() =>
+    mentors.filter(mentor =>
+      (!search ||
+        mentor.name.toLowerCase().includes(search.toLowerCase()) ||
+        mentor.title.toLowerCase().includes(search.toLowerCase()))
+      && (!domain || mentor.domain.includes(domain))
+      && (!company || mentor.companies.includes(company))
+      && (!skill || mentor.skills.includes(skill))
+      && (!tool || mentor.tools.includes(tool))
+      && (!language || mentor.languages.includes(language))
+      && mentor.price >= minPrice && mentor.price <= maxPrice
+    )
+    , [search, domain, company, skill, tool, language, minPrice, maxPrice]
   );
 
   return (
@@ -91,7 +53,7 @@ export default function MentorSearchPage() {
               type="text"
               placeholder="Search for any skill, domain or name..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={e => setSearch(e.target.value)}
               className="flex-1 px-4 py-2 rounded-md bg-[#eef2f7] border-none focus:outline-none"
             />
             <button className="bg-blue-500 text-white font-semibold rounded-md px-8 py-2 ml-2 shadow hover:bg-blue-600 transition">
@@ -102,10 +64,7 @@ export default function MentorSearchPage() {
           {filteredMentors.map((mentor) => {
             const readMore = expandedMentor[mentor.id] || false;
             return (
-              <div
-                key={mentor.id}
-                className="bg-white rounded-xl shadow flex flex-col md:flex-row p-6 mb-6 gap-6"
-              >
+              <div key={mentor.id} className="bg-white rounded-xl shadow flex flex-col md:flex-row p-6 mb-6 gap-6">
                 {/* Profile Section */}
                 <div className="flex flex-col items-center md:items-start md:flex-row gap-4 md:gap-8">
                   <div className="relative w-[120px] h-[160px] rounded-[16px] overflow-hidden bg-gray-200 flex-shrink-0 flex items-center justify-center border">
@@ -124,14 +83,11 @@ export default function MentorSearchPage() {
                       {mentor.name}
                     </div>
                     <div className="flex items-center text-gray-400 text-xs font-medium gap-2 mb-2">
-                      <FaMapMarkerAlt className="inline-block" />{" "}
-                      <span>{mentor.location}</span>
+                      <FaMapMarkerAlt className="inline-block" /> <span>{mentor.location}</span>
                       <span>•</span>
-                      <MdReviews className="inline-block" />{" "}
-                      <span>{mentor.reviews} reviews</span>
+                      <MdReviews className="inline-block" /> <span>{mentor.reviews} reviews</span>
                       <span>•</span>
-                      <FaLanguage className="inline-block" />{" "}
-                      <span>{mentor.languages.join("/")}</span>
+                      <FaLanguage className="inline-block" /> <span>{mentor.languages.join("/")}</span>
                     </div>
                     <div className="font-semibold text-sm mb-1 flex items-center gap-2">
                       <FaUserTie className="inline-block text-gray-400" />
@@ -139,22 +95,18 @@ export default function MentorSearchPage() {
                     </div>
                     <div className="flex items-center gap-2 text-xs mb-1">
                       <FaBuilding className="inline-block text-yellow-500" />
-                      <span className="bg-gray-100 text-gray-600 rounded px-2 py-1">
-                        {mentor.company}
-                      </span>
+                      <span className="bg-gray-100 text-gray-600 rounded px-2 py-1">{mentor.company}</span>
                     </div>
                     <div className="flex items-center gap-1 text-yellow-500 text-lg my-1">
                       <FaStar />
-                      <span className="font-semibold text-black">
-                        {mentor.rating}
-                      </span>
+                      <span className="font-semibold text-black">{mentor.rating}</span>
                     </div>
                     <div className="text-gray-700 text-sm max-w-md">
                       {readMore
                         ? mentor.description
                         : mentor.description.length > 110
-                        ? mentor.description.slice(0, 110) + "..."
-                        : mentor.description}
+                          ? mentor.description.slice(0, 110) + "..."
+                          : mentor.description}
                       {mentor.description.length > 110 && (
                         <span
                           className="text-blue-500 cursor-pointer underline ml-1"
@@ -171,10 +123,7 @@ export default function MentorSearchPage() {
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {mentor.tags.map((badge) => (
-                        <span
-                          key={badge}
-                          className="bg-[#eef2f7] text-gray-600 rounded px-2 py-1 text-xs font-medium"
-                        >
+                        <span key={badge} className="bg-[#eef2f7] text-gray-600 rounded px-2 py-1 text-xs font-medium">
                           {badge}
                         </span>
                       ))}
@@ -193,11 +142,9 @@ export default function MentorSearchPage() {
                         }
                       >
                         More{" "}
-                        {expandedMentor[mentor.id + "-more"] ? (
-                          <FaChevronUp className="ml-1" />
-                        ) : (
-                          <FaChevronDown className="ml-1" />
-                        )}
+                        {expandedMentor[mentor.id + "-more"]
+                          ? <FaChevronUp className="ml-1" />
+                          : <FaChevronDown className="ml-1" />}
                       </span>
                     </div>
                     {/* "More" section */}
@@ -213,8 +160,7 @@ export default function MentorSearchPage() {
                         </div>
                         <div>
                           <FaBook className="inline-block mr-1" />
-                          Curriculum:{" "}
-                          {mentor.curriculum ? "Available" : "Not Available"}
+                          Curriculum: {mentor.curriculum ? "Available" : "Not Available"}
                         </div>
                       </div>
                     )}
@@ -236,8 +182,7 @@ export default function MentorSearchPage() {
                     </li>
                     <li>
                       <FaBook className="inline-block mr-1" />
-                      Detailed Curriculum{" "}
-                      {mentor.curriculum ? "Available" : "N/A"}
+                      Detailed Curriculum {mentor.curriculum ? "Available" : "N/A"}
                     </li>
                   </ul>
                   <div className="mt-1 mb-1 text-black font-bold text-xl flex items-center gap-2">
@@ -249,7 +194,7 @@ export default function MentorSearchPage() {
                   </span>
                   <button
                     className="w-full py-2 px-2 rounded-md border border-blue-500 font-semibold text-blue-700 bg-white hover:bg-blue-50 transition mb-2"
-                    onClick={() => router.push(`/mentor/${mentor.id}`)}
+                    onClick={() => router.push(`/mentors/${mentor.id}`)}
                   >
                     View Profile
                   </button>
@@ -266,25 +211,19 @@ export default function MentorSearchPage() {
           <div className="font-bold text-lg mb-4">Filter By</div>
           {/* Domain */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Domain
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Domain</label>
             <input
               type="text"
               placeholder="eg: frontend, backend, etc."
               value={domain}
-              onChange={(e) => setDomain(e.target.value)}
+              onChange={e => setDomain(e.target.value)}
               className="w-full px-3 py-2 rounded bg-[#eef2f7] border-none focus:outline-none"
             />
             <div className="flex flex-wrap gap-2 mt-2">
-              {allDomains.map((dom) => (
+              {allDomains.map(dom => (
                 <span
                   key={dom}
-                  className={`px-2 py-1 rounded cursor-pointer ${
-                    domain === dom
-                      ? "bg-blue-500 text-white"
-                      : "bg-blue-100 text-blue-600"
-                  } text-xs font-medium`}
+                  className={`px-2 py-1 rounded cursor-pointer ${domain === dom ? "bg-blue-500 text-white" : "bg-blue-100 text-blue-600"} text-xs font-medium`}
                   onClick={() => setDomain(dom)}
                 >
                   {dom}
@@ -294,9 +233,7 @@ export default function MentorSearchPage() {
           </div>
           {/* Offering Mentorship For */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Offering Mentorship For
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Offering Mentorship For</label>
             <select className="w-full px-3 py-2 rounded bg-[#eef2f7] border-none focus:outline-none">
               <option>Select your experience</option>
               <option>Freshers</option>
@@ -306,15 +243,13 @@ export default function MentorSearchPage() {
           </div>
           {/* Pricing Slider */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Pricing
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Pricing</label>
             <input
               type="range"
               min={150}
               max={7000}
               value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
+              onChange={e => setMaxPrice(Number(e.target.value))}
               className="w-full"
             />
             <div className="flex justify-between text-xs text-gray-400 mt-1">
@@ -324,25 +259,19 @@ export default function MentorSearchPage() {
           </div>
           {/* Companies */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Companies
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Companies</label>
             <input
               type="text"
               placeholder="eg: amazon, google, microsoft etc."
               value={company}
-              onChange={(e) => setCompany(e.target.value)}
+              onChange={e => setCompany(e.target.value)}
               className="w-full px-3 py-2 rounded bg-[#eef2f7] border-none focus:outline-none mb-1"
             />
             <div className="flex flex-wrap gap-2">
-              {allCompanies.map((comp) => (
+              {allCompanies.map(comp => (
                 <span
                   key={comp}
-                  className={`px-2 py-1 rounded cursor-pointer ${
-                    company === comp
-                      ? "bg-blue-500 text-white"
-                      : "bg-[#eef2f7] text-gray-600"
-                  } text-xs font-medium`}
+                  className={`px-2 py-1 rounded cursor-pointer ${company === comp ? "bg-blue-500 text-white" : "bg-[#eef2f7] text-gray-600"} text-xs font-medium`}
                   onClick={() => setCompany(comp)}
                 >
                   {comp}
@@ -352,25 +281,19 @@ export default function MentorSearchPage() {
           </div>
           {/* Skills */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Skills
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Skills</label>
             <input
               type="text"
               placeholder="eg: java, dsa, sql etc."
               value={skill}
-              onChange={(e) => setSkill(e.target.value)}
+              onChange={e => setSkill(e.target.value)}
               className="w-full px-3 py-2 rounded bg-[#eef2f7] border-none focus:outline-none mb-1"
             />
             <div className="flex flex-wrap gap-2">
-              {allSkills.map((sk) => (
+              {allSkills.map(sk => (
                 <span
                   key={sk}
-                  className={`px-2 py-1 rounded cursor-pointer ${
-                    skill === sk
-                      ? "bg-blue-500 text-white"
-                      : "bg-[#eef2f7] text-gray-600"
-                  } text-xs font-medium`}
+                  className={`px-2 py-1 rounded cursor-pointer ${skill === sk ? "bg-blue-500 text-white" : "bg-[#eef2f7] text-gray-600"} text-xs font-medium`}
                   onClick={() => setSkill(sk)}
                 >
                   {sk}
@@ -380,25 +303,19 @@ export default function MentorSearchPage() {
           </div>
           {/* Tools */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Tools
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Tools</label>
             <input
               type="text"
               placeholder="eg: postman, figma etc."
               value={tool}
-              onChange={(e) => setTool(e.target.value)}
+              onChange={e => setTool(e.target.value)}
               className="w-full px-3 py-2 rounded bg-[#eef2f7] border-none focus:outline-none mb-1"
             />
             <div className="flex flex-wrap gap-2">
-              {allTools.map((toolI) => (
+              {allTools.map(toolI => (
                 <span
                   key={toolI}
-                  className={`px-2 py-1 rounded cursor-pointer ${
-                    tool === toolI
-                      ? "bg-blue-500 text-white"
-                      : "bg-[#eef2f7] text-gray-600"
-                  } text-xs font-medium`}
+                  className={`px-2 py-1 rounded cursor-pointer ${tool === toolI ? "bg-blue-500 text-white" : "bg-[#eef2f7] text-gray-600"} text-xs font-medium`}
                   onClick={() => setTool(toolI)}
                 >
                   {toolI}
@@ -408,25 +325,19 @@ export default function MentorSearchPage() {
           </div>
           {/* Languages */}
           <div>
-            <label className="font-semibold text-gray-700 mb-2 block">
-              Languages
-            </label>
+            <label className="font-semibold text-gray-700 mb-2 block">Languages</label>
             <input
               type="text"
               placeholder="eg: english, hindi, telugu etc."
               value={language}
-              onChange={(e) => setLanguage(e.target.value)}
+              onChange={e => setLanguage(e.target.value)}
               className="w-full px-3 py-2 rounded bg-[#eef2f7] border-none focus:outline-none mb-1"
             />
             <div className="flex flex-wrap gap-2">
-              {allLanguages.map((lang) => (
+              {allLanguages.map(lang => (
                 <span
                   key={lang}
-                  className={`px-2 py-1 rounded cursor-pointer ${
-                    language === lang
-                      ? "bg-blue-500 text-white"
-                      : "bg-[#eef2f7] text-gray-600"
-                  } text-xs font-medium`}
+                  className={`px-2 py-1 rounded cursor-pointer ${language === lang ? "bg-blue-500 text-white" : "bg-[#eef2f7] text-gray-600"} text-xs font-medium`}
                   onClick={() => setLanguage(lang)}
                 >
                   {lang}
