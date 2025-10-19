@@ -48,7 +48,7 @@ export const mentors: MentorType[] = [
     headerImg: "/img/profileheader.svg",
     isStar: true,
     domain: "Full Stack",
-    bio: "I will carve out a plan or roadmap for you to succeed in your career consistently.",
+    bio: "I will carve out a plan or roadmap for you and if you are consistent with the plan and work hard along with me. You will be able to achieve your goal and achieve greater success in the career. I instill confidence in my mentees and prepare them for f...",
     title: "Software Development Manager III",
     company: "Amazon",
     location: "Maharashtra, India",
@@ -58,7 +58,7 @@ export const mentors: MentorType[] = [
     mentoringMins: 89750,
     menteeCount: 450,
     recentReview: {
-      text: "Great mentorship and clear guidance, very helpful and motivating.",
+      text: "Vikas took the time to calmly and thoughtfully evaluate my current level of technical expertise, and he provided clear, actionable insights on the areas I need to strengthen and how to strategically move forward. His guidance was not only honest but also highly encouraging. I genuinely appreciate the value this session brought to me. I’m truly grateful for his mentorship and excited about the possibility of learning and growing under his continued guidance in the long term.",
       reviewer: "Piyush Talele",
       timeAgo: "1 month ago",
       reviewerImg: "/img/Piyush.svg",
@@ -89,7 +89,7 @@ export const mentors: MentorType[] = [
     headerImg: "/img/profileheader.svg",
     isStar: false,
     domain: "Cloud Engineer",
-    bio: "Focused on cloud solutions and Salesforce implementations.",
+    bio: "I will carve out a plan or roadmap for you and if you are consistent with the plan and work hard along with me. You will be able to achieve your goal and achieve greater success in the career. I instill confidence in my mentees and prepare them for f...",
     title: "Senior Software Engineer",
     company: "Salesforce",
     location: "Bangalore, India",
@@ -130,7 +130,8 @@ export const mentors: MentorType[] = [
     headerImg: "/img/profileheader.svg",
     isStar: true,
     domain: "Backend",
-    bio: "Leading backend engineering teams with a focus on scalable microservices.",
+    bio: "I will carve out a plan or roadmap for you and if you are consistent with the plan and work hard along with me. You will be able to achieve your goal and achieve greater success in the career. I instill confidence in my mentees and prepare them for f...",
+
     title: "Senior Engineering Manager",
     company: "Walmart Global Tech India",
     location: "Delhi, India",
@@ -140,7 +141,7 @@ export const mentors: MentorType[] = [
     mentoringMins: 95000,
     menteeCount: 520,
     recentReview: {
-      text: "Excellent leadership and deep technical knowledge.",
+      text: "Vikas took the time to calmly and thoughtfully evaluate my current level of technical expertise, and he provided clear, actionable insights on the areas I need to strengthen and how to strategically move forward. His guidance was not only honest but also highly encouraging. I genuinely appreciate the value this session brought to me. I’m truly grateful for his mentorship and excited about the possibility of learning and growing under his continued guidance in the long term.",
       reviewer: "Sneha Patil",
       timeAgo: "1 month ago",
       reviewerImg: "/img/Piyush.svg",
@@ -171,7 +172,8 @@ export const mentors: MentorType[] = [
     headerImg: "/img/profileheader.svg",
     isStar: false,
     domain: "Frontend",
-    bio: "Passionate about creating superb user experiences and performant apps.",
+    bio: "I will carve out a plan or roadmap for you and if you are consistent with the plan and work hard along with me. You will be able to achieve your goal and achieve greater success in the career. I instill confidence in my mentees and prepare them for f...",
+
     title: "Senior Frontend Developer",
     company: "Google",
     location: "Pune, India",
@@ -181,7 +183,7 @@ export const mentors: MentorType[] = [
     mentoringMins: 85000,
     menteeCount: 400,
     recentReview: {
-      text: "Great mentor for frontend development and React ecosystem.",
+      text: "Vikas took the time to calmly and thoughtfully evaluate my current level of technical expertise, and he provided clear, actionable insights on the areas I need to strengthen and how to strategically move forward. His guidance was not only honest but also highly encouraging. I genuinely appreciate the value this session brought to me. I’m truly grateful for his mentorship and excited about the possibility of learning and growing under his continued guidance in the long term.",
       reviewer: "Rahul Sharma",
       timeAgo: "2 months ago",
       reviewerImg: "/img/Piyush.svg",
@@ -212,7 +214,8 @@ export const mentors: MentorType[] = [
     headerImg: "/img/profileheader.svg",
     isStar: true,
     domain: "Backend",
-    bio: "Skilled in system design, performance tuning, and leadership coaching.",
+    bio: "I will carve out a plan or roadmap for you and if you are consistent with the plan and work hard along with me. You will be able to achieve your goal and achieve greater success in the career. I instill confidence in my mentees and prepare them for f...",
+
     title: "Engineering Lead",
     company: "Microsoft",
     location: "Hyderabad, India",
@@ -222,10 +225,10 @@ export const mentors: MentorType[] = [
     mentoringMins: 97000,
     menteeCount: 600,
     recentReview: {
-      text: "Wonderful mentor with strong expertise in backend engineering.",
+      text: "Vikas took the time to calmly and thoughtfully evaluate my current level of technical expertise, and he provided clear, actionable insights on the areas I need to strengthen and how to strategically move forward. His guidance was not only honest but also highly encouraging. I genuinely appreciate the value this session brought to me. I’m truly grateful for his mentorship and excited about the possibility of learning and growing under his continued guidance in the long term.",
       reviewer: "Nisha Patel",
       timeAgo: "3 weeks ago",
-     reviewerImg: "/img/Piyush.svg",
+      reviewerImg: "/img/Piyush.svg",
     },
     careerInfo: {
       year: "2020 Passed Out",
@@ -253,7 +256,8 @@ export const mentors: MentorType[] = [
     headerImg: "/img/profileheader.svg",
     isStar: false,
     domain: "QA / Automation Testing",
-    bio: "Automation and QA engineer driving product quality and continuous integration.",
+    bio: "I will carve out a plan or roadmap for you and if you are consistent with the plan and work hard along with me. You will be able to achieve your goal and achieve greater success in the career. I instill confidence in my mentees and prepare them for f...",
+
     title: "SDET-2",
     company: "Amazon",
     location: "Chennai, India",
@@ -263,10 +267,10 @@ export const mentors: MentorType[] = [
     mentoringMins: 60000,
     menteeCount: 320,
     recentReview: {
-      text: "Effective mentor, very knowledgeable about QA processes and automation tooling.",
+      text: "Vikas took the time to calmly and thoughtfully evaluate my current level of technical expertise, and he provided clear, actionable insights on the areas I need to strengthen and how to strategically move forward. His guidance was not only honest but also highly encouraging. I genuinely appreciate the value this session brought to me. I’m truly grateful for his mentorship and excited about the possibility of learning and growing under his continued guidance in the long term.",
       reviewer: "Kavita Sharma",
       timeAgo: "1 month ago",
-     reviewerImg: "/img/Piyush.svg",
+      reviewerImg: "/img/Piyush.svg",
     },
     careerInfo: {
       year: "2023 Passed Out",
@@ -286,5 +290,5 @@ export const mentors: MentorType[] = [
     referrals: 4,
     curriculum: true,
     companies: ["Amazon"],
-  }
+  },
 ];

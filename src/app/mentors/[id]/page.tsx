@@ -11,6 +11,9 @@ import { HiOutlineHeart } from "react-icons/hi";
 import Image from "next/image";
 import { mentors } from "../../data/mentorsData";
 import { notFound } from "next/navigation";
+import MentorshipCurriculum from "@/app/components/MentorshipCurriculum";
+import MentorAbout from "@/app/components/MentorAbout";
+import MentorReviewAndTestimonials from "@/app/components/MentorReviewAndTestimonials";
 export default async function MentorProfilePage({
   params,
 }: {
@@ -147,12 +150,12 @@ export default async function MentorProfilePage({
             <h2 className="font-semibold text-base text-gray-900">
               Recent Review
             </h2>
-            <button className="text-blue-600 text-sm font-medium hover:underline">
+            <button className="text-blue-600 text-sm font-medium hover:underline ">
               View All Reviews ({mentor.reviewCount})
             </button>
           </div>
 
-          <p className="mt-3 text-gray-700 text-sm leading-relaxed">
+          <p className="mt-3 text-gray-700 text-sm leading-relaxed md:mr-40">
             {mentor.recentReview.text}
           </p>
 
@@ -176,30 +179,17 @@ export default async function MentorProfilePage({
         </div>
 
         {/* Curriculum Section */}
-        <div className="border-t border-gray-200 px-6 md:px-10 py-8">
-          <h2 className="font-semibold text-gray-900 text-base mb-2">
-            What will be covered
-          </h2>
-          <p className="text-gray-600 text-sm mb-4">
-            This is a tentative mentorship curriculum that will change based on
-            your needs after the trial session with the mentor.
-          </p>
-
-          {/* Duration Tabs */}
-          <div className="flex gap-3">
-            {["6 Months", "3 Months", "1 Month"].map((duration, index) => (
-              <button
-                key={duration}
-                className={`px-4 py-2 rounded-lg border text-sm font-medium ${
-                  index === 1
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white hover:bg-gray-50"
-                }`}
-              >
-                {duration}
-              </button>
-            ))}
-          </div>
+        {/* <div className="border-t border-gray-200 px-6 md:px-10 py-8"> */}
+        <div className="mt-10">
+          <MentorshipCurriculum />
+          {/* </div> */}
+        </div>
+        <div>
+          <MentorAbout />
+        </div>
+        <div>
+      <MentorReviewAndTestimonials />
+          
         </div>
       </div>
     </div>
