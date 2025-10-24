@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const companies = [
   { name: "Google", icon: "/icons/google.svg" },
@@ -32,6 +33,8 @@ const domains = [
 ];
 
 export default function HeroSection() {
+
+  const router = useRouter();
   return (
     <section
       className="relative w-full min-h-[80vh] pt-28 pb-16 px-2 md:px-0 font-poppins"
@@ -90,10 +93,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.18 }}
         >
-          <button className="bg-white border border-gray-200 text-black px-6 py-2.5 rounded-md shadow-sm hover:border-[var(--primary)] transition text-base">
+          <button onClick={()=>router.push("/contact")} className="bg-white border border-gray-200 text-black px-6 py-2.5 rounded-md cursor-pointer shadow-sm hover:border-[var(--primary)] transition text-base">
             Book a Free Trial
           </button>
-          <button className="bg-[var(--primary)] hover:bg-[var(--hoverprimary)] flex justify-center items-center text-white px-6 py-2.5 rounded-md shadow-sm transition text-base">
+          <button onClick={()=>router.push("/mentors")} className="bg-[var(--primary)] hover:bg-[var(--hoverprimary)] flex justify-center cursor-pointer items-center text-white px-6 py-2.5 rounded-md shadow-sm transition text-base">
             Find Your Mentor
             <img
               src="/icons/right.svg"

@@ -1,6 +1,6 @@
-// components/FAQs.tsx
-'use client';
+"use client";
 import { useState } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const FAQS = [
   {
@@ -32,20 +32,57 @@ const FAQS = [
 export default function FAQs() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
+  // Variants for FAQ cards
+  const container: Variants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.1 } },
+  };
+
+  const card: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+  };
+
+  const answer: Variants = {
+    hidden: { opacity: 0, height: 0 },
+    show: { opacity: 1, height: "auto", transition: { duration: 0.4, ease: "easeOut" } },
+  };
+
   return (
     <section className="w-full bg-[#282828] py-16 px-4">
-      <div className="max-w-3xl mx-auto flex flex-col items-center">
-        <h2 className="text-white text-2xl md:text-3xl font-semibold mb-2 text-center">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
+        <motion.h2
+          className="text-white text-2xl md:text-3xl font-semibold mb-2 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           Frequently Asked Questions
-        </h2>
-        <p className="text-gray-400 mb-8 text-center">
+        </motion.h2>
+
+        <motion.p
+          className="text-gray-400 mb-8 text-center"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           Find answers to commonly asked questions about Long Term Mentorship
-        </p>
-        <div className="w-full flex flex-col gap-3">
+        </motion.p>
+
+        <motion.div
+          className="w-full flex flex-col gap-3"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {FAQS.map((item, idx) => (
-            <div
+            <motion.div
               key={item.q}
               className="bg-[#232323] rounded-lg"
+              variants={card}
             >
               <button
                 className="flex w-full items-center justify-between px-5 py-4 outline-none focus:outline-none text-left"
@@ -61,14 +98,23 @@ export default function FAQs() {
                   draggable={false}
                 />
               </button>
-              {openIdx === idx && (
-                <div className="px-5 pb-5 text-gray-300 text-sm">
-                  {item.a}
-                </div>
-              )}
-            </div>
+
+              <AnimatePresence>
+                {openIdx === idx && (
+                  <motion.div
+                    className="px-5 pb-5 text-gray-300 text-sm"
+                    variants={answer}
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                  >
+                    {item.a}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

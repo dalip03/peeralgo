@@ -1,5 +1,3 @@
-"use client";
-
 import {
   FaStar,
   FaClock,
@@ -14,19 +12,22 @@ import { notFound } from "next/navigation";
 import MentorshipCurriculum from "@/app/components/MentorshipCurriculum";
 import MentorAbout from "@/app/components/MentorAbout";
 import MentorReviewAndTestimonials from "@/app/components/MentorReviewAndTestimonials";
+import PeeralgoPromise from "@/app/components/PeeralgoPromise";
+import OtherMentorsCarousel from "@/app/components/OtherMentorsCarousel";
+
 export default async function MentorProfilePage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
+  const { id } = await params; // ✅ Must await params in Next.js 15+
 
   const mentor = mentors.find((m) => m.id === id);
   if (!mentor) return notFound();
 
   return (
     <div className="min-h-screen bg-[#f9fafb] flex justify-center px-4 py-10">
-      <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden relative">
+      <div className="w-full bg-white rounded-2xl overflow-hidden relative">
         {/* Banner Section */}
         <div className="relative w-full h-[180px] md:h-[230px]">
           <Image
@@ -41,13 +42,13 @@ export default async function MentorProfilePage({
         {/* Profile Section */}
         <div className="relative px-6 md:px-10 pb-10 py-10">
           {/* Profile Avatar */}
-          <div className="absolute -top-16 left-6 md:left-10 w-[110px] h-[110px] rounded-xl border-4 border-white shadow-lg overflow-hidden">
+          <div className="absolute -top-16 left-6 md:left-10 w-[140px] h-[140px] rounded-xl border-4 border-white shadow-lg overflow-hidden">
             <Image
               src={mentor.profileImg}
               alt={mentor.name}
               width={110}
               height={110}
-              className="object-cover w-40 h-40 "
+              className="object-cover w-40 h-40"
             />
           </div>
 
@@ -74,8 +75,14 @@ export default async function MentorProfilePage({
                   {mentor.name}
                 </h1>
                 {mentor.isStar && (
-                  <span className="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2 py-1 rounded flex items-center gap-1">
-                    <FaStar className="text-yellow-400" /> Star Mentor
+                  <span className="bg-[#FEDF89]/20 text-orange-300 border border-yellow-400 rounded-md text-xs font-semibold p-2 flex items-center gap-1">
+                    <Image
+                      alt="icon"
+                      src="/mentor_assets/starmentor.svg"
+                      height={20}
+                      width={20}
+                    />
+                    Star Mentor
                   </span>
                 )}
               </div>
@@ -110,19 +117,36 @@ export default async function MentorProfilePage({
           </div>
 
           {/* Stats */}
-          <div className="mt-6 flex flex-wrap gap-5 text-sm font-medium text-gray-700">
+          <div className="mt-6 flex flex-wrap gap-5 text-lg font-semibold text-black">
             <span className="flex items-center gap-2">
-              <FaStar className="text-yellow-500" />
+              <Image
+                alt="icon"
+                src="/mentor_assets/reviewmentor.svg"
+                height={28}
+                width={28}
+              />
               {mentor.rating}{" "}
-              <span className="text-gray-500">
+              <span className="text-black/80">
                 ({mentor.reviewCount} Reviews)
               </span>
             </span>
-            <span className="flex items-center gap-2 text-pink-600">
-              <FaClock /> {mentor.mentoringMins}+ Mentoring Mins
+            <span className="flex items-center gap-2 text-black">
+              <Image
+                alt="icon"
+                src="/mentor_assets/timementor.svg"
+                height={28}
+                width={28}
+              />{" "}
+              {mentor.mentoringMins} <span className=" ">+ Mentoring Mins</span>
             </span>
             <span className="flex items-center gap-2 text-green-600">
-              <FaUsers /> {mentor.menteeCount}+ Mentees
+              <Image
+                alt="icon"
+                src="/mentor_assets/mentees.svg"
+                height={28}
+                width={28}
+              />{" "}
+              {mentor.menteeCount}+ Mentees
             </span>
           </div>
 
@@ -179,17 +203,22 @@ export default async function MentorProfilePage({
         </div>
 
         {/* Curriculum Section */}
-        {/* <div className="border-t border-gray-200 px-6 md:px-10 py-8"> */}
         <div className="mt-10">
           <MentorshipCurriculum />
-          {/* </div> */}
         </div>
+
         <div>
           <MentorAbout />
         </div>
+
         <div>
-      <MentorReviewAndTestimonials />
-          
+          <MentorReviewAndTestimonials />
+        </div>
+        <div>
+          <PeeralgoPromise/>
+        </div>
+        <div>
+          <OtherMentorsCarousel />
         </div>
       </div>
     </div>
