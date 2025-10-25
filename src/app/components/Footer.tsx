@@ -76,29 +76,26 @@ const Footer = () => {
         </div>
 
         {/* Right: Explore & Resources */}
-        <div className="w-full md:w-1/2 flex flex-col sm:flex-row justify-center md:justify-end gap-10 text-center md:text-left">
-          <div>
-            <h4 className="font-semibold mb-4 text-black">Explore</h4>
-            <ul className="space-y-2 text-gray-600">
-              <li className="hover:text-gray-300 cursor-pointer">Home</li>
-              <li className="hover:text-gray-300 cursor-pointer">About Us</li>
-              <li className="hover:text-gray-300 cursor-pointer">Solutions</li>
-              <li className="hover:text-gray-300 cursor-pointer">Blog</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4 text-black">Resources</h4>
-            <ul className="space-y-2 text-gray-600">
-              <li className="hover:text-gray-300 cursor-pointer">Site Map</li>
-              <li className="hover:text-gray-300 cursor-pointer">
-                Terms of Services
-              </li>
-              <li className="hover:text-gray-300 cursor-pointer">
-                Privacy Policy
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div className="w-full md:w-1/2 flex flex-row justify-center md:justify-end gap-6 sm:gap-10 text-center sm:text-left">
+  <div>
+    <h4 className="font-semibold mb-4 text-black">Explore</h4>
+    <ul className="space-y-2 text-gray-600">
+      <li className="hover:text-gray-800 cursor-pointer">Home</li>
+      <li className="hover:text-gray-800 cursor-pointer">About Us</li>
+      <li className="hover:text-gray-800 cursor-pointer">Solutions</li>
+      <li className="hover:text-gray-800 cursor-pointer">Blog</li>
+    </ul>
+  </div>
+  <div>
+    <h4 className="font-semibold mb-4 text-black">Resources</h4>
+    <ul className="space-y-2 text-gray-600">
+      <li className="hover:text-gray-800 cursor-pointer">Site Map</li>
+      <li className="hover:text-gray-800 cursor-pointer">Terms of Services</li>
+      <li className="hover:text-gray-800 cursor-pointer">Privacy Policy</li>
+    </ul>
+  </div>
+</div>
+
       </div>
 
       {/* Bottom part */}
