@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 export default function ProgressStats() {
   return (
     <section className="w-full bg-[#232B38] py-16 px-4">
+      
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         <motion.span
           className="text-base md:text-lg text-[#6A84A0] mb-2 font-medium"

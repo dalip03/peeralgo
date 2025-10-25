@@ -45,10 +45,10 @@ export default function ContactForm() {
       </motion.span>
 
       <motion.h2
-        className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-[#191C20] text-center"
+        className="text-3xl md:text-4xl font-bold mb-3 leading-tight text-[#191C20] text-center"
         variants={item}
       >
-        Have Questions about <br className="hidden md:block" /> EduMentor?
+        Have Questions about <br className="hidden md:block text-[#1C1C1CB2]/70" /> EduMentor?
       </motion.h2>
 
       <motion.p
@@ -60,7 +60,7 @@ export default function ContactForm() {
       </motion.p>
 
       <motion.div
-        className="relative flex bg-white flex-col w-full max-w-md rounded-3xl shadow-xl mx-auto mt-10 p-8 mb-8 overflow-hidden border border-gray-200"
+        className="relative flex bg-white flex-col w-full max-w-md rounded-3xl shadow-xl mx-auto mt-6 p-8 mb-8 overflow-hidden border border-gray-200"
         variants={item}
       >
         {/* Top-right image */}

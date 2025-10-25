@@ -39,11 +39,11 @@ export default function GetStartedSteps() {
       <div className="max-w-5xl mx-auto">
         {/* Section Heading */}
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center text-[#232323] mb-3"
-          initial={{ opacity: 0, y: 50 }}
+          className="text-2xl md:text-3xl font-bold text-center mb-2 text-[#232323]"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
           Get Started in 3 Easy Steps
         </motion.h2>

@@ -86,9 +86,15 @@ export default function MentorsSection() {
         viewport={{ once: true }}
         variants={fadeUp}
       >
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#232323] mt-6 mb-3 leading-tight">
+      <motion.h2
+          className="text-2xl md:text-3xl font-bold text-center mb-2 text-[#232323]"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           600+ mentors are just a Free Trial Session away!
-        </h1>
+        </motion.h2>
         <p className="text-gray-700 mb-6 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
           Choose your ideal mentor and get started with a FREE trial session
         </p>

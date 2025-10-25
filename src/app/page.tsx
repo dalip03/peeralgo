@@ -5,6 +5,7 @@ import HeroSection from "./components/HeroSection";
 import MentorsSection from "./components/MentorsSection";
 import ProgressStats from "./components/ProgressStats";
 import StruggleAloneCovered from "./components/StruggleAloneCovered";
+import StudentSuccessJourney from "./components/StudentSuccessJourney";
 import WhyChooseUs from "./components/WhyChooseUs";
 import WhyEdumentorStandsOut from "./components/WhyEdumentorStandsOut";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <MentorsSection />
 
       <StruggleAloneCovered />
+      <StudentSuccessJourney/>
       <WhyEdumentorStandsOut />
 
       <DomainsCovered />

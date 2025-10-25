@@ -54,7 +54,7 @@ export default async function MentorProfilePage({
 
           {/* Right Section (Placement Info) */}
           <div className="absolute right-6 top-[190px] hidden md:flex flex-col text-sm text-gray-600 text-right">
-            <span>{mentor.careerInfo.year} Passed Out placed in</span>
+            <span>{mentor.careerInfo.year} Placed in</span>
             <span className="font-semibold text-gray-900">
               {mentor.careerInfo.companies[0]}
             </span>
@@ -126,7 +126,7 @@ export default async function MentorProfilePage({
                 width={28}
               />
               {mentor.rating}{" "}
-              <span className="text-black/80">
+              <span className="text-black/80 text-[15px] font-normal">
                 ({mentor.reviewCount} Reviews)
               </span>
             </span>
@@ -137,16 +137,16 @@ export default async function MentorProfilePage({
                 height={28}
                 width={28}
               />{" "}
-              {mentor.mentoringMins} <span className=" ">+ Mentoring Mins</span>
+              {mentor.mentoringMins}+<span className="text-black/80 text-[15px] font-normal "> Mentoring Mins</span>
             </span>
-            <span className="flex items-center gap-2 text-green-600">
+            <span className="flex items-center gap-2 ">
               <Image
                 alt="icon"
                 src="/mentor_assets/mentees.svg"
                 height={28}
                 width={28}
               />{" "}
-              {mentor.menteeCount}+ Mentees
+              {mentor.menteeCount}+ <span className="text-black/80 text-[15px] font-normal"> Mentees</span>
             </span>
           </div>
 

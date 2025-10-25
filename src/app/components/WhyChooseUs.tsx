@@ -20,9 +20,18 @@ export default function WhyChooseUs() {
                 Our Solutions
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#191C20] leading-tight mt-2 text-center md:text-left">
-              Why Choose<br />Us?
-            </h2>
+            <motion.h2
+              className="text-2xl md:text-3xl font-bold md:text-left text-center mb-2 text-[#232323]"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              {" "}
+              Why Choose
+              <br />
+              Us?
+            </motion.h2>
           </motion.div>
 
           {/* Right column: Description */}
@@ -34,7 +43,10 @@ export default function WhyChooseUs() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <p className="md:text-right text-[15px] text-gray-600 md:max-w-sm">
-              Real Mock Interviews with hiring managers. Real Mock Interviews with hiring managers from top Product based companies around the globe. 1 on 1 mentorship for every student with our qualified Student Assessment Faculties
+              Real Mock Interviews with hiring managers. Real Mock Interviews
+              with hiring managers from top Product based companies around the
+              globe. 1 on 1 mentorship for every student with our qualified
+              Student Assessment Faculties
             </p>
           </motion.div>
         </div>

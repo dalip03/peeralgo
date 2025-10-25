@@ -81,7 +81,7 @@ export default function FAQs() {
           {FAQS.map((item, idx) => (
             <motion.div
               key={item.q}
-              className="bg-[#232323] rounded-lg"
+                className="bg-[#232323] rounded-xl border border-[#393939]"
               variants={card}
             >
               <button
