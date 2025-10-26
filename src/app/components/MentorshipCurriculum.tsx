@@ -10,10 +10,10 @@ const monthsData = [
     title: "Month 1 of Mentorship",
     goal: "Technical Improvement: Java & Multithreading, Core Java",
     sessions: [
-      { title: "1:1 Planning Session", duration: "30 Minutes" },
-      { title: "2 Upskilling Sessions", duration: "60 Minutes" },
-      { title: "1:1 Monthly Retrospective Session", duration: "30 Minutes" },
-      { title: "Instant Call with Mentor", duration: "24x7" },
+      { title: "1:1 Planning Session", duration: "30 Minutes", color: "green" },
+      { title: "2 Upskilling Sessions", duration: "60 Minutes", color: "green" },
+      { title: "1:1 Monthly Retrospective Session", duration: "30 Minutes", color: "green" },
+      { title: "Instant Chat With Mentor", duration: "Unlimited • 24x7", color: "blue" },
     ],
     topics: ["Multithreading", "Java-8", "Java"],
     projects: ["Assignment / Project 1"],
@@ -34,40 +34,16 @@ const monthsData = [
     topics: [],
     projects: [],
   },
-  {
-    id: 4,
-    title: "Month 4 of Mentorship",
-    goal: "Backend Project and Real-World Scenarios",
-    sessions: [],
-    topics: [],
-    projects: [],
-  },
-  {
-    id: 5,
-    title: "Month 5 of Mentorship",
-    goal: "Mock Interviews and Resume Review",
-    sessions: [],
-    topics: [],
-    projects: [],
-  },
-  {
-    id: 6,
-    title: "Month 6 of Mentorship",
-    goal: "Final Capstone Project & Career Prep",
-    sessions: [],
-    topics: [],
-    projects: [],
-  },
 ];
 
 type DurationType = "6 Months" | "3 Months" | "1 Month";
-
 
 export default function MentorshipCurriculum() {
   const [expanded, setExpanded] = useState<number[]>([1]);
   const [duration, setDuration] = useState<DurationType>("6 Months");
 
   const durations: DurationType[] = ["6 Months", "3 Months", "1 Month"];
+
   const toggleMonth = (id: number) => {
     setExpanded((prev) =>
       prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
@@ -80,20 +56,21 @@ export default function MentorshipCurriculum() {
   };
 
   return (
-    <div className="bg-[#FFF9F2] p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200  mx-auto">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-        <h2 className="text-2xl font-semibold text-gray-800">What will be covered</h2>
+    <div className="bg-[#FFF9F2] p-4 sm:p-6 md:p-10 rounded-2xl border border-gray-200 shadow-sm mx-auto w-full ">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 gap-4">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+          What will be covered
+        </h2>
 
-        {/* Duration Tabs */}
         <div className="flex gap-2 flex-wrap">
           {durations.map((d) => (
             <button
               key={d}
               onClick={() => setDuration(d)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition ${
+              className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition ${
                 duration === d
-                  ? "bg-blue-600 text-white border-blue-600"
+                  ? "bg-[#1A73E8] text-white border-[#1A73E8]"
                   : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
               }`}
             >
@@ -103,37 +80,78 @@ export default function MentorshipCurriculum() {
         </div>
       </div>
 
-      <p className="text-sm text-gray-500 mb-5">
-        This is a tentative mentorship curriculum that will change based on your needs after the first discussion with the mentor.
+      <p className="text-xs sm:text-sm text-gray-600 mb-6 leading-relaxed">
+        This is a tentative mentorship curriculum that will change based on your
+        needs after the first discussion with the mentor.
       </p>
 
-      {/* Month Sections */}
+      {/* Meta */}
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-gray-600 mb-4">
+        <span>48 Sessions</span>
+        <span className="h-1 w-1 bg-gray-400 rounded-full hidden sm:block"></span>
+        <span>240 Topics</span>
+        <span className="h-1 w-1 bg-gray-400 rounded-full hidden sm:block"></span>
+        <span>6 Study Materials</span>
+        <button
+          onClick={handleExpandAll}
+          className="ml-auto text-[#1A73E8] hover:underline font-medium"
+        >
+          {expanded.length === monthsData.length
+            ? "Collapse All Months"
+            : "Expand All Months"}
+        </button>
+      </div>
+
+      {/* Months */}
       <div className="space-y-3">
-        {monthsData.map((month) => {
+        {monthsData.map((month, idx) => {
           const isOpen = expanded.includes(month.id);
+          const number = idx + 1;
           return (
             <div
               key={month.id}
-              className="bg-white border border-gray-200 rounded-xl overflow-hidden transition-shadow hover:shadow-md"
+              className="bg-white border border-gray-200 rounded-xl overflow-hidden transition hover:shadow-sm"
             >
               <button
                 onClick={() => toggleMonth(month.id)}
-                className="w-full flex justify-between items-center px-4 py-3 text-left focus:outline-none"
+                className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-5 py-3 sm:py-4 text-left focus:outline-none gap-2"
               >
-                <div>
-                  <h3 className="font-semibold text-gray-900">{month.title}</h3>
-                  <p className="text-sm text-gray-500">
-                    This module contains 6 sessions with mentor, 3 topics & 1 study material
-                  </p>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <div className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#7177841A] text-gray-500 text-xs font-medium">
+                    {number}
+                  </div>
+
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-gray-800 font-semibold text-sm sm:text-base">
+                        {month.title}
+                      </span>
+                      <div className="flex flex-wrap gap-1">
+                        <span className="text-[10px] sm:text-xs bg-green-100 text-green-700 px-2 py-[1px] rounded-full">
+                          6 Sessions
+                        </span>
+                        <span className="text-[10px] sm:text-xs bg-orange-100 text-orange-700 px-2 py-[1px] rounded-full">
+                          3 Topics
+                        </span>
+                        <span className="text-[10px] sm:text-xs bg-purple-100 text-purple-700 px-2 py-[1px] rounded-full">
+                          1 Study Material
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                      This module contains following
+                    </p>
+                  </div>
                 </div>
+
                 {isOpen ? (
-                  <ChevronUp className="text-gray-600" />
+                  <ChevronUp className="text-gray-600 w-4 h-4 sm:w-5 sm:h-5" />
                 ) : (
-                  <ChevronDown className="text-gray-600" />
+                  <ChevronDown className="text-gray-600 w-4 h-4 sm:w-5 sm:h-5" />
                 )}
               </button>
 
-              {/* Animated Expanded Section */}
+              {/* Expand section */}
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -141,60 +159,97 @@ export default function MentorshipCurriculum() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="border-t border-gray-100 bg-[#FFFBF7] overflow-hidden"
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    className="border-t border-gray-100 bg-[#FFFBF7]"
                   >
-                    <div className="px-4 py-5 space-y-5">
+                    <div className="p-4 sm:p-5 space-y-5 sm:space-y-6">
                       {/* Goal & Sessions */}
                       <div>
                         <h4 className="text-sm font-semibold text-gray-700 mb-1">
                           Goal & Sessions For The Month
                         </h4>
-                        <p className="text-gray-700 mb-3 text-sm">{month.goal}</p>
+                        <p className="text-gray-700 text-xs sm:text-sm mb-4">
+                          {month.goal}
+                        </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {month.sessions.map((s, i) => (
-                            <div
-                              key={i}
-                              className="border border-gray-200 rounded-lg p-3 text-sm flex justify-between items-center bg-white"
-                            >
-                              <span className="text-gray-800">{s.title}</span>
-                              <span className="text-gray-500">{s.duration}</span>
-                            </div>
-                          ))}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                          {month.sessions?.map((s, i) => {
+                            const isBlue = s.color === "blue";
+                            return (
+                              <div
+                                key={i}
+                                className={`flex items-center justify-between border border-gray-200 rounded-md py-2 sm:py-3 px-3 sm:px-4 relative overflow-hidden ${
+                                  isBlue ? "bg-[#F3F7FF]" : "bg-[#F9FAF8]"
+                                }`}
+                              >
+                                <div
+                                  className={`absolute left-0 top-0 bottom-0 w-[3px] sm:w-[4px] ${
+                                    isBlue ? "bg-blue-600" : "bg-green-600"
+                                  }`}
+                                />
+                                <div className="flex items-center gap-2">
+                                  <span
+                                    className={`${
+                                      isBlue
+                                        ? "text-blue-600"
+                                        : "text-green-700"
+                                    } text-sm sm:text-lg`}
+                                  >
+                                    {isBlue ? "📞" : "🧭"}
+                                  </span>
+                                  <p className="text-gray-800 text-xs sm:text-sm font-semibold">
+                                    {s.title}
+                                  </p>
+                                </div>
+                                <p className="text-gray-500 text-[10px] sm:text-xs whitespace-nowrap">
+                                  {s.duration}
+                                </p>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
 
                       {/* Topics */}
-                      {month.topics.length > 0 && (
+                      {month.topics && month.topics.length > 0 && (
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-700 mb-2">
-                            Topics For The Month
+                          <h4 className="text-sm font-semibold text-gray-700 mb-2 sm:mb-3">
+                            What All Will Be Covered
                           </h4>
-                          <div className="space-y-2">
-                            {month.topics.map((topic, idx) => (
-                              <div
-                                key={idx}
-                                className="border border-gray-200 rounded-lg bg-white p-2 text-sm text-gray-800"
-                              >
-                                {topic}
-                              </div>
-                            ))}
+                          <div className="bg-white border border-gray-200 rounded-md shadow-sm p-3 sm:p-4">
+                            <div className="flex items-center justify-between border-b border-gray-100 pb-2 mb-3">
+                              <p className="text-sm font-semibold text-gray-800">
+                                Topics For The Month
+                              </p>
+                              <p className="text-xs font-medium text-orange-600">
+                                {month.topics.length} Topics
+                              </p>
+                            </div>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {month.topics.map((topic, tIdx) => (
+                                <li
+                                  key={tIdx}
+                                  className="bg-[#F9FAFB] border border-gray-200 rounded-md py-2 px-3 text-xs sm:text-sm text-gray-700"
+                                >
+                                  {topic}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
                       )}
 
                       {/* Projects */}
-                      {month.projects.length > 0 && (
+                      {month.projects && month.projects.length > 0 && (
                         <div>
                           <h4 className="text-sm font-semibold text-gray-700 mb-2">
                             Resources / Assignments / Projects
                           </h4>
-                          <ul className="list-disc list-inside text-gray-800 text-sm">
+                          <div className="bg-white border border-gray-200 rounded-md p-3 sm:p-4 shadow-sm text-xs sm:text-sm text-gray-800">
                             {month.projects.map((p, i) => (
-                              <li key={i}>{p}</li>
+                              <p key={i}>{p}</p>
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -204,18 +259,6 @@ export default function MentorshipCurriculum() {
             </div>
           );
         })}
-      </div>
-
-      {/* Expand/Collapse Button */}
-      <div className="flex justify-end mt-5">
-        <button
-          onClick={handleExpandAll}
-          className="text-blue-600 text-sm font-medium hover:underline"
-        >
-          {expanded.length === monthsData.length
-            ? "Collapse All Months"
-            : "Expand All Months"}
-        </button>
       </div>
     </div>
   );

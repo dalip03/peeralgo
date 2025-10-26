@@ -74,7 +74,7 @@ export default function MentorReviewAndTestimonials() {
   const reviews = mentorReviewsData[activeTab];
 
   return (
-    <div className="bg-white p-6 md:p-8 rounded-2xl shadow-md border border-gray-100 mx-auto">
+    <div className="bg-white shadow-sm rounded-xl border border-gray-200 p-6 mb-4 ">
       <h2 className="font-semibold text-xl mb-6 text-gray-900">
         Reviews &amp; Testimonials
       </h2>
@@ -92,7 +92,7 @@ export default function MentorReviewAndTestimonials() {
             }`}
           >
             {tab.label}{" "}
-            <span className="text-gray-400">
+            <span className="">
               ({tabCounts[tab.key as keyof typeof tabCounts]})
             </span>
             {activeTab === tab.key && (
@@ -109,7 +109,7 @@ export default function MentorReviewAndTestimonials() {
             <div key={idx} className="py-4 space-y-3">
               <p className="text-gray-700 text-[15px] leading-relaxed">{review.text}</p>
               <div className="flex flex-col md:flex-row md:justify-between md:items-center w-full">
-                <span className="font-semibold text-gray-900">{review.reviewer}</span>
+                <span className="font-medium text-gray-600">{review.reviewer}</span>
                 <span className="text-gray-500 text-xs mt-2 md:mt-0">{review.timeAgo}</span>
               </div>
             </div>
@@ -121,7 +121,7 @@ export default function MentorReviewAndTestimonials() {
 
       {/* Show all button */}
       <div className="flex justify-center mt-6">
-        <button className="px-6 py-2 rounded-lg bg-gray-100 font-medium text-gray-800 shadow-sm text-sm border border-gray-200 flex items-center gap-1 hover:bg-gray-200 transition">
+        <button className="px-6 py-2 rounded-lg  font-medium text-gray-800  text-sm  flex items-center gap-1 hover:bg-gray-200 transition">
           Show All {tabCounts[activeTab]}
           <ChevronDown className="h-5 w-5 text-gray-500 ml-1" />
         </button>

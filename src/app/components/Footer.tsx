@@ -52,22 +52,29 @@ const Footer = () => {
       {/* Middle part */}
       <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-20 mb-8 items-center md:items-start text-center md:text-left">
         {/* Left: Newsletter */}
-        <div className="w-full md:w-1/2 flex justify-center md:justify-start">
+        <div
+          className="w-full md:w-1/2 inline-flex justify-center md:justify-start shadow-sm rounded-2xl"
+          style={{
+            background:
+              "linear-gradient(103deg, rgba(28, 28, 28, 0.06) 7.05%, rgba(28, 28, 28, 0.12) 100.95%)",
+          }}
+        >
+          {" "}
           <div className="w-full max-w-md px-4 py-6 rounded-[16px] bg-[rgba(255,255,255,0.05)] flex flex-col items-center md:items-start gap-2">
             <h3 className="text-md">Newsletter</h3>
             <h2 className="text-lg text-black">
               Stay updated with the latest Updates about the tech space{" "}
             </h2>
-            <form className="flex flex-col sm:flex-row w-full gap-2 mt-2">
+            <form className="flex flex-col sm:flex-row w-full gap-2 mt-2 border border-gray-200 p-2 rounded-2xl bg-[#1C1C1C99]/10">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-grow px-4 py-2 bg-[#1C1C1C1A] border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-grow px-4 py-2 placeholder:text-gray-500 rounded-2xl focus:outline-none focus:ring-1 focus:ring-blue-100"
                 required
               />
               <button
                 type="submit"
-                className="bg-primary text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+                className="bg-primary text-white px-4 py-2 rounded-2xl hover:bg-blue-700 transition"
               >
                 Signup
               </button>
@@ -76,26 +83,29 @@ const Footer = () => {
         </div>
 
         {/* Right: Explore & Resources */}
-      <div className="w-full md:w-1/2 flex flex-row justify-center md:justify-end gap-6 sm:gap-10 text-center sm:text-left">
-  <div>
-    <h4 className="font-semibold mb-4 text-black">Explore</h4>
-    <ul className="space-y-2 text-gray-600">
-      <li className="hover:text-gray-800 cursor-pointer">Home</li>
-      <li className="hover:text-gray-800 cursor-pointer">About Us</li>
-      <li className="hover:text-gray-800 cursor-pointer">Solutions</li>
-      <li className="hover:text-gray-800 cursor-pointer">Blog</li>
-    </ul>
-  </div>
-  <div>
-    <h4 className="font-semibold mb-4 text-black">Resources</h4>
-    <ul className="space-y-2 text-gray-600">
-      <li className="hover:text-gray-800 cursor-pointer">Site Map</li>
-      <li className="hover:text-gray-800 cursor-pointer">Terms of Services</li>
-      <li className="hover:text-gray-800 cursor-pointer">Privacy Policy</li>
-    </ul>
-  </div>
-</div>
-
+        <div className="w-full md:w-1/2 flex flex-row justify-center md:justify-end gap-6 sm:gap-10 text-center sm:text-left">
+          <div>
+            <h4 className="font-semibold mb-4 text-black">Explore</h4>
+            <ul className="space-y-2 text-gray-600">
+              <li className="hover:text-gray-800 cursor-pointer">Home</li>
+              <li className="hover:text-gray-800 cursor-pointer">About Us</li>
+              <li className="hover:text-gray-800 cursor-pointer">Solutions</li>
+              <li className="hover:text-gray-800 cursor-pointer">Blog</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-black">Resources</h4>
+            <ul className="space-y-2 text-gray-600">
+              <li className="hover:text-gray-800 cursor-pointer">Site Map</li>
+              <li className="hover:text-gray-800 cursor-pointer">
+                Terms of Services
+              </li>
+              <li className="hover:text-gray-800 cursor-pointer">
+                Privacy Policy
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       {/* Bottom part */}

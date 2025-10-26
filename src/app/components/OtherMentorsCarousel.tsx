@@ -80,7 +80,7 @@ export default function OtherMentorsCarousel() {
     <>
       {/* Inline style for scrollbar hide */}
       <style>{globalStyle}</style>
-      <section className="w-full md:px-4 py-8">
+      <section className="w-full md:px-4 py-4">
         <h2 className="text-xl md:text-2xl font-bold mb-5">Other Mentors</h2>
         <div className="overflow-x-auto scrollbar-hide -mx-2 pb-2">
           <div
@@ -117,16 +117,17 @@ export default function OtherMentorsCarousel() {
                   </div>
                 </div>
                 {/* Bio */}
-                <div className="text-[13px] text-gray-900 mb-2 flex-1">
+                <div className="text-[13px] text-gray-500 mb-2 flex-1">
                   {mentor.bio}
-                </div>
-                {/* Skills */}
-                <div className="flex gap-2 text-xs text-gray-700 font-medium mb-2 flex-wrap">
+                    {/* Skills */}
+                <div className="flex gap-2 text-xs text-gray-700 font-medium mb-2 flex-wrap mt-4">
                   {mentor.tags.map((skill) => (
-                    <span key={skill} className="bg-gray-100 px-2 py-1 rounded">{skill}</span>
+                    <span key={skill} className=" px-2 py-1 rounded ">{skill}</span>
                   ))}
                   <span className="font-bold text-blue-500 cursor-pointer">more</span>
                 </div>
+                </div>
+              
                 {/* Price/Stats */}
                 <div className="flex items-center justify-between mt-2 mb-2">
                   <div>

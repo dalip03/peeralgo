@@ -14,6 +14,7 @@ import MentorAbout from "@/app/components/MentorAbout";
 import MentorReviewAndTestimonials from "@/app/components/MentorReviewAndTestimonials";
 import PeeralgoPromise from "@/app/components/PeeralgoPromise";
 import OtherMentorsCarousel from "@/app/components/OtherMentorsCarousel";
+import LTMScheduleSection from "@/app/components/LTMScheduleSection";
 
 export default async function MentorProfilePage({
   params,
@@ -70,12 +71,12 @@ export default async function MentorProfilePage({
           {/* Main Info */}
           <div className="pt-20 md:pt-16 flex flex-col md:flex-row md:items-end md:justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-gray-900">
+              <div className="flex items-center gap-2 justify-between md:justify-start">
+                <h1 className="md:text-2xl text-xl font-bold text-gray-900">
                   {mentor.name}
                 </h1>
                 {mentor.isStar && (
-                  <span className="bg-[#FEDF89]/20 text-orange-300 border border-yellow-400 rounded-md text-xs font-semibold p-2 flex items-center gap-1">
+                  <span className="bg-[#FEDF89]/20 text-orange-300 border border-yellow-400 rounded-md md:text-xs text-[12px] font-semibold p-2 flex items-center gap-1">
                     <Image
                       alt="icon"
                       src="/mentor_assets/starmentor.svg"
@@ -203,7 +204,7 @@ export default async function MentorProfilePage({
         </div>
 
         {/* Curriculum Section */}
-        <div className="mt-10">
+        <div className="mt-4">
           <MentorshipCurriculum />
         </div>
 
@@ -216,6 +217,9 @@ export default async function MentorProfilePage({
         </div>
         <div>
           <PeeralgoPromise/>
+        </div>
+        <div>
+          <LTMScheduleSection/>
         </div>
         <div>
           <OtherMentorsCarousel />

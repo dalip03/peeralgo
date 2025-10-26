@@ -34,7 +34,7 @@ const features = [
 
 export default function PeeralgoPromise() {
   return (
-    <section className="py-8 px-2 w-full">
+    <section className="py-4 px-2 w-full">
       <h2 className="text-xl md:text-2xl font-bold mb-6 text-gray-900">
         The Peeralgo Promise
       </h2>
