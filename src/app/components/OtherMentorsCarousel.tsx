@@ -141,7 +141,7 @@ export default function OtherMentorsCarousel() {
                   </div>
                 </div>
                 {/* Actions */}
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-2 items-center justify-center mt-2 ">
                   <button className="rounded-lg border text-sm px-4 py-2 font-medium hover:bg-gray-100 transition">
                     View Profile
                   </button>
