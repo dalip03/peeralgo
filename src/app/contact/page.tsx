@@ -14,7 +14,6 @@ export default function ContactForm() {
     query: "",
   });
 
-  // Variants for staggered animation
   const container: Variants = {
     hidden: {},
     show: { transition: { staggerChildren: 0.1 } },
@@ -31,28 +30,41 @@ export default function ContactForm() {
 
   return (
     <motion.div
-      className="min-h-screen flex flex-col items-center justify-center bg-white py-10 px-4"
+      className="min-h-screen flex flex-col items-center justify-center py-10 px-4 transition-colors duration-300"
+      style={{
+        background: "var(--contact-bg, #ffffff)",
+      }}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={container}
     >
       <motion.span
-        className="bg-blue-100 text-blue-600 text-xs font-semibold rounded-full px-4 py-2 mb-4 inline-block"
+        className="text-xs font-semibold rounded-full px-4 py-2 mb-4 inline-block transition-colors duration-300"
+        style={{
+          background: "var(--contact-badge-bg, #DBEAFE)",
+          color: "var(--contact-badge-text, #2563EB)",
+        }}
         variants={item}
       >
         Contact Us
       </motion.span>
 
       <motion.h2
-        className="text-3xl md:text-4xl font-bold mb-3 leading-tight text-[#191C20] text-center"
+        className="text-3xl md:text-4xl font-bold mb-3 leading-tight text-center transition-colors duration-300"
+        style={{
+          color: "var(--contact-heading, #191C20)",
+        }}
         variants={item}
       >
-        Have Questions about <br className="hidden md:block text-[#1C1C1CB2]/70" /> EduMentor?
+        Have Questions about <br className="hidden md:block" /> EduMentor?
       </motion.h2>
 
       <motion.p
-        className="text-[#1C1C1C66] mb-7 max-w-2xl md:px-28 px-12 mx-auto text-sm text-center"
+        className="mb-7 max-w-2xl md:px-28 px-12 mx-auto text-sm text-center transition-colors duration-300"
+        style={{
+          color: "var(--contact-text-muted, #1C1C1C66)",
+        }}
         variants={item}
       >
         Start trading with powerful tools, real-time insights, and a secure
@@ -60,28 +72,42 @@ export default function ContactForm() {
       </motion.p>
 
       <motion.div
-        className="relative flex bg-white flex-col w-full max-w-md rounded-3xl shadow-xl mx-auto mt-6 p-8 mb-8 overflow-hidden border border-gray-200"
+        className="relative flex flex-col w-full max-w-md rounded-3xl shadow-xl mx-auto mt-6 p-8 mb-8 overflow-hidden border transition-colors duration-300"
+        style={{
+          background: "var(--contact-card-bg, #ffffff)",
+          borderColor: "var(--contact-border, #e5e7eb)",
+        }}
         variants={item}
       >
         {/* Top-right image */}
         <img
           src={topRightImg}
           alt=""
-          className="pointer-events-none select-none absolute rounded-2xl top-0 -right-10 w-72 h-28 object-contain"
+          className="pointer-events-none select-none absolute rounded-2xl top-0 -right-10 w-72 h-28 object-contain opacity-80"
         />
         {/* Bottom-left image */}
         <img
           src={bottomLeftImg}
           alt=""
-          className="pointer-events-none select-none absolute bottom-0 left-24 w-72 h-28 object-contain"
+          className="pointer-events-none select-none absolute bottom-0 left-24 w-72 h-28 object-contain opacity-80"
         />
 
         <form className="flex flex-col gap-5 w-full relative z-10">
           <motion.div className="mt-5" variants={item}>
-            <label className="block font-medium text-gray-700 mb-1">Full Name</label>
+            <label
+              className="block font-medium mb-1 transition-colors duration-300"
+              style={{ color: "var(--contact-label, #374151)" }}
+            >
+              Full Name
+            </label>
             <input
               type="text"
-              className="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring focus:ring-blue-100 bg-gray-100 placeholder:text-gray-400"
+              className="w-full px-4 py-2 rounded-md border focus:outline-none focus:ring focus:ring-blue-100 transition-colors duration-300"
+              style={{
+                background: "var(--contact-input-bg, #f3f4f6)",
+                borderColor: "var(--contact-input-border, #e5e7eb)",
+                color: "var(--contact-input-text, #111827)",
+              }}
               placeholder="Enter your name"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -89,10 +115,20 @@ export default function ContactForm() {
           </motion.div>
 
           <motion.div variants={item}>
-            <label className="block font-medium text-gray-700 mb-1">Phone Number</label>
+            <label
+              className="block font-medium mb-1 transition-colors duration-300"
+              style={{ color: "var(--contact-label, #374151)" }}
+            >
+              Phone Number
+            </label>
             <input
               type="text"
-              className="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring focus:ring-blue-100 bg-gray-100 placeholder:text-gray-400"
+              className="w-full px-4 py-2 rounded-md border focus:outline-none focus:ring focus:ring-blue-100 transition-colors duration-300"
+              style={{
+                background: "var(--contact-input-bg, #f3f4f6)",
+                borderColor: "var(--contact-input-border, #e5e7eb)",
+                color: "var(--contact-input-text, #111827)",
+              }}
               placeholder="Enter your number"
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -100,10 +136,20 @@ export default function ContactForm() {
           </motion.div>
 
           <motion.div variants={item}>
-            <label className="block font-medium text-gray-700 mb-1">Email</label>
+            <label
+              className="block font-medium mb-1 transition-colors duration-300"
+              style={{ color: "var(--contact-label, #374151)" }}
+            >
+              Email
+            </label>
             <input
               type="email"
-              className="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring focus:ring-blue-100 bg-gray-100 placeholder:text-gray-400"
+              className="w-full px-4 py-2 rounded-md border focus:outline-none focus:ring focus:ring-blue-100 transition-colors duration-300"
+              style={{
+                background: "var(--contact-input-bg, #f3f4f6)",
+                borderColor: "var(--contact-input-border, #e5e7eb)",
+                color: "var(--contact-input-text, #111827)",
+              }}
               placeholder="Enter your email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -111,9 +157,19 @@ export default function ContactForm() {
           </motion.div>
 
           <motion.div variants={item}>
-            <label className="block font-medium text-gray-700 mb-1">Ask your Query</label>
+            <label
+              className="block font-medium mb-1 transition-colors duration-300"
+              style={{ color: "var(--contact-label, #374151)" }}
+            >
+              Ask your Query
+            </label>
             <textarea
-              className="w-full px-4 py-2 min-h-[56px] rounded-md border border-gray-200 focus:outline-none focus:ring focus:ring-blue-100 bg-gray-100 placeholder:text-gray-400"
+              className="w-full px-4 py-2 min-h-[56px] rounded-md border focus:outline-none focus:ring focus:ring-blue-100 transition-colors duration-300"
+              style={{
+                background: "var(--contact-input-bg, #f3f4f6)",
+                borderColor: "var(--contact-input-border, #e5e7eb)",
+                color: "var(--contact-input-text, #111827)",
+              }}
               placeholder="Enter your query"
               value={form.query}
               onChange={(e) => setForm({ ...form, query: e.target.value })}
@@ -122,7 +178,11 @@ export default function ContactForm() {
 
           <motion.button
             type="submit"
-            className="mt-4 py-2 rounded-md bg-blue-500 mb-12 text-white font-semibold shadow hover:bg-blue-600 transition"
+            className="mt-4 py-2 rounded-md mb-12 font-semibold shadow transition-colors duration-300"
+            style={{
+              background: "var(--contact-btn-bg, #3b82f6)",
+              color: "var(--contact-btn-text, #ffffff)",
+            }}
             variants={item}
           >
             Submit

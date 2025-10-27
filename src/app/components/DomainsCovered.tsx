@@ -22,7 +22,6 @@ const domains = [
 ];
 
 export default function DomainsCovered() {
-  // Framer Motion variants
   const container: Variants = {
     hidden: {},
     show: { transition: { staggerChildren: 0.1 } },
@@ -38,24 +37,30 @@ export default function DomainsCovered() {
   };
 
   return (
-    <section className="w-full bg-white py-14 px-2">
+    <section
+      className="
+        w-full py-14 px-2
+        bg-[var(--domains-bg)]
+        transition-colors duration-300
+      "
+    >
       <div className="max-w-5xl mx-auto">
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center text-[#232323] mb-2"
+          className="text-2xl md:text-3xl font-bold text-center mb-2 text-[var(--domains-heading)]"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6 }}
         >
           Every Domain Every Industry Covered
         </motion.h2>
 
         <motion.p
-          className="text-center text-gray-500 mb-10 text-sm"
+          className="text-center mb-10 text-sm text-[var(--domains-text)]"
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Our mentors are equipped to guide you in any field you&apos;re passionate about
         </motion.p>
@@ -70,13 +75,22 @@ export default function DomainsCovered() {
           {domains.map((domain) => (
             <motion.div
               key={domain.title}
-              className="flex items-center gap-4 bg-white border border-gray-200 py-7 px-6 shadow-sm"
+              className="
+                flex items-center gap-4 py-7 px-6 shadow-sm rounded-lg
+                bg-[var(--domains-card-bg)]
+                border border-[var(--domains-border)]
+                transition-colors duration-300
+              "
               variants={item}
             >
-              <img src={domain.icon} alt="" className="w-5 h-5 object-contain" />
+              <img src={domain.icon} alt={domain.title} className="w-5 h-5 object-contain" />
               <div>
-                <div className="text-[12px] font-medium text-[#232323]">{domain.title}</div>
-                <div className="text-gray-400 text-xs">Browse {domain.mentors} Mentors</div>
+                <div className="text-[12px] font-medium text-[var(--domains-heading)]">
+                  {domain.title}
+                </div>
+                <div className="text-[var(--domains-muted)] text-xs">
+                  Browse {domain.mentors} Mentors
+                </div>
               </div>
             </motion.div>
           ))}

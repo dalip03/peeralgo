@@ -316,9 +316,9 @@ export default function Herosectionnew({
 
   return (
     <section
-      className="relative w-full min-h-[80vh] pt-28 pb-16 px-2 md:px-0 font-poppins"
+      className="relative w-full min-h-[80vh] pt-28 pb-16 px-2 md:px-0 font-poppins transition-colors duration-300"
       style={{
-        background: "linear-gradient(180deg, #E7F5FE 0%, #FFF 100%)",
+        background: "var(--hero-gradient)",
       }}
     >
       {/* Orb Container - replaces glowing circle */}
@@ -341,16 +341,18 @@ export default function Herosectionnew({
       {/* Hero Content */}
       <div className="relative w-full flex flex-col items-center text-center max-w-3xl mx-auto z-10">
         <motion.h2
-          className="text-3xl md:text-5xl font-bold mb-3 leading-tight text-[#191C20] text-center"
+          className="text-3xl md:text-5xl font-bold mb-3 leading-tight text-center"
+          style={{ color: "var(--foreground)" }}
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Supercharge your career with  <br className="hidden md:block" />
-          <span className="block"> Term Mentorship</span>
+          Supercharge your career with <br className="hidden md:block" />
+          <span className="block">Long Term Mentorship</span>
         </motion.h2>
         <motion.p
-          className="text-gray-500 mb-7 max-w-2xl px-4 mx-auto text-sm"
+          className="mb-7 max-w-2xl px-4 mx-auto text-sm"
+          style={{ color: "var(--muted)" }}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -367,13 +369,21 @@ export default function Herosectionnew({
         >
           <button
             onClick={() => router.push("/contact")}
-            className="bg-white border border-gray-200 text-black px-6 py-2.5 rounded-md cursor-pointer shadow-sm hover:border-[var(--primary)] transition text-base"
+            className="px-6 py-2.5 rounded-md cursor-pointer shadow-sm transition-all text-base"
+            style={{
+              background: "var(--card-bg)",
+              border: "1px solid var(--border)",
+              color: "var(--foreground)",
+            }}
           >
             Book a Free Trial
           </button>
           <button
             onClick={() => router.push("/mentors")}
-            className="bg-[var(--primary)] hover:bg-[var(--hoverprimary)] flex justify-center cursor-pointer items-center text-white px-6 py-2.5 rounded-md shadow-sm transition text-base"
+            className="flex justify-center cursor-pointer items-center px-6 py-2.5 rounded-md shadow-sm transition-all text-base text-white"
+            style={{
+              background: "var(--primary)",
+            }}
           >
             Find Your Mentor
             <img
@@ -385,12 +395,13 @@ export default function Herosectionnew({
         </motion.div>
         {/* Features */}
         <motion.div
-          className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm text-gray-500 font-medium mb-10"
+          className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm font-medium mb-10"
+          style={{ color: "var(--foreground)" }}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.27 }}
         >
-          <div className="flex items-center text-black gap-2">
+          <div className="flex items-center gap-2">
             <img
               src="/icons/tick.svg"
               alt="tick"
@@ -398,7 +409,7 @@ export default function Herosectionnew({
             />
             No Payment Required
           </div>
-          <div className="flex items-center text-black gap-2">
+          <div className="flex items-center gap-2">
             <img
               src="/icons/tick.svg"
               alt="tick"
@@ -406,7 +417,7 @@ export default function Herosectionnew({
             />
             Verified Mentors Only
           </div>
-          <div className="flex items-center text-black gap-2">
+          <div className="flex items-center gap-2">
             <img
               src="/icons/tick.svg"
               alt="tick"
@@ -418,19 +429,23 @@ export default function Herosectionnew({
       </div>
 
       {/* Cards grid */}
-      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 mt-2 z-10 relative">
+      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 mt-2 z-10 relative">
         {/* Companies */}
         <motion.div
-          className="bg-white  shadow-sm  p-5 flex flex-col"
+          className="shadow-sm p-5 flex flex-col transition-colors duration-300"
+          style={{
+            background: "var(--card-bg)",
+            border: "1px solid var(--border)",
+          }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.52, delay: 0.12 }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-semibold text-base text-gray-800">
+            <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
               Companies
             </span>
-            <span className="text-lg text-gray-400">
+            <span className="text-lg">
               <img
                 src="/icons/rightArrow.svg"
                 alt="arrow"
@@ -447,7 +462,9 @@ export default function Herosectionnew({
                     alt={c.name}
                     className="h-5 w-5 object-contain"
                   />
-                  <span className="text-sm text-gray-700">{c.name}</span>
+                  <span className="text-sm" style={{ color: "var(--foreground)" }}>
+                    {c.name}
+                  </span>
                 </div>
                 <img
                   src="/icons/righticon.svg"
@@ -457,22 +474,32 @@ export default function Herosectionnew({
               </div>
             ))}
           </div>
-          <button className="mt-auto bg-black text-white py-2 rounded-md text-sm font-semibold hover:bg-black/90 transition">
+          <button
+            className="mt-auto py-2 rounded-md text-sm font-semibold transition-all"
+            style={{
+              background: "var(--foreground)",
+              color: "var(--background)",
+            }}
+          >
             Explore All Companies &rarr;
           </button>
         </motion.div>
         {/* Skills */}
         <motion.div
-          className="bg-white shadow-sm  p-5 flex flex-col"
+          className="shadow-sm p-5 flex flex-col transition-colors duration-300"
+          style={{
+            background: "var(--card-bg)",
+            border: "1px solid var(--border)",
+          }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.62, delay: 0.17 }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-semibold text-base text-gray-800">
+            <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
               Skills
             </span>
-            <span className="text-lg text-gray-400">
+            <span className="text-lg">
               <img
                 src="/icons/rightArrow.svg"
                 alt="arrow"
@@ -489,7 +516,9 @@ export default function Herosectionnew({
                     alt={s.name}
                     className="h-5 w-5 object-contain"
                   />
-                  <span className="text-sm text-gray-700">{s.name}</span>
+                  <span className="text-sm" style={{ color: "var(--foreground)" }}>
+                    {s.name}
+                  </span>
                 </div>
                 <img
                   src="/icons/righticon.svg"
@@ -499,22 +528,32 @@ export default function Herosectionnew({
               </div>
             ))}
           </div>
-          <button className="mt-auto bg-black text-white py-2 rounded-md text-sm font-semibold hover:bg-black/90 transition">
+          <button
+            className="mt-auto py-2 rounded-md text-sm font-semibold transition-all"
+            style={{
+              background: "var(--foreground)",
+              color: "var(--background)",
+            }}
+          >
             Explore All Skills &rarr;
           </button>
         </motion.div>
         {/* Domains */}
         <motion.div
-          className="bg-white rounded-sm shadow-sm  p-5 flex flex-col"
+          className="rounded-sm shadow-sm p-5 flex flex-col transition-colors duration-300"
+          style={{
+            background: "var(--card-bg)",
+            border: "1px solid var(--border)",
+          }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.72, delay: 0.22 }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-semibold text-base text-gray-800">
+            <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
               Domains
             </span>
-            <span className="text-lg text-gray-400">
+            <span className="text-lg">
               <img
                 src="/icons/rightArrow.svg"
                 alt="arrow"
@@ -531,7 +570,9 @@ export default function Herosectionnew({
                     alt={d.name}
                     className="h-5 w-5 object-contain"
                   />
-                  <span className="text-sm text-gray-700">{d.name}</span>
+                  <span className="text-sm" style={{ color: "var(--foreground)" }}>
+                    {d.name}
+                  </span>
                 </div>
                 <img
                   src="/icons/righticon.svg"
@@ -541,7 +582,13 @@ export default function Herosectionnew({
               </div>
             ))}
           </div>
-          <button className="mt-auto bg-black text-white py-2 rounded-md text-sm font-semibold hover:bg-black/90 transition">
+          <button
+            className="mt-auto py-2 rounded-md text-sm font-semibold transition-all"
+            style={{
+              background: "var(--foreground)",
+              color: "var(--background)",
+            }}
+          >
             Explore All Domains &rarr;
           </button>
         </motion.div>

@@ -70,14 +70,18 @@ export default function MentorsSection() {
   );
   const router = useRouter();
 
-  // Framer Motion variants
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
-    <div className="min-h-screen bg-[#e3f0fd] flex flex-col items-center py-10 w-full">
+    <div
+      className="min-h-screen flex flex-col items-center py-10 w-full transition-colors duration-300"
+      style={{
+        background: "var(--mentors-bg, #e3f0fd)",
+      }}
+    >
       {/* Header Section */}
       <motion.div
         className="text-center mb-6 px-4 w-full"
@@ -86,16 +90,20 @@ export default function MentorsSection() {
         viewport={{ once: true }}
         variants={fadeUp}
       >
-      <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center mb-2 text-[#232323]"
+        <motion.h2
+          className="text-2xl md:text-3xl font-bold text-center mb-2"
+          style={{ color: "var(--mentors-heading, #232323)" }}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6 }}
         >
           600+ mentors are just a Free Trial Session away!
         </motion.h2>
-        <p className="text-gray-700 mb-6 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+        <p
+          className="mb-6 text-sm sm:text-base md:text-lg max-w-2xl mx-auto"
+          style={{ color: "var(--mentors-text, #374151)" }}
+        >
           Choose your ideal mentor and get started with a FREE trial session
         </p>
 
@@ -108,10 +116,7 @@ export default function MentorsSection() {
           variants={fadeUp}
         >
           <div
-            className="
-              flex gap-3 overflow-x-auto whitespace-nowrap
-              scrollbar-hide scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0
-            "
+            className="flex gap-3 overflow-x-auto whitespace-nowrap scrollbar-hide scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
             style={{
               WebkitOverflowScrolling: "touch",
             }}
@@ -120,12 +125,22 @@ export default function MentorsSection() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 font-medium text-sm sm:text-base px-4 py-2 rounded-full cursor-pointer border border-gray-200/80 shadow-sm transition focus:outline-none
-                  ${
+                className={`flex-shrink-0 font-medium text-sm sm:text-base px-4 py-2 rounded-full cursor-pointer border shadow-sm transition focus:outline-none ${
+                  activeCategory === cat
+                    ? "text-white"
+                    : ""
+                }`}
+                style={{
+                  background:
                     activeCategory === cat
-                      ? "text-white bg-blue-500"
-                      : "text-black bg-white hover:bg-blue-50 active:bg-blue-100"
-                  }`}
+                      ? "var(--mentors-accent, #3b82f6)"
+                      : "var(--mentors-tab-bg, #ffffff)",
+                  borderColor: "var(--mentors-border, #e5e7eb)",
+                  color:
+                    activeCategory === cat
+                      ? "var(--mentors-tab-active-text, #ffffff)"
+                      : "var(--mentors-tab-text, #000000)",
+                }}
               >
                 {cat}
               </button>
@@ -136,11 +151,7 @@ export default function MentorsSection() {
 
       {/* Mentor Cards */}
       <motion.div
-        className="
-          w-full max-w-7xl
-          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8
-          px-2 sm:px-6
-        "
+        className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -149,7 +160,12 @@ export default function MentorsSection() {
         {filteredMentors.map((mentor, i) => (
           <motion.div
             key={i}
-            className="relative bg-white rounded-xl shadow-md p-6 w-full flex flex-col items-start gap-3"
+            className="relative rounded-xl shadow-md p-6 w-full flex flex-col items-start gap-3 transition-colors duration-300"
+            style={{
+              background: "var(--mentors-card-bg, #ffffff)",
+              border: "1px solid var(--mentors-border, #e5e7eb)",
+              color: "var(--mentors-heading, #232323)",
+            }}
             whileHover={{ y: -5, transition: { duration: 0.3 } }}
           >
             <div className="absolute top-4 right-4 flex items-center gap-2">
@@ -157,9 +173,24 @@ export default function MentorsSection() {
               <span className="font-semibold">{mentor.rating}</span>
             </div>
             <div>
-              <div className="text-lg font-semibold mb-1">{mentor.name}</div>
-              <div className="text-gray-800 font-medium">{mentor.role}</div>
-              <div className="text-gray-500 text-sm">{mentor.experience}</div>
+              <div
+                className="text-lg font-semibold mb-1"
+                style={{ color: "var(--mentors-heading, #232323)" }}
+              >
+                {mentor.name}
+              </div>
+              <div
+                className="font-medium"
+                style={{ color: "var(--mentors-sub, #374151)" }}
+              >
+                {mentor.role}
+              </div>
+              <div
+                className="text-sm"
+                style={{ color: "var(--mentors-text, #6b7280)" }}
+              >
+                {mentor.experience}
+              </div>
             </div>
             <div className="flex items-center gap-2 mt-2">
               {mentor.logo && (
@@ -169,9 +200,20 @@ export default function MentorsSection() {
                   className="w-5 h-5 object-contain"
                 />
               )}
-              <span className="text-gray-600 text-sm">{mentor.company}</span>
+              <span
+                className="text-sm"
+                style={{ color: "var(--mentors-text, #6b7280)" }}
+              >
+                {mentor.company}
+              </span>
             </div>
-            <button className="mt-4 bg-blue-500 text-white w-full py-2 rounded-lg font-medium hover:bg-blue-600 shadow transition">
+            <button
+              className="mt-4 w-full py-2 rounded-lg font-medium shadow transition"
+              style={{
+                background: "var(--mentors-accent, #3b82f6)",
+                color: "var(--mentors-btn-text, #ffffff)",
+              }}
+            >
               Book a FREE Trial
             </button>
           </motion.div>
@@ -181,13 +223,18 @@ export default function MentorsSection() {
       {/* Explore Button */}
       <motion.button
         onClick={() => router.push("/mentors")}
-        className="flex items-center justify-center gap-1 mt-10 px-6 py-3 rounded-lg shadow font-medium text-black cursor-pointer hover:bg-blue-50 border border-gray-200/80 transition"
+        className="flex items-center justify-center gap-1 mt-10 px-6 py-3 rounded-lg shadow font-medium cursor-pointer border transition"
+        style={{
+          background: "var(--mentors-tab-bg, #ffffff)",
+          borderColor: "var(--mentors-border, #e5e7eb)",
+          color: "var(--mentors-heading, #232323)",
+        }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeUp}
       >
-        Explore All Mentors{" "}
+        Explore All Mentors
         <Image alt="icon" src="/icons/rightArrowblack.svg" height={8} width={8} />
       </motion.button>
     </div>

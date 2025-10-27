@@ -34,15 +34,28 @@ const features = [
 
 export default function PeeralgoPromise() {
   return (
-    <section className="py-4 px-2 w-full">
-      <h2 className="text-xl md:text-2xl font-bold mb-6 text-gray-900">
+    <section
+      className="py-8 px-4 w-full transition-colors duration-300"
+      style={{
+        background: "var(--promise-bg, #ffffff)",
+      }}
+    >
+      <h2
+        className="text-xl md:text-2xl font-bold mb-8 text-center md:text-left"
+        style={{ color: "var(--promise-heading, #232323)" }}
+      >
         The Peeralgo Promise
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-xl border border-gray-200 shadow-sm px-6 py-5 flex flex-col items-start min-h-[180px]"
+            className="rounded-xl border shadow-sm px-6 py-5 flex flex-col items-start min-h-[180px] transition-colors duration-300"
+            style={{
+              background: "var(--promise-card-bg, #ffffff)",
+              borderColor: "var(--promise-border, #e5e7eb)",
+            }}
           >
             <Image
               src={feature.icon}
@@ -52,8 +65,18 @@ export default function PeeralgoPromise() {
               className="mb-2"
               priority
             />
-            <div className="font-semibold mb-1 text-base">{feature.title}</div>
-            <div className="text-gray-500 text-sm">{feature.description}</div>
+            <div
+              className="font-semibold mb-1 text-base"
+              style={{ color: "var(--promise-title, #232323)" }}
+            >
+              {feature.title}
+            </div>
+            <div
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--promise-text, #6b7280)" }}
+            >
+              {feature.description}
+            </div>
           </div>
         ))}
       </div>
