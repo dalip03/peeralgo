@@ -44,7 +44,7 @@ export default function GetStartedSteps() {
       <div className="max-w-5xl mx-auto">
         {/* Section Heading */}
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center mb-2"
+          className="text-2xl md:text-3xl font-bold text-center mb-2 pt-10"
           style={{ color: "var(--steps-heading, #232323)" }}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
