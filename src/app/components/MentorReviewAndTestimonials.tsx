@@ -63,7 +63,9 @@ export default function MentorReviewAndTestimonials() {
     { key: "placement", label: "Placement Stories" },
   ];
 
-  const [activeTab, setActiveTab] = useState<"trial" | "longterm" | "placement">("trial");
+  const [activeTab, setActiveTab] = useState<
+    "trial" | "longterm" | "placement"
+  >("trial");
 
   const tabCounts = {
     trial: mentorReviewsData.trialCount,
@@ -80,21 +82,22 @@ export default function MentorReviewAndTestimonials() {
       </h2>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 text-sm font-medium mb-3 gap-8 overflow-x-auto">
+      <div className="flex border-b border-gray-200 text-sm font-medium mb-3 gap-4 sm:gap-8 overflow-x-auto scrollbar-hide whitespace-nowrap">
         {TABS.map((tab) => (
           <button
             key={tab.key}
-            onClick={() => setActiveTab(tab.key as "trial" | "longterm" | "placement")}
-            className={`py-2 transition relative focus:outline-none ${
+            onClick={() =>
+              setActiveTab(tab.key as "trial" | "longterm" | "placement")
+            }
+            className={`py-2 px-3 transition relative focus:outline-none ${
               activeTab === tab.key
                 ? "text-blue-600 font-semibold"
                 : "text-gray-500 hover:text-blue-600"
             }`}
+            style={{ minWidth: "max-content" }}
           >
             {tab.label}{" "}
-            <span className="">
-              ({tabCounts[tab.key as keyof typeof tabCounts]})
-            </span>
+            <span>({tabCounts[tab.key as keyof typeof tabCounts]})</span>
             {activeTab === tab.key && (
               <span className="absolute left-0 -bottom-[1px] w-full h-0.5 bg-blue-600 rounded transition-all" />
             )}
@@ -107,15 +110,23 @@ export default function MentorReviewAndTestimonials() {
         {reviews.length > 0 ? (
           reviews.map((review, idx) => (
             <div key={idx} className="py-4 space-y-3">
-              <p className="text-gray-700 text-[15px] leading-relaxed">{review.text}</p>
+              <p className="text-gray-700 text-[15px] leading-relaxed">
+                {review.text}
+              </p>
               <div className="flex flex-col md:flex-row md:justify-between md:items-center w-full">
-                <span className="font-medium text-gray-600">{review.reviewer}</span>
-                <span className="text-gray-500 text-xs mt-2 md:mt-0">{review.timeAgo}</span>
+                <span className="font-medium text-gray-600">
+                  {review.reviewer}
+                </span>
+                <span className="text-gray-500 text-xs mt-2 md:mt-0">
+                  {review.timeAgo}
+                </span>
               </div>
             </div>
           ))
         ) : (
-          <div className="py-10 text-center text-gray-400">No reviews found.</div>
+          <div className="py-10 text-center text-gray-400">
+            No reviews found.
+          </div>
         )}
       </div>
 

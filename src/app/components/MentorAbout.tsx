@@ -76,13 +76,17 @@ export default function MentorAbout() {
               Languages That I Speak
             </p>
             <div className="flex gap-2">
-              <Badge className="px-3 py-1 text-[12px] rounded-md text-gray-600">English</Badge>
-              <Badge className="px-3 py-1 text-[12px] rounded-md text-gray-600">Hindi</Badge>
+              <Badge className="px-3 py-1 text-[12px] rounded-md text-gray-600">
+                English
+              </Badge>
+              <Badge className="px-3 py-1 text-[12px] rounded-md text-gray-600">
+                Hindi
+              </Badge>
             </div>
           </div>
         </div>
       </div>
- 
+
       <div className="bg-white shadow-sm rounded-xl border border-gray-200 p-8 mb-4">
         {/* TECHNICAL SKILLS */}
         <div className="pb-6">
@@ -126,11 +130,11 @@ export default function MentorAbout() {
         </p>
 
         <div className=" border border-gray-200/80 p-4 rounded-md">
-          <div className="flex  items-center justify-between pb-4">
-            <p className="text-sm text-gray-700 mb-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 gap-2 sm:gap-0">
+            <p className="text-sm text-gray-700 mb-0 sm:mb-2">
               If you&apos;re targeting:
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-start sm:justify-end">
               {[
                 "Backend Developer",
                 "Engineering Manager",
