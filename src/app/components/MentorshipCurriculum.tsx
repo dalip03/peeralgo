@@ -56,10 +56,20 @@ export default function MentorshipCurriculum() {
   };
 
   return (
-    <div className="bg-[#FFF9F2] p-4 sm:p-6 md:p-10 rounded-2xl border border-gray-200 shadow-sm mx-auto w-full ">
+    <div
+      className="p-4 sm:p-6 md:p-10 rounded-2xl border shadow-sm mx-auto w-full transition-colors duration-300"
+      style={{
+        backgroundColor: "var(--curriculum-bg)",
+        borderColor: "var(--curriculum-border)",
+        color: "var(--curriculum-text)",
+      }}
+    >
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 gap-4">
-        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+        <h2
+          className="text-lg sm:text-xl font-semibold"
+          style={{ color: "var(--curriculum-heading)" }}
+        >
           What will be covered
         </h2>
 
@@ -68,11 +78,21 @@ export default function MentorshipCurriculum() {
             <button
               key={d}
               onClick={() => setDuration(d)}
-              className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition ${
-                duration === d
-                  ? "bg-[#1A73E8] text-white border-[#1A73E8]"
-                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-              }`}
+              className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition`}
+              style={{
+                backgroundColor:
+                  duration === d
+                    ? "var(--curriculum-btn-active-bg)"
+                    : "var(--curriculum-btn-bg)",
+                color:
+                  duration === d
+                    ? "var(--curriculum-btn-active-text)"
+                    : "var(--curriculum-btn-text)",
+                borderColor:
+                  duration === d
+                    ? "var(--curriculum-btn-active-border)"
+                    : "var(--curriculum-btn-border)",
+              }}
             >
               {d}
             </button>
@@ -80,21 +100,28 @@ export default function MentorshipCurriculum() {
         </div>
       </div>
 
-      <p className="text-xs sm:text-sm text-gray-600 mb-6 leading-relaxed">
+      <p
+        className="text-xs sm:text-sm mb-6 leading-relaxed"
+        style={{ color: "var(--curriculum-subtext)" }}
+      >
         This is a tentative mentorship curriculum that will change based on your
         needs after the first discussion with the mentor.
       </p>
 
       {/* Meta */}
-      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-gray-600 mb-4">
+      <div
+        className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs mb-4"
+        style={{ color: "var(--curriculum-subtext)" }}
+      >
         <span>48 Sessions</span>
-        <span className="h-1 w-1 bg-gray-400 rounded-full hidden sm:block"></span>
+        <span className="h-1 w-1 rounded-full hidden sm:block" style={{ background: "var(--curriculum-dot)" }}></span>
         <span>240 Topics</span>
-        <span className="h-1 w-1 bg-gray-400 rounded-full hidden sm:block"></span>
+        <span className="h-1 w-1 rounded-full hidden sm:block" style={{ background: "var(--curriculum-dot)" }}></span>
         <span>6 Study Materials</span>
         <button
           onClick={handleExpandAll}
-          className="ml-auto text-[#1A73E8] hover:underline font-medium"
+          className="ml-auto font-medium hover:underline"
+          style={{ color: "var(--curriculum-link)" }}
         >
           {expanded.length === monthsData.length
             ? "Collapse All Months"
@@ -110,20 +137,33 @@ export default function MentorshipCurriculum() {
           return (
             <div
               key={month.id}
-              className="bg-white border border-gray-200 rounded-xl overflow-hidden transition hover:shadow-sm"
+              className="rounded-xl overflow-hidden transition hover:shadow-sm border"
+              style={{
+                background: "var(--curriculum-card-bg)",
+                borderColor: "var(--curriculum-border)",
+              }}
             >
               <button
                 onClick={() => toggleMonth(month.id)}
                 className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-5 py-3 sm:py-4 text-left focus:outline-none gap-2"
               >
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                  <div className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#7177841A] text-gray-500 text-xs font-medium">
+                  <div
+                    className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full text-xs font-medium"
+                    style={{
+                      background: "var(--curriculum-number-bg)",
+                      color: "var(--curriculum-number-text)",
+                    }}
+                  >
                     {number}
                   </div>
 
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-gray-800 font-semibold text-sm sm:text-base">
+                      <span
+                        className="font-semibold text-sm sm:text-base"
+                        style={{ color: "var(--curriculum-heading)" }}
+                      >
                         {month.title}
                       </span>
                       <div className="flex flex-wrap gap-1">
@@ -138,16 +178,25 @@ export default function MentorshipCurriculum() {
                         </span>
                       </div>
                     </div>
-                    <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                    <p
+                      className="text-xs sm:text-sm mt-1"
+                      style={{ color: "var(--curriculum-subtext)" }}
+                    >
                       This module contains following
                     </p>
                   </div>
                 </div>
 
                 {isOpen ? (
-                  <ChevronUp className="text-gray-600 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ChevronUp
+                    className="w-4 h-4 sm:w-5 sm:h-5"
+                    style={{ color: "var(--curriculum-icon)" }}
+                  />
                 ) : (
-                  <ChevronDown className="text-gray-600 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ChevronDown
+                    className="w-4 h-4 sm:w-5 sm:h-5"
+                    style={{ color: "var(--curriculum-icon)" }}
+                  />
                 )}
               </button>
 
@@ -160,15 +209,24 @@ export default function MentorshipCurriculum() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25, ease: "easeInOut" }}
-                    className="border-t border-gray-100 bg-[#FFFBF7]"
+                    className="border-t"
+                    style={{
+                      borderColor: "var(--curriculum-border)",
+                      background: "var(--curriculum-expanded-bg)",
+                    }}
                   >
                     <div className="p-4 sm:p-5 space-y-5 sm:space-y-6">
-                      {/* Goal & Sessions */}
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-700 mb-1">
+                        <h4
+                          className="text-sm font-semibold mb-1"
+                          style={{ color: "var(--curriculum-heading)" }}
+                        >
                           Goal & Sessions For The Month
                         </h4>
-                        <p className="text-gray-700 text-xs sm:text-sm mb-4">
+                        <p
+                          className="text-xs sm:text-sm mb-4"
+                          style={{ color: "var(--curriculum-text)" }}
+                        >
                           {month.goal}
                         </p>
 
@@ -178,30 +236,48 @@ export default function MentorshipCurriculum() {
                             return (
                               <div
                                 key={i}
-                                className={`flex items-center justify-between border border-gray-200 rounded-md py-2 sm:py-3 px-3 sm:px-4 relative overflow-hidden ${
-                                  isBlue ? "bg-[#F3F7FF]" : "bg-[#F9FAF8]"
-                                }`}
+                                className="flex items-center justify-between border rounded-md py-2 sm:py-3 px-3 sm:px-4 relative overflow-hidden"
+                                style={{
+                                  background: isBlue
+                                    ? "var(--curriculum-session-blue-bg)"
+                                    : "var(--curriculum-session-green-bg)",
+                                  borderColor: "var(--curriculum-border)",
+                                }}
                               >
                                 <div
-                                  className={`absolute left-0 top-0 bottom-0 w-[3px] sm:w-[4px] ${
-                                    isBlue ? "bg-blue-600" : "bg-green-600"
-                                  }`}
+                                  className="absolute left-0 top-0 bottom-0 w-[3px] sm:w-[4px]"
+                                  style={{
+                                    background: isBlue
+                                      ? "var(--curriculum-session-blue-line)"
+                                      : "var(--curriculum-session-green-line)",
+                                  }}
                                 />
                                 <div className="flex items-center gap-2">
                                   <span
-                                    className={`${
-                                      isBlue
-                                        ? "text-blue-600"
-                                        : "text-green-700"
-                                    } text-sm sm:text-lg`}
+                                    className="text-sm sm:text-lg"
+                                    style={{
+                                      color: isBlue
+                                        ? "var(--curriculum-session-blue-icon)"
+                                        : "var(--curriculum-session-green-icon)",
+                                    }}
                                   >
                                     {isBlue ? "📞" : "🧭"}
                                   </span>
-                                  <p className="text-gray-800 text-xs sm:text-sm font-semibold">
+                                  <p
+                                    className="text-xs sm:text-sm font-semibold"
+                                    style={{
+                                      color: "var(--curriculum-heading)",
+                                    }}
+                                  >
                                     {s.title}
                                   </p>
                                 </div>
-                                <p className="text-gray-500 text-[10px] sm:text-xs whitespace-nowrap">
+                                <p
+                                  className="text-[10px] sm:text-xs whitespace-nowrap"
+                                  style={{
+                                    color: "var(--curriculum-subtext)",
+                                  }}
+                                >
                                   {s.duration}
                                 </p>
                               </div>
@@ -213,15 +289,31 @@ export default function MentorshipCurriculum() {
                       {/* Topics */}
                       {month.topics && month.topics.length > 0 && (
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-700 mb-2 sm:mb-3">
+                          <h4
+                            className="text-sm font-semibold mb-2 sm:mb-3"
+                            style={{ color: "var(--curriculum-heading)" }}
+                          >
                             What All Will Be Covered
                           </h4>
-                          <div className="bg-white border border-gray-200 rounded-md shadow-sm p-3 sm:p-4">
-                            <div className="flex items-center justify-between border-b border-gray-100 pb-2 mb-3">
-                              <p className="text-sm font-semibold text-gray-800">
+                          <div
+                            className="border rounded-md shadow-sm p-3 sm:p-4"
+                            style={{
+                              background: "var(--curriculum-card-inner-bg)",
+                              borderColor: "var(--curriculum-border)",
+                            }}
+                          >
+                            <div className="flex items-center justify-between border-b pb-2 mb-3"
+                              style={{ borderColor: "var(--curriculum-border)" }}
+                            >
+                              <p
+                                className="text-sm font-semibold"
+                                style={{ color: "var(--curriculum-heading)" }}
+                              >
                                 Topics For The Month
                               </p>
-                              <p className="text-xs font-medium text-orange-600">
+                              <p
+                                className="text-xs font-medium text-orange-600"
+                              >
                                 {month.topics.length} Topics
                               </p>
                             </div>
@@ -229,7 +321,12 @@ export default function MentorshipCurriculum() {
                               {month.topics.map((topic, tIdx) => (
                                 <li
                                   key={tIdx}
-                                  className="bg-[#F9FAFB] border border-gray-200 rounded-md py-2 px-3 text-xs sm:text-sm text-gray-700"
+                                  className="border rounded-md py-2 px-3 text-xs sm:text-sm"
+                                  style={{
+                                    background: "var(--curriculum-list-bg)",
+                                    borderColor: "var(--curriculum-border)",
+                                    color: "var(--curriculum-text)",
+                                  }}
                                 >
                                   {topic}
                                 </li>
@@ -242,10 +339,20 @@ export default function MentorshipCurriculum() {
                       {/* Projects */}
                       {month.projects && month.projects.length > 0 && (
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                          <h4
+                            className="text-sm font-semibold mb-2"
+                            style={{ color: "var(--curriculum-heading)" }}
+                          >
                             Resources / Assignments / Projects
                           </h4>
-                          <div className="bg-white border border-gray-200 rounded-md p-3 sm:p-4 shadow-sm text-xs sm:text-sm text-gray-800">
+                          <div
+                            className="border rounded-md p-3 sm:p-4 shadow-sm text-xs sm:text-sm"
+                            style={{
+                              background: "var(--curriculum-card-inner-bg)",
+                              borderColor: "var(--curriculum-border)",
+                              color: "var(--curriculum-text)",
+                            }}
+                          >
                             {month.projects.map((p, i) => (
                               <p key={i}>{p}</p>
                             ))}

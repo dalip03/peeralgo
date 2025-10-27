@@ -10,7 +10,7 @@ export default function GetStartedSteps() {
       title: "Find Your Ideal Mentor",
       desc: "Browse from 600+ vested mentors and get to choose your ideal mentor according to your preferences and aspiration.",
       btn: {
-        text: "Find Your Mentor ",
+        text: "Find Your Mentor",
         link: "#",
       },
     },
@@ -19,7 +19,7 @@ export default function GetStartedSteps() {
       title: "Book a FREE Trial Session",
       desc: "Connect with mentor and see how mentor will help you achieve your goal faster & avoid asking for referrals, etc.",
       btn: {
-        text: "Book a FREE Trial ",
+        text: "Book a FREE Trial",
         link: "#",
       },
     },
@@ -28,18 +28,24 @@ export default function GetStartedSteps() {
       title: "Start 1:10 Long Term Mentorship",
       desc: "Bravo! Get started with your personalised mentorship in the right direction with a mentor of your choice.",
       btn: {
-        text: "Start Preparing ",
+        text: "Start Preparing",
         link: "#",
       },
     },
   ];
 
   return (
-    <section className="w-full bg-white  px-4 pb-20">
+    <section
+      className="w-full px-4 pb-20 transition-colors duration-300"
+      style={{
+        background: "var(--steps-bg, #ffffff)",
+      }}
+    >
       <div className="max-w-5xl mx-auto">
         {/* Section Heading */}
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center mb-2 text-[#232323]"
+          className="text-2xl md:text-3xl font-bold text-center mb-2"
+          style={{ color: "var(--steps-heading, #232323)" }}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -49,7 +55,8 @@ export default function GetStartedSteps() {
         </motion.h2>
 
         <motion.p
-          className="text-center text-gray-500 mb-10"
+          className="text-center mb-10"
+          style={{ color: "var(--steps-text, #6b7280)" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
@@ -63,7 +70,11 @@ export default function GetStartedSteps() {
           {steps.map((step, idx) => (
             <motion.div
               key={idx}
-              className="flex flex-col bg-white rounded-xl border border-gray-200/40 px-6 py-9 items-start md:items-start shadow-sm transition-all"
+              className="flex flex-col rounded-xl px-6 py-9 items-start md:items-start shadow-sm transition-all"
+              style={{
+                background: "var(--steps-card-bg, #ffffff)",
+                border: "1px solid var(--steps-border, #e5e7eb)",
+              }}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -74,19 +85,36 @@ export default function GetStartedSteps() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <div className="mb-4 self-start">
-                <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-[#3686FD] text-white font-bold text-lg">
+                <span
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-md font-bold text-lg"
+                  style={{
+                    background: "var(--steps-accent, #3686FD)",
+                    color: "var(--steps-num, #ffffff)",
+                  }}
+                >
                   {step.num}
                 </span>
               </div>
-              <h3 className="font-bold text-md text-[#232323] mb-2 text-left md:text-start">
+              <h3
+                className="font-bold text-md mb-2 text-left md:text-start"
+                style={{ color: "var(--steps-heading, #232323)" }}
+              >
                 {step.title}
               </h3>
-              <p className="text-gray-500 text-sm mb-6 text-left md:text-start">
+              <p
+                className="text-sm mb-6 text-left md:text-start"
+                style={{ color: "var(--steps-text, #6b7280)" }}
+              >
                 {step.desc}
               </p>
               <a
                 href={step.btn.link}
-                className="flex items-center justify-center gap-1 mt-auto bg-white border border-gray-300 px-5 py-2 rounded-md text-sm font-semibold text-[#232323] hover:bg-gray-50 transition"
+                className="flex items-center justify-center gap-1 mt-auto rounded-md text-sm font-semibold transition"
+                style={{
+                  background: "var(--steps-btn-bg, #ffffff)",
+                  border: "1px solid var(--steps-border, #d1d5db)",
+                  color: "var(--steps-btn-text, #232323)",
+                }}
               >
                 {step.btn.text}
                 <Image

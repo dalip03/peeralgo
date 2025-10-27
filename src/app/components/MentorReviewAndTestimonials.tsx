@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 export default function MentorReviewAndTestimonials() {
-  // ✅ Full data in same file
   const mentorReviewsData = {
     trial: [
       {
@@ -56,7 +55,6 @@ export default function MentorReviewAndTestimonials() {
     placementCount: 23,
   };
 
-  // ✅ Tabs setup
   const TABS = [
     { key: "trial", label: "Trial Reviews" },
     { key: "longterm", label: "Long Term Mentorship Reviews" },
@@ -76,55 +74,99 @@ export default function MentorReviewAndTestimonials() {
   const reviews = mentorReviewsData[activeTab];
 
   return (
-    <div className="bg-white shadow-sm rounded-xl border border-gray-200 p-6 mb-4 ">
-      <h2 className="font-semibold text-xl mb-6 text-gray-900">
+    <div
+      className="shadow-sm rounded-xl p-6 mb-4 transition-colors duration-300"
+      style={{
+        background: "var(--mentors-card-bg, #ffffff)",
+        border: "1px solid var(--mentors-border, #e5e7eb)",
+        color: "var(--mentors-text, #6b7280)",
+      }}
+    >
+      <h2
+        className="font-semibold text-xl mb-6 transition-colors duration-300"
+        style={{ color: "var(--mentors-heading, #232323)" }}
+      >
         Reviews &amp; Testimonials
       </h2>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 text-sm font-medium mb-3 gap-4 sm:gap-8 overflow-x-auto scrollbar-hide whitespace-nowrap">
+      <div
+        className="flex border-b text-sm font-medium mb-3 gap-4 sm:gap-8 overflow-x-auto scrollbar-hide whitespace-nowrap transition-colors duration-300"
+        style={{ borderColor: "var(--mentors-border, #e5e7eb)" }}
+      >
         {TABS.map((tab) => (
           <button
             key={tab.key}
             onClick={() =>
               setActiveTab(tab.key as "trial" | "longterm" | "placement")
             }
-            className={`py-2 px-3 transition relative focus:outline-none ${
-              activeTab === tab.key
-                ? "text-blue-600 font-semibold"
-                : "text-gray-500 hover:text-blue-600"
-            }`}
-            style={{ minWidth: "max-content" }}
+            className={`py-2 px-3 relative focus:outline-none transition`}
+            style={{
+              color:
+                activeTab === tab.key
+                  ? "var(--mentors-accent, #3b82f6)"
+                  : "var(--mentors-text, #6b7280)",
+              fontWeight: activeTab === tab.key ? 600 : 500,
+              minWidth: "max-content",
+            }}
           >
             {tab.label}{" "}
-            <span>({tabCounts[tab.key as keyof typeof tabCounts]})</span>
+            <span style={{ opacity: 0.9 }}>
+              ({tabCounts[tab.key as keyof typeof tabCounts]})
+            </span>
             {activeTab === tab.key && (
-              <span className="absolute left-0 -bottom-[1px] w-full h-0.5 bg-blue-600 rounded transition-all" />
+              <span
+                className="absolute left-0 -bottom-[1px] w-full h-0.5 rounded transition-all"
+                style={{ background: "var(--mentors-accent, #3b82f6)" }}
+              />
             )}
           </button>
         ))}
       </div>
 
       {/* Reviews */}
-      <div className="divide-y divide-gray-200 py-2 min-h-[240px]">
+      <div
+        className="py-2 min-h-[240px] transition-colors duration-300"
+        style={{
+          borderColor: "var(--mentors-border, #e5e7eb)",
+        }}
+      >
         {reviews.length > 0 ? (
           reviews.map((review, idx) => (
-            <div key={idx} className="py-4 space-y-3">
-              <p className="text-gray-700 text-[15px] leading-relaxed">
+            <div
+              key={idx}
+              className="py-4 space-y-3 border-b last:border-none transition-colors duration-300"
+              style={{
+                borderColor: "var(--mentors-border, #e5e7eb)",
+              }}
+            >
+              <p
+                className="text-[15px] leading-relaxed transition-colors duration-300"
+                style={{ color: "var(--mentors-text, #6b7280)" }}
+              >
                 {review.text}
               </p>
               <div className="flex flex-col md:flex-row md:justify-between md:items-center w-full">
-                <span className="font-medium text-gray-600">
+                <span
+                  className="font-medium transition-colors duration-300"
+                  style={{ color: "var(--mentors-sub, #374151)" }}
+                >
                   {review.reviewer}
                 </span>
-                <span className="text-gray-500 text-xs mt-2 md:mt-0">
+                <span
+                  className="text-xs mt-2 md:mt-0 transition-colors duration-300"
+                  style={{ color: "var(--mentors-muted, #9ca3af)" }}
+                >
                   {review.timeAgo}
                 </span>
               </div>
             </div>
           ))
         ) : (
-          <div className="py-10 text-center text-gray-400">
+          <div
+            className="py-10 text-center transition-colors duration-300"
+            style={{ color: "var(--mentors-muted, #9ca3af)" }}
+          >
             No reviews found.
           </div>
         )}
@@ -132,9 +174,19 @@ export default function MentorReviewAndTestimonials() {
 
       {/* Show all button */}
       <div className="flex justify-center mt-6">
-        <button className="px-6 py-2 rounded-lg  font-medium text-gray-800  text-sm  flex items-center gap-1 hover:bg-gray-200 transition">
+        <button
+          className="px-6 py-2 rounded-lg font-medium text-sm flex items-center gap-1 transition-colors duration-300"
+          style={{
+            color: "var(--mentors-btn-text, #232323)",
+            background: "var(--mentors-btn-bg, #ffffff)",
+            border: "1px solid var(--mentors-border, #e5e7eb)",
+          }}
+        >
           Show All {tabCounts[activeTab]}
-          <ChevronDown className="h-5 w-5 text-gray-500 ml-1" />
+          <ChevronDown
+            className="h-5 w-5 ml-1 transition-colors duration-300"
+            style={{ color: "var(--mentors-muted, #6b7280)" }}
+          />
         </button>
       </div>
     </div>
