@@ -162,13 +162,14 @@ export default function HeroSection() {
       </div>
 
       {/* Cards grid */}
-      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 mt-2 z-10 relative">
+      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 mt-2 z-10 relative ">
         {/* Companies */}
         <motion.div
-          className="shadow-sm p-5 flex flex-col"
+          className="shadow-sm p-5 flex flex-col "
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)"
+            
           }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -278,7 +279,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.72, delay: 0.22 }}
         >
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-3 ">
             <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
               Domains
             </span>
@@ -292,7 +293,7 @@ export default function HeroSection() {
           </div>
           <div className="flex flex-col gap-3 mb-4">
             {domains.map((d) => (
-              <div key={d.name} className="flex items-center justify-between">
+              <div key={d.name} className="flex items-center justify-between ">
                 <div className="flex items-center gap-2">
                   <img
                     src={d.icon}

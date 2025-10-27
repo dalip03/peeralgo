@@ -28,12 +28,15 @@ const Header = () => {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        borderBottom: "1px solid var(--border-color, #E5EAF0)",
       }}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-10 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center w-[120px] sm:w-[160px]">
+        <Link
+          href="/"
+          className="flex-shrink-0 flex items-center w-[120px] sm:w-[160px]"
+        >
+          {/* Light mode → SVG logo */}
           <Image
             src="/img/peeralgoLogo.svg"
             alt="Peeralgo Logo"
@@ -41,7 +44,18 @@ const Header = () => {
             height={40}
             priority
             style={{ width: "100%", height: "auto" }}
+            className="dark:hidden"
           />
+
+          {/* Dark mode → Text logo */}
+          <span
+            className="hidden dark:inline-block  text-xl sm:text-2xl tracking-wide"
+            style={{
+              color: "var(--accent)",
+            }}
+          >
+            Peeralgo
+          </span>
         </Link>
 
         {/* Desktop Menu */}
@@ -52,8 +66,14 @@ const Header = () => {
               href={item.href}
               className="px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition"
               style={{
-                color: pathname === item.href ? "var(--primary)" : "var(--foreground)",
-                background: pathname === item.href ? "var(--card-bg, #f7f9fc)" : "transparent",
+                color:
+                  pathname === item.href
+                    ? "var(--primary)"
+                    : "var(--foreground)",
+                background:
+                  pathname === item.href
+                    ? "var(--card-bg, #f7f9fc)"
+                    : "transparent",
                 fontWeight: pathname === item.href ? 700 : 500,
               }}
             >
@@ -149,7 +169,9 @@ const Header = () => {
                           ? "var(--primary)"
                           : "var(--foreground)",
                       background:
-                        pathname === item.href ? "var(--card-bg, #f7f9fc)" : "transparent",
+                        pathname === item.href
+                          ? "var(--card-bg, #f7f9fc)"
+                          : "transparent",
                       fontWeight: pathname === item.href ? 700 : 500,
                     }}
                   >

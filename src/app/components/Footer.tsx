@@ -18,14 +18,23 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 mb-6">
           {/* Logo */}
           <Link href="/" className="inline-block">
+            {/* Light theme: logo image */}
             <Image
               src="/img/peeralgoLogo.svg"
-              alt="EduMentor Logo"
+              alt="Peeralgo Logo"
               width={200}
               height={80}
               priority
-              className="w-[90px] h-auto"
+              className="w-[90px] h-auto dark:hidden"
             />
+
+            {/* Dark theme: text “Peeralgo” */}
+            <span
+              className="hidden dark:inline-block  text-2xl"
+              style={{ color: "var(--accent)" }}
+            >
+              Peeralgo
+            </span>
           </Link>
 
           {/* Social Icons */}
@@ -84,7 +93,8 @@ const Footer = () => {
             >
               Stay updated with the latest updates about the tech space
             </h2>
-            <form className="flex flex-col sm:flex-row w-full gap-2 mt-2 border rounded-2xl bg-[rgba(0,0,0,0.05)] p-2 transition-colors duration-300"
+            <form
+              className="flex flex-col sm:flex-row w-full gap-2 mt-2 border rounded-2xl bg-[rgba(0,0,0,0.05)] p-2 transition-colors duration-300"
               style={{
                 borderColor: "var(--footer-input-border, #e5e7eb)",
               }}
@@ -139,7 +149,9 @@ const Footer = () => {
               <li className="hover:text-black cursor-pointer">
                 Terms of Services
               </li>
-              <li className="hover:text-black cursor-pointer">Privacy Policy</li>
+              <li className="hover:text-black cursor-pointer">
+                Privacy Policy
+              </li>
             </ul>
           </div>
         </div>

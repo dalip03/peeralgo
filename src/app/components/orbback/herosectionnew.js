@@ -432,7 +432,7 @@ export default function Herosectionnew({
       <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 mt-2 z-10 relative">
         {/* Companies */}
         <motion.div
-          className="shadow-sm p-5 flex flex-col transition-colors duration-300"
+          className="shadow-sm rounded-xl p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -486,7 +486,7 @@ export default function Herosectionnew({
         </motion.div>
         {/* Skills */}
         <motion.div
-          className="shadow-sm p-5 flex flex-col transition-colors duration-300"
+          className="shadow-sm rounded-xl p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -540,7 +540,7 @@ export default function Herosectionnew({
         </motion.div>
         {/* Domains */}
         <motion.div
-          className="rounded-sm shadow-sm p-5 flex flex-col transition-colors duration-300"
+          className="rounded-xl shadow-sm p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",

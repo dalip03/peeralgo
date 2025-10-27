@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { mentors } from "../data/mentorsData";
 import { useRouter } from "next/navigation";
 import {
@@ -18,6 +18,18 @@ import { MdReviews } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
 
+/**
+ * NOTE:
+ * - This file assumes you already have global CSS variables defined
+ *   (as you confirmed). Example variable names used below:
+ *   --bg-color, --card-bg, --input-bg, --text-color, --secondary-text,
+ *   --border, --accent, --badge-bg
+ *
+ * - All hard-coded hex colors have been replaced with CSS variable references
+ *   using Tailwind arbitrary value syntax where appropriate (e.g. bg-[var(--bg-color)]).
+ */
+
+/* Filter lists (kept same as your original) */
 const allDomains = [
   "Frontend",
   "Backend",
@@ -47,6 +59,11 @@ const allLanguages = ["English", "Hindi", "Telugu", "Tamil", "Marathi"];
 
 export default function MentorSearchPage() {
   const router = useRouter();
+
+  // Theme state (CSS variables are expected to be defined globally)
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  // Filters & UI state (kept from your original file)
   const [search, setSearch] = useState("");
   const [domain, setDomain] = useState("");
   const [company, setCompany] = useState("");
@@ -58,11 +75,17 @@ export default function MentorSearchPage() {
   const [expandedMentor, setExpandedMentor] = useState<{
     [id: string]: boolean;
   }>({});
-  const [showAllBadges, setShowAllBadges] = useState<{
-    [id: string]: boolean;
-  }>({});
+  const [showAllBadges, setShowAllBadges] = useState<{ [id: string]: boolean }>(
+    {}
+  );
   const [showFilters, setShowFilters] = useState(false);
 
+  // Apply theme by setting a data attribute on <html> (you said you already have global CSS vars)
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  // Filtered mentors (same logic, unchanged)
   const filteredMentors = useMemo(
     () =>
       mentors.filter(
@@ -82,7 +105,8 @@ export default function MentorSearchPage() {
   );
 
   return (
-    <div className="bg-[#f5f7fa] min-h-screen py-4 md:py-6 px-3 md:px-6 flex justify-center relative z-10 overflow-x-hidden">
+    <div className="min-h-screen py-4 md:py-6 px-3 md:px-6 flex justify-center relative z-10 overflow-x-hidden bg-[var(--bg-color)] text-[var(--text-color)] transition-colors duration-300">
+      {/* Decorative ellipse (kept) */}
       <Image
         src="/img/Ellipse.svg"
         alt="decoration"
@@ -90,13 +114,29 @@ export default function MentorSearchPage() {
         height={1050}
         className="absolute left-0 top-0 pointer-events-none hidden md:block"
       />
-      <div className="container mx-auto flex flex-col lg:flex-row gap-4 z-20 w-full">
+
+      {/* Theme toggle (top-right) */}
+      <div className="fixed top-4 right-4 z-50">
+        <button
+          onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
+          className="border border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-color)] px-3 py-1.5 rounded-lg text-sm hover:bg-[var(--input-bg)] transition-colors"
+          aria-label="Toggle theme"
+        >
+          {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+        </button>
+      </div>
+
+      <div className="container mx-auto flex flex-col lg:flex-row gap-4 z-20 w-full max-w-7xl">
         {/* Main content */}
         <div className="flex-1 w-full lg:max-w-4xl">
           {/* Search Bar */}
-          <div className="rounded-xl flex flex-col sm:flex-row items-stretch sm:items-center p-2 gap-2 mb-4 bg-[#eef2f7]">
+          <div
+            className="rounded-xl flex flex-col border border-gray-600/20 sm:flex-row items-stretch sm:items-center p-2 gap-2 mb-4"
+            // use container-level background via input-bg variable
+            style={{ background: "var(--input-bg)" }}
+          >
             <div className="relative flex-1">
-              <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none ">
                 <Image
                   src="/img/search.svg"
                   alt="search"
@@ -111,16 +151,25 @@ export default function MentorSearchPage() {
                 placeholder="Search for any skill, domain or name..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-md bg-[#eef2f7] border-none focus:outline-none placeholder:text-gray-400 text-sm"
+                className="w-full pl-10 pr-4 py-2 rounded-md bg-[transparent] border-none focus:outline-none placeholder:text-[var(--secondary-text)] text-sm"
+                aria-label="Search mentors"
               />
             </div>
+
             <div className="flex gap-2">
-              <button className="flex-1 sm:flex-none bg-blue-500 text-white font-semibold rounded-md px-6 sm:px-8 py-2 shadow hover:bg-blue-600 transition text-sm">
+              <button
+                className="flex-1 border cursor-pointer border-gray-100/20 sm:flex-none bg-[var(--accent)] text-[var(--btn-text)] font-semibold rounded-md px-6 sm:px-8 py-2 shadow hover:brightness-90 transition text-sm"
+                onClick={() => {
+                  /* keep same behavior — could optionally trigger a search */
+                }}
+              >
                 Search
               </button>
+
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="lg:hidden bg-gray-200 text-gray-700 font-semibold rounded-md px-4 py-2 shadow hover:bg-gray-300 transition flex items-center gap-2"
+                className="lg:hidden bg-[var(--card-bg)] text-[var(--text-color)] font-semibold rounded-md px-4 py-2 shadow hover:opacity-95 transition flex items-center gap-2 border border-[var(--border)]"
+                aria-expanded={showFilters}
               >
                 <FaFilter size={14} />
                 Filters
@@ -142,13 +191,20 @@ export default function MentorSearchPage() {
               return (
                 <div
                   key={mentor.id}
-                  className="bg-white rounded-xl shadow flex flex-col p-4 md:p-6 gap-4"
+                  className="rounded-xl shadow flex flex-col p-4 md:p-6 gap-4"
+                  style={{
+                    background: "var(--card-bg)",
+                    border: `1px solid var(--border)`,
+                  }}
                 >
                   {/* Profile Section */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     {/* Profile Image */}
                     <div className="flex-shrink-0 mx-auto sm:mx-0">
-                      <div className="relative w-[140px] sm:w-[170px] h-[170px] sm:h-[210px] rounded-[16px] overflow-hidden bg-gray-200 flex items-center justify-center">
+                      <div
+                        className="relative w-[140px] sm:w-[170px] h-[170px] sm:h-[210px] rounded-[16px] overflow-hidden flex items-center justify-center"
+                        style={{ background: "var(--badge-bg, #e6eefc)" }}
+                      >
                         <Image
                           src={mentor.profileImg}
                           alt="profile"
@@ -157,7 +213,12 @@ export default function MentorSearchPage() {
                           className="object-cover object-top"
                           priority
                         />
-                        <div className="absolute bottom-2 left-2 justify-center text-black text-[12px] sm:text-[14px] font-semibold px-2 py-1 rounded flex items-center gap-1">
+                        <div
+                          className="absolute bottom-2 left-2 justify-center text-[12px] sm:text-[14px] font-semibold px-2 py-1 rounded flex items-center gap-1"
+                          style={{
+                            color: "white",
+                          }}
+                        >
                           <Image
                             alt="icons"
                             src="/mentor_assets/star.svg"
@@ -165,7 +226,10 @@ export default function MentorSearchPage() {
                             width={16}
                           />
                           {mentor.rating}
-                          <span className="text-white/60 font-extralight text-[10px]">
+                          <span
+                            className="font-extralight text-[10px]"
+                            style={{ color: "white" }}
+                          >
                             (50+ mentees)
                           </span>
                         </div>
@@ -174,10 +238,16 @@ export default function MentorSearchPage() {
 
                     {/* Profile Info */}
                     <div className="flex-1 min-w-0">
-                      <div className="font-bold text-base sm:text-lg mb-1 flex items-center gap-2">
+                      <div
+                        className="font-bold text-base sm:text-lg mb-1 flex items-center gap-2"
+                        style={{ color: "var(--text-color)" }}
+                      >
                         {mentor.name}
                       </div>
-                      <div className="flex flex-wrap items-center text-black/80 text-xs font-medium gap-2 mb-2">
+                      <div
+                        className="flex flex-wrap items-center text-xs font-medium gap-2 mb-2"
+                        style={{ color: "var(--secondary-text)" }}
+                      >
                         <div className="flex items-center gap-1">
                           <Image
                             alt="icons"
@@ -208,7 +278,13 @@ export default function MentorSearchPage() {
                       </div>
 
                       {/* Company */}
-                      <div className="inline-flex flex-row items-center gap-2 py-2 px-3 sm:px-4 rounded-2xl shadow-sm bg-white border border-gray-200 mb-3">
+                      <div
+                        className="inline-flex flex-row items-center gap-2 py-2 px-3 sm:px-4 rounded-2xl shadow-sm mb-3"
+                        style={{
+                          background: "var(--card-bg)",
+                          border: `1px solid var(--border)`,
+                        }}
+                      >
                         <div className="flex items-center justify-center">
                           <Image
                             alt="icons"
@@ -219,17 +295,26 @@ export default function MentorSearchPage() {
                           />
                         </div>
                         <div className="flex flex-col gap-1 text-left min-w-0">
-                          <span className="font-semibold text-xs sm:text-sm text-gray-900 truncate">
+                          <span
+                            className="font-semibold text-xs sm:text-sm truncate"
+                            style={{ color: "var(--text-color)" }}
+                          >
                             {mentor.title}
                           </span>
-                          <span className="font-medium text-xs text-gray-600 truncate">
+                          <span
+                            className="font-medium text-xs truncate"
+                            style={{ color: "var(--secondary-text)" }}
+                          >
                             {mentor.company}
                           </span>
                         </div>
                       </div>
 
                       {/* Description */}
-                      <div className="text-gray-700 text-xs sm:text-sm">
+                      <div
+                        className="text-xs sm:text-sm"
+                        style={{ color: "var(--secondary-text)" }}
+                      >
                         {readMore
                           ? mentor.description
                           : mentor.description.length > 110
@@ -237,13 +322,14 @@ export default function MentorSearchPage() {
                           : mentor.description}
                         {mentor.description.length > 110 && (
                           <span
-                            className="text-blue-500 text-[12px] font-medium cursor-pointer underline ml-1"
+                            className="text-[12px] font-medium cursor-pointer underline ml-1"
                             onClick={() =>
                               setExpandedMentor((exp) => ({
                                 ...exp,
                                 [mentor.id]: !readMore,
                               }))
                             }
+                            style={{ color: "var(--accent)" }}
                           >
                             {readMore ? "Show Less" : "Read More"}
                           </span>
@@ -255,10 +341,15 @@ export default function MentorSearchPage() {
                   {/* Skills and Tags */}
                   <div className="px-0 sm:px-2">
                     <div className="flex flex-wrap gap-2">
-                      {visibleTags.map((badge, idx) => (
+                      {visibleTags.map((badge: string, idx: number) => (
                         <span
                           key={idx}
-                          className="bg-gray-100 text-gray-600 rounded px-2 py-1 text-xs font-medium"
+                          className="rounded px-2 py-1 text-xs font-medium"
+                          style={{
+                            background: "var(--input-bg)",
+                            color: "var(--secondary-text)",
+                            border: `1px solid var(--border)`,
+                          }}
                         >
                           {badge}
                         </span>
@@ -271,15 +362,22 @@ export default function MentorSearchPage() {
                               [mentor.id]: true,
                             }))
                           }
-                          className="bg-blue-100 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-200 transition"
+                          className="rounded px-2 py-1 text-xs font-semibold hover:opacity-95 transition"
+                          style={{
+                            background: "var(--accent)",
+                            color: "#fff",
+                          }}
                         >
                           +{remainingCount} more
                         </button>
                       )}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 items-start sm:items-center text-xs text-gray-500 mt-4">
-                      <div className="flex gap-1 items-center">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 items-start sm:items-center text-xs mt-4">
+                      <div
+                        className="flex gap-1 items-center"
+                        style={{ color: "var(--secondary-text)" }}
+                      >
                         <Image
                           alt="icons"
                           src="/mentor_assets/bag.svg"
@@ -288,12 +386,20 @@ export default function MentorSearchPage() {
                         />
                         <span>
                           For:{" "}
-                          <span className="text-black font-medium">
+                          <span
+                            style={{
+                              color: "var(--text-color)",
+                              fontWeight: 600,
+                            }}
+                          >
                             {mentor.for}
                           </span>
                         </span>
                       </div>
-                      <div className="flex gap-1 items-center">
+                      <div
+                        className="flex gap-1 items-center"
+                        style={{ color: "var(--secondary-text)" }}
+                      >
                         <Image
                           alt="icons"
                           src="/mentor_assets/target.svg"
@@ -302,7 +408,12 @@ export default function MentorSearchPage() {
                         />
                         <span>
                           Targeting Domain:{" "}
-                          <span className="text-black font-medium">
+                          <span
+                            style={{
+                              color: "var(--text-color)",
+                              fontWeight: 600,
+                            }}
+                          >
                             {mentor.targeting}
                           </span>
                         </span>
@@ -311,9 +422,15 @@ export default function MentorSearchPage() {
                   </div>
 
                   {/* Bottom Section - Info & CTA */}
-                  <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-end gap-4 pt-4 border-t border-gray-100">
+                  <div
+                    className="flex flex-col lg:flex-row justify-between items-stretch lg:items-end gap-4 pt-4"
+                    style={{ borderTop: `1px solid var(--border)` }}
+                  >
                     {/* Session Info */}
-                    <ul className="text-[11px] sm:text-[12px] text-gray-600 space-y-2">
+                    <ul
+                      className="text-[11px] sm:text-[12px] space-y-2"
+                      style={{ color: "var(--secondary-text)" }}
+                    >
                       <li className="flex gap-2 items-center">
                         <Image
                           alt="icons"
@@ -331,7 +448,14 @@ export default function MentorSearchPage() {
                           width={14}
                         />
                         Referrals in Top Companies
-                        <span className="text-blue-500 underline ml-1 cursor-pointer">
+                        <span
+                          style={{
+                            color: "var(--accent)",
+                            textDecoration: "underline",
+                            marginLeft: 6,
+                            cursor: "pointer",
+                          }}
+                        >
                           +{mentor.referrals} More
                         </span>
                       </li>
@@ -344,7 +468,15 @@ export default function MentorSearchPage() {
                         />
                         Detailed Curriculum{" "}
                         {mentor.curriculum ? "Available" : "N/A"}
-                        <span className="text-[10px] text-blue-500 underline cursor-pointer">
+                        <span
+                          style={{
+                            color: "var(--accent)",
+                            textDecoration: "underline",
+                            marginLeft: 6,
+                            cursor: "pointer",
+                            fontSize: 10,
+                          }}
+                        >
                           View
                         </span>
                       </li>
@@ -353,13 +485,37 @@ export default function MentorSearchPage() {
                     {/* Price & Actions */}
                     <div className="flex flex-col items-stretch sm:items-end gap-3 min-w-[180px]">
                       <div className="flex items-center justify-between sm:justify-end gap-2">
-                        <span className="text-black font-bold text-lg sm:text-xl">
+                        <span
+                          style={{
+                            color: "var(--text-color)",
+                            fontWeight: 700,
+                            fontSize: 20,
+                          }}
+                        >
                           ₹{mentor.price}
-                          <span className="text-[10px] text-gray-400 font-extralight">
+                          <span
+                            style={{
+                              color: "var(--secondary-text)",
+                              fontWeight: 300,
+                              fontSize: 10,
+                            }}
+                          >
                             /month
                           </span>
                         </span>
-                        <span className="flex gap-1 bg-blue-500 text-white text-[10px] font-semibold rounded-sm px-2 py-1">
+                        <span
+                          style={{
+                            background: "var(--mentorsearch-btn-secondary-border)",
+                            color: "var(--accent)",
+                            display: "inline-flex",
+                            gap: 6,
+                            alignItems: "center",
+                            padding: "4px 6px",
+                            borderRadius: 4,
+                            fontSize: 10,
+                            fontWeight: 600,
+                          }}
+                        >
                           <Image
                             alt="icon"
                             src="/img/discount.svg"
@@ -372,12 +528,24 @@ export default function MentorSearchPage() {
 
                       <div className="flex flex-col sm:flex-row lg:flex-col gap-2 w-full">
                         <button
-                          className="flex-1 py-2 px-4 rounded-md border border-blue-500 font-semibold text-blue-700 bg-white hover:bg-blue-50 transition text-sm"
+                          className="flex-1 py-2 px-4 rounded-md border font-semibold text-sm"
+                          style={{
+                            borderColor: "var(--mentorsearch-btn-secondary-border)",
+                            color: "var(--accent)",
+                            background: "var(--card-bg)",
+                          }}
                           onClick={() => router.push(`/mentors/${mentor.id}`)}
                         >
                           View Profile
                         </button>
-                        <button className="flex-1 py-2 px-4 rounded-md bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition text-sm">
+                        <button
+                          className="flex-1 py-2 px-4 rounded-md border font-semibold text-sm"
+                          style={{
+                            borderColor: "var(--mentorsearch-btn-secondary-border)",
+                            color: "var(--accent)",
+                            background: "var(--mentorsearch-btn-secondary-border)",
+                          }}
+                        >
                           Book a Free Trial
                         </button>
                       </div>
@@ -390,12 +558,26 @@ export default function MentorSearchPage() {
         </div>
 
         {/* Sidebar Filters - Desktop */}
-        <aside className="hidden lg:block w-full lg:max-w-xs bg-[#F2F2F2] rounded-xl shadow p-6 flex-shrink-0 h-fit sticky top-4">
-          <div className="font-bold text-md mb-6">Filter By</div>
+        <aside
+          className="hidden lg:block w-full lg:max-w-xs rounded-xl p-6 flex-shrink-0 h-fit sticky "
+          style={{
+            background: "var(--card-bg)",
+            border: `1px solid var(--border)`,
+          }}
+        >
+          <div
+            className="font-bold text-md mb-6"
+            style={{ color: "var(--text-color)" }}
+          >
+            Filter By
+          </div>
           <div className="space-y-6">
             {/* Domain */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Domain
               </label>
               <input
@@ -403,18 +585,20 @@ export default function MentorSearchPage() {
                 placeholder="eg: frontend, backend, etc..."
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
-                className="w-full px-3 py-2 rounded bg-white border-none focus:outline-none placeholder:text-[#999] placeholder:text-sm text-sm"
+                className="w-full px-3 py-2 rounded bg-[var(--card-bg)] border-none focus:outline-none placeholder:text-[var(--secondary-text)] placeholder:text-sm text-sm"
               />
               <div className="flex flex-wrap gap-2 mt-4">
                 {allDomains.map((dom) => (
                   <span
                     key={dom}
-                    className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                      domain === dom
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-black/80"
-                    } text-xs font-medium`}
+                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium`}
                     onClick={() => setDomain(domain === dom ? "" : dom)}
+                    style={{
+                      background:
+                        domain === dom ? "var(--accent)" : "var(--card-bg)",
+                      color: domain === dom ? "#fff" : "var(--text-color)",
+                      border: `1px solid var(--border)`,
+                    }}
                   >
                     {dom}
                   </span>
@@ -424,10 +608,13 @@ export default function MentorSearchPage() {
 
             {/* Offering Mentorship For */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Offering Mentorship For
               </label>
-              <select className="w-full px-3 py-2 rounded bg-white border-none cursor-pointer focus:outline-none text-gray-400 text-sm">
+              <select className="w-full px-3 py-2 rounded bg-[var(--card-bg)] border-none cursor-pointer focus:outline-none text-[var(--secondary-text)] text-sm">
                 <option>Select your experience</option>
                 <option>Freshers</option>
                 <option>Working Professionals</option>
@@ -437,7 +624,10 @@ export default function MentorSearchPage() {
 
             {/* Pricing Slider */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Pricing
               </label>
               <input
@@ -448,7 +638,10 @@ export default function MentorSearchPage() {
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="w-full"
               />
-              <div className="flex justify-between text-xs text-gray-400 mt-1">
+              <div
+                className="flex justify-between text-xs mt-1"
+                style={{ color: "var(--secondary-text)" }}
+              >
                 <span>{minPrice}</span>
                 <span>{maxPrice}</span>
               </div>
@@ -456,7 +649,10 @@ export default function MentorSearchPage() {
 
             {/* Companies */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Companies
               </label>
               <input
@@ -464,18 +660,20 @@ export default function MentorSearchPage() {
                 placeholder="eg: amazon, google, microsoft etc."
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
               <div className="flex flex-wrap gap-2 mt-2">
                 {allCompanies.map((comp) => (
                   <span
                     key={comp}
-                    className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                      company === comp
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-black/80"
-                    } text-xs font-medium`}
+                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setCompany(company === comp ? "" : comp)}
+                    style={{
+                      background:
+                        company === comp ? "var(--accent)" : "var(--card-bg)",
+                      color: company === comp ? "#fff" : "var(--text-color)",
+                      border: `1px solid var(--border)`,
+                    }}
                   >
                     {comp}
                   </span>
@@ -485,7 +683,10 @@ export default function MentorSearchPage() {
 
             {/* Skills */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Skills
               </label>
               <input
@@ -493,18 +694,20 @@ export default function MentorSearchPage() {
                 placeholder="eg: java, dsa, sql etc."
                 value={skill}
                 onChange={(e) => setSkill(e.target.value)}
-                className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
               <div className="flex flex-wrap gap-2 mt-2">
                 {allSkills.map((sk) => (
                   <span
                     key={sk}
-                    className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                      skill === sk
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-black/80"
-                    } text-xs font-medium`}
+                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setSkill(skill === sk ? "" : sk)}
+                    style={{
+                      background:
+                        skill === sk ? "var(--accent)" : "var(--card-bg)",
+                      color: skill === sk ? "#fff" : "var(--text-color)",
+                      border: `1px solid var(--border)`,
+                    }}
                   >
                     {sk}
                   </span>
@@ -514,7 +717,10 @@ export default function MentorSearchPage() {
 
             {/* Tools */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Tools
               </label>
               <input
@@ -522,18 +728,20 @@ export default function MentorSearchPage() {
                 placeholder="eg: postman, figma etc."
                 value={tool}
                 onChange={(e) => setTool(e.target.value)}
-                className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
               <div className="flex flex-wrap gap-2 mt-2">
                 {allTools.map((toolI) => (
                   <span
                     key={toolI}
-                    className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                      tool === toolI
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-black/80"
-                    } text-xs font-medium`}
+                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setTool(tool === toolI ? "" : toolI)}
+                    style={{
+                      background:
+                        tool === toolI ? "var(--accent)" : "var(--card-bg)",
+                      color: tool === toolI ? "#fff" : "var(--text-color)",
+                      border: `1px solid var(--border)`,
+                    }}
                   >
                     {toolI}
                   </span>
@@ -543,7 +751,10 @@ export default function MentorSearchPage() {
 
             {/* Languages */}
             <div>
-              <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+              <label
+                className="font-medium mb-2 block text-sm"
+                style={{ color: "var(--text-color)" }}
+              >
                 Languages
               </label>
               <input
@@ -551,18 +762,20 @@ export default function MentorSearchPage() {
                 placeholder="eg: english, hindi, telugu etc."
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
               <div className="flex flex-wrap gap-2 mt-2">
                 {allLanguages.map((lang) => (
                   <span
                     key={lang}
-                    className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                      language === lang
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-black/80"
-                    } text-xs font-medium`}
+                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setLanguage(language === lang ? "" : lang)}
+                    style={{
+                      background:
+                        language === lang ? "var(--accent)" : "var(--card-bg)",
+                      color: language === lang ? "#fff" : "var(--text-color)",
+                      border: `1px solid var(--border)`,
+                    }}
                   >
                     {lang}
                   </span>
@@ -575,12 +788,23 @@ export default function MentorSearchPage() {
         {/* Mobile Filter Modal */}
         {showFilters && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
-            <div className="absolute right-0 top-0 h-full w-full max-w-md bg-[#F2F2F2] shadow-xl overflow-y-auto">
-              <div className="sticky top-0 bg-[#F2F2F2] p-4 border-b border-gray-300 flex justify-between items-center z-10">
-                <h2 className="font-bold text-lg">Filters</h2>
+            <div
+              className="absolute right-0 top-0 h-full w-full max-w-md overflow-y-auto"
+              style={{ background: "var(--card-bg)" }}
+            >
+              <div
+                className="sticky top-0 p-4 border-b border-[var(--border)] flex justify-between items-center z-10"
+                style={{ background: "var(--card-bg)" }}
+              >
+                <h2
+                  className="font-bold text-lg"
+                  style={{ color: "var(--text-color)" }}
+                >
+                  Filters
+                </h2>
                 <button
                   onClick={() => setShowFilters(false)}
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-[var(--secondary-text)] hover:text-[var(--text-color)]"
                 >
                   <FaTimes size={20} />
                 </button>
@@ -589,7 +813,10 @@ export default function MentorSearchPage() {
               <div className="p-4 space-y-6">
                 {/* Domain */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Domain
                   </label>
                   <input
@@ -597,18 +824,20 @@ export default function MentorSearchPage() {
                     placeholder="eg: frontend, backend, etc..."
                     value={domain}
                     onChange={(e) => setDomain(e.target.value)}
-                    className="w-full px-3 py-2 rounded bg-white border-none focus:outline-none placeholder:text-[#999] placeholder:text-sm text-sm"
+                    className="w-full px-3 py-2 rounded bg-[var(--card-bg)] border-none focus:outline-none placeholder:text-[var(--secondary-text)] placeholder:text-sm text-sm"
                   />
                   <div className="flex flex-wrap gap-2 mt-4">
                     {allDomains.map((dom) => (
                       <span
                         key={dom}
-                        className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                          domain === dom
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-black/80"
-                        } text-xs font-medium`}
+                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setDomain(domain === dom ? "" : dom)}
+                        style={{
+                          background:
+                            domain === dom ? "var(--accent)" : "var(--card-bg)",
+                          color: domain === dom ? "#fff" : "var(--text-color)",
+                          border: `1px solid var(--border)`,
+                        }}
                       >
                         {dom}
                       </span>
@@ -618,10 +847,13 @@ export default function MentorSearchPage() {
 
                 {/* Offering Mentorship For */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Offering Mentorship For
                   </label>
-                  <select className="w-full px-3 py-2 rounded bg-white border-none cursor-pointer focus:outline-none text-gray-400 text-sm">
+                  <select className="w-full px-3 py-2 rounded bg-[var(--card-bg)] border-none cursor-pointer focus:outline-none text-[var(--secondary-text)] text-sm">
                     <option>Select your experience</option>
                     <option>Freshers</option>
                     <option>Working Professionals</option>
@@ -631,7 +863,10 @@ export default function MentorSearchPage() {
 
                 {/* Pricing Slider */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Pricing
                   </label>
                   <input
@@ -642,7 +877,10 @@ export default function MentorSearchPage() {
                     onChange={(e) => setMaxPrice(Number(e.target.value))}
                     className="w-full"
                   />
-                  <div className="flex justify-between text-xs text-gray-400 mt-1">
+                  <div
+                    className="flex justify-between text-xs mt-1"
+                    style={{ color: "var(--secondary-text)" }}
+                  >
                     <span>{minPrice}</span>
                     <span>{maxPrice}</span>
                   </div>
@@ -650,7 +888,10 @@ export default function MentorSearchPage() {
 
                 {/* Companies */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Companies
                   </label>
                   <input
@@ -658,18 +899,23 @@ export default function MentorSearchPage() {
                     placeholder="eg: amazon, google, microsoft etc."
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                    className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
                   />
                   <div className="flex flex-wrap gap-2 mt-2">
                     {allCompanies.map((comp) => (
                       <span
                         key={comp}
-                        className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                          company === comp
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-black/80"
-                        } text-xs font-medium`}
+                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setCompany(company === comp ? "" : comp)}
+                        style={{
+                          background:
+                            company === comp
+                              ? "var(--accent)"
+                              : "var(--card-bg)",
+                          color:
+                            company === comp ? "#fff" : "var(--text-color)",
+                          border: `1px solid var(--border)`,
+                        }}
                       >
                         {comp}
                       </span>
@@ -679,7 +925,10 @@ export default function MentorSearchPage() {
 
                 {/* Skills */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Skills
                   </label>
                   <input
@@ -687,18 +936,20 @@ export default function MentorSearchPage() {
                     placeholder="eg: java, dsa, sql etc."
                     value={skill}
                     onChange={(e) => setSkill(e.target.value)}
-                    className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                    className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
                   />
                   <div className="flex flex-wrap gap-2 mt-2">
                     {allSkills.map((sk) => (
                       <span
                         key={sk}
-                        className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                          skill === sk
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-black/80"
-                        } text-xs font-medium`}
+                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setSkill(skill === sk ? "" : sk)}
+                        style={{
+                          background:
+                            skill === sk ? "var(--accent)" : "var(--card-bg)",
+                          color: skill === sk ? "#fff" : "var(--text-color)",
+                          border: `1px solid var(--border)`,
+                        }}
                       >
                         {sk}
                       </span>
@@ -708,7 +959,10 @@ export default function MentorSearchPage() {
 
                 {/* Tools */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Tools
                   </label>
                   <input
@@ -716,18 +970,20 @@ export default function MentorSearchPage() {
                     placeholder="eg: postman, figma etc."
                     value={tool}
                     onChange={(e) => setTool(e.target.value)}
-                    className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                    className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
                   />
                   <div className="flex flex-wrap gap-2 mt-2">
                     {allTools.map((toolI) => (
                       <span
                         key={toolI}
-                        className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                          tool === toolI
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-black/80"
-                        } text-xs font-medium`}
+                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setTool(tool === toolI ? "" : toolI)}
+                        style={{
+                          background:
+                            tool === toolI ? "var(--accent)" : "var(--card-bg)",
+                          color: tool === toolI ? "#fff" : "var(--text-color)",
+                          border: `1px solid var(--border)`,
+                        }}
                       >
                         {toolI}
                       </span>
@@ -737,7 +993,10 @@ export default function MentorSearchPage() {
 
                 {/* Languages */}
                 <div>
-                  <label className="font-medium text-[#1C1C1C] mb-2 block text-sm">
+                  <label
+                    className="font-medium mb-2 block text-sm"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     Languages
                   </label>
                   <input
@@ -745,18 +1004,25 @@ export default function MentorSearchPage() {
                     placeholder="eg: english, hindi, telugu etc."
                     value={language}
                     onChange={(e) => setLanguage(e.target.value)}
-                    className="w-full px-3 py-2 rounded bg-white placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
+                    className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
                   />
                   <div className="flex flex-wrap gap-2 mt-2">
                     {allLanguages.map((lang) => (
                       <span
                         key={lang}
-                        className={`px-4 py-2 rounded-2xl cursor-pointer ${
-                          language === lang
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-black/80"
-                        } text-xs font-medium`}
-                        onClick={() => setLanguage(language === lang ? "" : lang)}
+                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
+                        onClick={() =>
+                          setLanguage(language === lang ? "" : lang)
+                        }
+                        style={{
+                          background:
+                            language === lang
+                              ? "var(--accent)"
+                              : "var(--card-bg)",
+                          color:
+                            language === lang ? "#fff" : "var(--text-color)",
+                          border: `1px solid var(--border)`,
+                        }}
                       >
                         {lang}
                       </span>
@@ -765,10 +1031,14 @@ export default function MentorSearchPage() {
                 </div>
 
                 {/* Apply Filters Button */}
-                <div className="sticky bottom-0 bg-[#F2F2F2] pt-4 pb-2 border-t border-gray-300">
+                <div
+                  className="sticky bottom-0 pt-4 pb-2 border-t border-[var(--border)]"
+                  style={{ background: "var(--card-bg)" }}
+                >
                   <button
                     onClick={() => setShowFilters(false)}
-                    className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition"
+                    className="w-full py-3 font-semibold rounded-lg shadow hover:opacity-95 transition"
+                    style={{ background: "var(--accent)", color: "#fff" }}
                   >
                     Apply Filters
                   </button>

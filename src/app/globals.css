@@ -160,6 +160,32 @@
   --ltm-btn-bg: #ffffff;
   --ltm-btn-border: #e9e9e9;
   --ltm-btn-text: #232323;
+   --mentorsearch-bg: #f5f7fa;
+  --mentorsearch-search-bg: #eef2f7;
+  --mentorsearch-card-bg: #ffffff;
+  --mentorsearch-card-border: #e5e7eb;
+  --mentorsearch-sidebar-bg: #F2F2F2;
+  --mentorsearch-input-bg: #ffffff;
+  --mentorsearch-heading: #1C1C1C;
+  --mentorsearch-text: #000000;
+  --mentorsearch-subtext: #6b7280;
+  --mentorsearch-muted: #999999;
+  --mentorsearch-badge-bg: #f3f4f6;
+  --mentorsearch-badge-text: #4b5563;
+  --mentorsearch-badge-active-bg: #3b82f6;
+  --mentorsearch-badge-active-text: #ffffff;
+  --mentorsearch-pill-bg: #f9fafb;
+  --mentorsearch-pill-text: #374151;
+  --mentorsearch-border: #e5e7eb;
+  --mentorsearch-modal-overlay: rgba(0, 0, 0, 0.5);
+  --mentorsearch-btn-primary-bg: #3b82f6;
+  --mentorsearch-btn-primary-text: #ffffff;
+  --mentorsearch-btn-secondary-bg: #ffffff;
+  --mentorsearch-btn-secondary-text: #1d4ed8;
+  --mentorsearch-btn-secondary-border: #3b82f6;
+  --mentorsearch-discount-bg: #3b82f6;
+  --mentorsearch-discount-text: #ffffff;
+  --mentorsearch-link: #3b82f6;
 }
 
 .dark {
@@ -317,7 +343,7 @@
   --steps-btn-bg: #1a1d24;
   --steps-btn-text: #ededed;
   --steps-num: #ffffff;
-  --background: #18181c;
+  --background: #0f1419;
   --foreground: #ededed;
   --primary: #3686fd;
   --hoverprimary: #62a1e7;
@@ -337,6 +363,32 @@
   --why-badge-bg: #1f1f23;
   --why-badge-border: #2a2a2e;
   --why-badge-text: #d4d4d8;
+  --mentorsearch-bg: #0f1419;
+  --mentorsearch-search-bg: #1a1d24;
+  --mentorsearch-card-bg: #1a1d24;
+  --mentorsearch-card-border: #2a2d35;
+  --mentorsearch-sidebar-bg: #1a1d24;
+  --mentorsearch-input-bg: #232b38;
+  --mentorsearch-heading: #ededed;
+  --mentorsearch-text: #ededed;
+  --mentorsearch-subtext: #9ca3af;
+  --mentorsearch-muted: #6b7280;
+  --mentorsearch-badge-bg: #232b38;
+  --mentorsearch-badge-text: #cbd5e1;
+  --mentorsearch-badge-active-bg: #3b82f6;
+  --mentorsearch-badge-active-text: #ffffff;
+  --mentorsearch-pill-bg: #232b38;
+  --mentorsearch-pill-text: #cbd5e1;
+  --mentorsearch-border: #2a2d35;
+  --mentorsearch-modal-overlay: rgba(0, 0, 0, 0.7);
+  --mentorsearch-btn-primary-bg: #2563eb;
+  --mentorsearch-btn-primary-text: #ffffff;
+  --mentorsearch-btn-secondary-bg: #1a1d24;
+  --mentorsearch-btn-secondary-text: #62a1e7;
+  --mentorsearch-btn-secondary-border: #3b82f6;
+  --mentorsearch-discount-bg: #2563eb;
+  --mentorsearch-discount-text: #ffffff;
+  --mentorsearch-link: #62a1e7;
 }
 
 body {
