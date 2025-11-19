@@ -69,7 +69,7 @@ export default function WhyEdumentorStandsOut() {
               color: "var(--why-heading, #232323)",
             }}
           >
-            Why <span style={{ color: "var(--why-accent, #3686FD)" }}>Edumentor</span> Stands Out
+            Why <span style={{ color: "var(--why-accent, #3686FD)" }}>Peeralgo</span> Stands Out
           </h2>
           <div
             className="text-sm transition-colors duration-300"

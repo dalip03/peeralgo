@@ -109,7 +109,7 @@ export default function GetStartedSteps() {
               </p>
               <a
                 href={step.btn.link}
-                className="flex items-center justify-center gap-1 mt-auto rounded-md text-sm font-semibold transition"
+                className="flex items-center justify-center gap-1 p-2 mt-auto rounded-md text-sm font-semibold transition"
                 style={{
                   background: "var(--steps-btn-bg, #ffffff)",
                   border: "1px solid var(--steps-border, #d1d5db)",

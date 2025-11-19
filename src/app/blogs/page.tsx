@@ -114,7 +114,7 @@ export default function LatestArticles() {
           className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-center"
           style={{ color: "var(--articles-heading, #191C20)" }}
         >
-          What’s New at EduMentor
+          What’s New at Peeralgo
         </h2>
 
         <p
