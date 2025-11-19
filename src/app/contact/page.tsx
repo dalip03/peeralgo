@@ -57,7 +57,7 @@ export default function ContactForm() {
         }}
         variants={item}
       >
-        Have Questions about <br className="hidden md:block" /> EduMentor?
+        Have Questions about <br className="hidden md:block" /> Peeralgo?
       </motion.h2>
 
       <motion.p

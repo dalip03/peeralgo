@@ -61,7 +61,7 @@ const Footer = () => {
           className="text-xs"
           style={{ color: "var(--footer-muted, #1C1C1C99)" }}
         >
-          ©2025 EduMentor. All Rights Reserved.
+          ©2025 Peeralgo. All Rights Reserved.
         </div>
       </div>
 

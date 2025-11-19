@@ -429,10 +429,10 @@ export default function Herosectionnew({
       </div>
 
       {/* Cards grid */}
-      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 mt-2 z-10 relative">
+      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-0 mt-2 z-10 relative">
         {/* Companies */}
         <motion.div
-          className="shadow-sm rounded-xl p-5 flex flex-col transition-colors duration-300"
+          className="shadow-sm rounded-xl md:rounded-l-xl md:rounded-r-none p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -442,7 +442,10 @@ export default function Herosectionnew({
           transition={{ duration: 0.52, delay: 0.12 }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
+            <span
+              className="font-semibold text-base"
+              style={{ color: "var(--foreground)" }}
+            >
               Companies
             </span>
             <span className="text-lg">
@@ -462,7 +465,10 @@ export default function Herosectionnew({
                     alt={c.name}
                     className="h-5 w-5 object-contain"
                   />
-                  <span className="text-sm" style={{ color: "var(--foreground)" }}>
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--foreground)" }}
+                  >
                     {c.name}
                   </span>
                 </div>
@@ -486,7 +492,7 @@ export default function Herosectionnew({
         </motion.div>
         {/* Skills */}
         <motion.div
-          className="shadow-sm rounded-xl p-5 flex flex-col transition-colors duration-300"
+          className="shadow-sm md:rounded-xs rounded-xl p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -496,7 +502,10 @@ export default function Herosectionnew({
           transition={{ duration: 0.62, delay: 0.17 }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
+            <span
+              className="font-semibold text-base"
+              style={{ color: "var(--foreground)" }}
+            >
               Skills
             </span>
             <span className="text-lg">
@@ -516,7 +525,10 @@ export default function Herosectionnew({
                     alt={s.name}
                     className="h-5 w-5 object-contain"
                   />
-                  <span className="text-sm" style={{ color: "var(--foreground)" }}>
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--foreground)" }}
+                  >
                     {s.name}
                   </span>
                 </div>
@@ -540,7 +552,7 @@ export default function Herosectionnew({
         </motion.div>
         {/* Domains */}
         <motion.div
-          className="rounded-xl shadow-sm p-5 flex flex-col transition-colors duration-300"
+          className="rounded-xl md:rounded-r-xl md:rounded-l-none shadow-sm p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -550,7 +562,10 @@ export default function Herosectionnew({
           transition={{ duration: 0.72, delay: 0.22 }}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-semibold text-base" style={{ color: "var(--foreground)" }}>
+            <span
+              className="font-semibold text-base"
+              style={{ color: "var(--foreground)" }}
+            >
               Domains
             </span>
             <span className="text-lg">
@@ -570,7 +585,10 @@ export default function Herosectionnew({
                     alt={d.name}
                     className="h-5 w-5 object-contain"
                   />
-                  <span className="text-sm" style={{ color: "var(--foreground)" }}>
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--foreground)" }}
+                  >
                     {d.name}
                   </span>
                 </div>

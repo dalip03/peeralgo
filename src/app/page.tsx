@@ -1,7 +1,6 @@
 import DomainsCovered from "./components/DomainsCovered";
 import FAQs from "./components/FAQs";
 import GetStartedSteps from "./components/GetStartedSteps";
-import HeroSection from "./components/HeroSection";
 import LightRays from "./components/lightray/LightRays";
 import MentorsSection from "./components/MentorsSection";
 import Herosectionnew from "./components/orbback/herosectionnew";
