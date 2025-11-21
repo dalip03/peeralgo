@@ -69,7 +69,7 @@ export default async function MentorProfilePage({
 
           {/* Right Section (Placement Info) */}
           <div
-            className="absolute right-6 top-[190px] hidden md:flex flex-col text-sm text-right transition-colors duration-300"
+            className="absolute right-10 top-[190px] hidden md:flex flex-col text-sm text-right transition-colors duration-300"
             style={{ color: "var(--mentors-text, #6b7280)" }}
           >
             <span>{mentor.careerInfo.year} Placed in</span>
