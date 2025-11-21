@@ -8,21 +8,21 @@ import { motion } from "framer-motion";
 const companies = [
   { name: "Google", icon: "/icons/google.svg" },
   { name: "Amazon", icon: "/icons/amazon.svg" },
-  { name: "Meta", icon: "/icons/dot.svg" },
-  { name: "Apple", icon: "/icons/dot.svg" },
-  { name: "Paypal", icon: "/icons/dot.svg" },
+  { name: "Meta", icon: "/icons/qa.svg" },
+  { name: "Apple", icon: "/icons/fd.svg" },
+  { name: "Paypal", icon: "/icons/de.svg" },
   { name: "Adobe", icon: "/icons/adobe.svg" },
-  { name: "Oracle", icon: "/icons/dot.svg" },
+  { name: "Oracle", icon: "/icons/qa.svg" },
 ];
 
 const skills = [
   { name: "DSA", icon: "/icons/dsa.svg" },
-  { name: "Python", icon: "/icons/dot.svg" },
-  { name: "Java", icon: "/icons/dot.svg" },
-  { name: "Software Testing", icon: "/icons/dot.svg" },
+  { name: "Python", icon: "/icons/de.svg" },
+  { name: "Java", icon: "/icons/qa.svg" },
+  { name: "Software Testing", icon: "/icons/fd.svg" },
   { name: "System Design", icon: "/icons/system.svg" },
-  { name: "Angular", icon: "/icons/dot.svg" },
-  { name: "React", icon: "/icons/dot.svg" },
+  { name: "Angular", icon: "/icons/uiux.svg" },
+  { name: "React", icon: "/icons/adobe.svg" },
 ];
 
 const domains = [
