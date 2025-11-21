@@ -4,12 +4,12 @@ import { motion, Variants } from "framer-motion";
 
 export default function StruggleAloneCovered() {
   const features = [
-    { icon: "/icons/live.svg", title: "1:1 Live Session", desc: "Never question your progress with frequent One on One session." },
+    { icon: "/icons/live.svg", title: "1:10 Live Session", desc: "Never question your progress with frequent One on One session." },
     { icon: "/icons/chat.svg", title: "Unlimited Chat with Mentor", desc: "Doubt? Get the right advice from your mentor via chat." },
     { icon: "/icons/task.svg", title: "Task & Curated Resources", desc: "Yes! You will be certified for this mentorship program." },
     { icon: "/icons/time.svg", title: "Regular Followups", desc: "Stay motivated and consistent with regular follow-ups." },
     { icon: "/icons/job.svg", title: "Job Referrals", desc: "Get referrals from mentor community to top product and service based companies." },
-    { icon: "/icons/certificate.svg", title: "Certified", desc: "Yes! You will be certified for this mentorship program." },
+    // { icon: "/icons/certificate.svg", title: "Certified", desc: "Yes! You will be certified for this mentorship program." },
   ];
 
   const container: Variants = {

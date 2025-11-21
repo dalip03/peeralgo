@@ -526,9 +526,9 @@ export default function MentorSearchPage() {
                         </span>
                       </div>
 
-                      <div className="flex flex-col sm:flex-row lg:flex-col gap-2 w-full">
+                      <div className="flex flex-col  sm:flex-row lg:flex-col gap-2 w-full">
                         <button
-                          className="flex-1 py-2 px-4 rounded-md border font-semibold text-sm"
+                          className="flex-1 py-2 px-4 cursor-pointer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                rounded-md border font-semibold text-sm"
                           style={{
                             borderColor: "var(--mentorsearch-btn-secondary-border)",
                             color: "var(--accent)",
@@ -539,7 +539,7 @@ export default function MentorSearchPage() {
                           View Profile
                         </button>
                         <button
-                          className="flex-1 py-2 px-4 rounded-md border font-semibold text-sm"
+                          className="flex-1 py-2 cursor-pointer px-4 rounded-md border font-semibold text-sm"
                           style={{
                             borderColor: "var(--mentorsearch-btn-secondary-border)",
                             color: "var(--accent)",

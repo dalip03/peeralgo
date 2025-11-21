@@ -182,7 +182,7 @@ export default function LatestArticles() {
         ))}
       </motion.div>
 
-      {articles.length > 6 && !showAll && (
+      {/* {articles.length > 6 && !showAll && (
         <motion.button
           className="px-6 py-2 rounded-full font-semibold shadow transition"
           style={{
@@ -194,7 +194,7 @@ export default function LatestArticles() {
         >
           Explore all
         </motion.button>
-      )}
+      )} */}
     </motion.div>
   );
 }

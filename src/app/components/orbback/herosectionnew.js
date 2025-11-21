@@ -332,7 +332,7 @@ export default function Herosectionnew({
           top: "50px",
           zIndex: 1,
           width: "100%",
-          height: "400px",
+          height: "300px",
           transform: "translateX(-50%) translateY(10%) scale(1.5)",
           display: "flex",
           justifyContent: "center",
@@ -341,15 +341,21 @@ export default function Herosectionnew({
       {/* Hero Content */}
       <div className="relative w-full flex flex-col items-center text-center max-w-3xl mx-auto z-10">
         <motion.h2
-          className="text-3xl md:text-5xl font-bold mb-3 leading-tight text-center"
-          style={{ color: "var(--foreground)" }}
+          className="text-[26px] md:text-5xl font-bold mb-3 leading-tight text-center"
+          style={{
+            color: "var(--foreground)",
+            willChange: "opacity, transform",
+          }}
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          aria-level={2}
         >
-          Supercharge your career with <br className="hidden md:block" />
+          Supercharge your career with
+          <br className="hidden md:block" />
           <span className="block">Long Term Mentorship</span>
         </motion.h2>
+
         <motion.p
           className="mb-7 max-w-2xl px-4 mx-auto text-sm"
           style={{ color: "var(--muted)" }}
@@ -362,7 +368,7 @@ export default function Herosectionnew({
         </motion.p>
         {/* Buttons */}
         <motion.div
-          className="flex flex-col md:flex-row items-center gap-4 mb-10"
+          className="flex flex-row items-center gap-4 mb-10"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.18 }}
@@ -429,10 +435,10 @@ export default function Herosectionnew({
       </div>
 
       {/* Cards grid */}
-      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-0 mt-2 z-10 relative">
+      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-1 mt-2 z-10 relative">
         {/* Companies */}
         <motion.div
-          className="shadow-sm rounded-xl md:rounded-l-xl md:rounded-r-none p-5 flex flex-col transition-colors duration-300"
+          className="shadow-sm rounded-xl p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -481,6 +487,7 @@ export default function Herosectionnew({
             ))}
           </div>
           <button
+           onClick={() => router.push("/mentors")}
             className="mt-auto py-2 rounded-md text-sm font-semibold transition-all"
             style={{
               background: "var(--foreground)",
@@ -492,7 +499,7 @@ export default function Herosectionnew({
         </motion.div>
         {/* Skills */}
         <motion.div
-          className="shadow-sm md:rounded-xs rounded-xl p-5 flex flex-col transition-colors duration-300"
+          className="shadow-sm  rounded-xl p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -541,6 +548,7 @@ export default function Herosectionnew({
             ))}
           </div>
           <button
+           onClick={() => router.push("/mentors")}
             className="mt-auto py-2 rounded-md text-sm font-semibold transition-all"
             style={{
               background: "var(--foreground)",
@@ -552,7 +560,7 @@ export default function Herosectionnew({
         </motion.div>
         {/* Domains */}
         <motion.div
-          className="rounded-xl md:rounded-r-xl md:rounded-l-none shadow-sm p-5 flex flex-col transition-colors duration-300"
+          className="rounded-xl  shadow-sm p-5 flex flex-col transition-colors duration-300"
           style={{
             background: "var(--card-bg)",
             border: "1px solid var(--border)",
@@ -601,6 +609,7 @@ export default function Herosectionnew({
             ))}
           </div>
           <button
+           onClick={() => router.push("/mentors")}
             className="mt-auto py-2 rounded-md text-sm font-semibold transition-all"
             style={{
               background: "var(--foreground)",
