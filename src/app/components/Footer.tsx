@@ -4,6 +4,23 @@ import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
+  const socialIcons = [
+    {
+      name: "Instagram",
+      lightIcon: "/icons/Instagramlight.svg", // Show in light mode
+      darkIcon: "/icons/Instagramdark.svg", // Show in dark mode
+    },
+    {
+      name: "Twitter",
+      lightIcon: "/icons/Twitterlight.svg",
+      darkIcon: "/icons/Twitterdark.svg",
+    },
+    {
+      name: "LinkedIn",
+      lightIcon: "/icons/Linkedinlight.svg",
+      darkIcon: "/icons/Linkedindark.svg",
+    },
+  ];
   return (
     <footer
       className="px-6 md:px-20 py-10 border-t transition-colors duration-300"
@@ -39,21 +56,22 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div className="flex gap-4">
-            <img
-              src="/img/Instagram.svg"
-              alt="Instagram"
-              className="w-10 h-10 cursor-pointer hover:opacity-80"
-            />
-            <img
-              src="/img/Twitter.svg"
-              alt="Twitter"
-              className="w-10 h-10 cursor-pointer hover:opacity-80"
-            />
-            <img
-              src="/img/Linkedin.svg"
-              alt="LinkedIn"
-              className="w-10 h-10 cursor-pointer hover:opacity-80"
-            />
+            {socialIcons.map((social) => (
+              <React.Fragment key={social.name}>
+                {/* Light mode icon */}
+                <img
+                  src={social.lightIcon}
+                  alt={social.name}
+                  className="w-10 h-10 cursor-pointer hover:opacity-80 dark:hidden"
+                />
+                {/* Dark mode icon */}
+                <img
+                  src={social.darkIcon}
+                  alt={social.name}
+                  className="w-10 h-10 cursor-pointer hover:opacity-80 hidden dark:block"
+                />
+              </React.Fragment>
+            ))}
           </div>
         </div>
 
@@ -128,10 +146,38 @@ const Footer = () => {
               className="space-y-2"
               style={{ color: "var(--footer-link, #4b5563)" }}
             >
-              <li className="hover:text-black cursor-pointer">Home</li>
-              <li className="hover:text-black cursor-pointer">About Us</li>
-              <li className="hover:text-black cursor-pointer">Solutions</li>
-              <li className="hover:text-black cursor-pointer">Blog</li>
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-black cursor-pointer block w-full"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-black cursor-pointer block w-full"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-black cursor-pointer block w-full"
+                >
+                  Solutions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blogs"
+                  className="hover:text-black cursor-pointer block w-full"
+                >
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
