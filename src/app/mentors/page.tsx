@@ -3,19 +3,10 @@ import React, { useState, useMemo, useEffect } from "react";
 import { mentors } from "../data/mentorsData";
 import { useRouter } from "next/navigation";
 import {
-  FaStar,
-  FaMapMarkerAlt,
-  FaBuilding,
-  FaLanguage,
-  FaUserTie,
-  FaBook,
-  FaChevronDown,
-  FaChevronUp,
+ 
   FaFilter,
   FaTimes,
 } from "react-icons/fa";
-import { MdReviews } from "react-icons/md";
-import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
 
 /**

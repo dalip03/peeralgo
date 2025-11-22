@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 const topRightImg = "/img/shadow2.svg";
 const bottomLeftImg = "/img/shadow1.svg";
@@ -21,10 +22,10 @@ export default function ContactForm() {
 
   const item: Variants = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } 
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
     },
   };
 
@@ -80,18 +81,25 @@ export default function ContactForm() {
         variants={item}
       >
         {/* Top-right image */}
-        <img
+        <Image
           src={topRightImg}
           alt=""
+          width={288} // equivalent to w-72 (72*4=288px)
+          height={112} // equivalent to h-28 (28*4=112px)
           className="pointer-events-none select-none absolute rounded-2xl top-0 -right-10 w-72 h-28 object-contain opacity-80"
+          draggable={false}
+          priority={false} // or true if it's important to load early
         />
-        {/* Bottom-left image */}
-        <img
+       
+        <Image
           src={bottomLeftImg}
           alt=""
+          width={288} // w-72
+          height={112} // h-28
           className="pointer-events-none select-none absolute bottom-0 left-24 w-72 h-28 object-contain opacity-80"
+          draggable={false}
+          priority={false}
         />
-
         <form className="flex flex-col gap-5 w-full relative z-10">
           <motion.div className="mt-5" variants={item}>
             <label
