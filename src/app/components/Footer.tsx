@@ -191,11 +191,17 @@ const Footer = () => {
               className="space-y-2"
               style={{ color: "var(--footer-link, #4b5563)" }}
             >
-              <li className="hover:text-black cursor-pointer">Site Map</li>
-              <li className="hover:text-black cursor-pointer">
+              <li className="hover:text-gray-400 cursor-pointer">Site Map</li>
+              <li className="hover:text-gray-400 cursor-pointer"> <Link
+                  href="/FindMentor"
+                  className="hover:text-gray-400 cursor-pointer block w-full"
+                >
+                  Find Mentor
+                </Link></li>
+              <li className="hover:text-gray-400 cursor-pointer">
                 Terms of Services
               </li>
-              <li className="hover:text-black cursor-pointer">
+              <li className="hover:text-gray-400 cursor-pointer">
                 Privacy Policy
               </li>
             </ul>
