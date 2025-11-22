@@ -86,7 +86,7 @@ export default function MentorFinder() {
 
           {/* I'm a Section */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <label className="text-white font-semibold text-lg">I'm a</label>
+            <label className="text-white font-semibold text-lg">I&apos;m a</label>
             <div className="grid grid-cols-2 gap-4">
               {/* Student Card */}
               <motion.button

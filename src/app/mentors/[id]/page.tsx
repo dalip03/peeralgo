@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  FaStar,
-  FaClock,
-  FaUsers,
+
   FaUserGraduate,
   FaQuestionCircle,
 } from "react-icons/fa";
