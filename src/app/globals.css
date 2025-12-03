@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+   --accent: #0f1419;
    --statss-bg: #ffffff;
   --statss-card-bg: #ffffff;
   --statss-border: #e5e7eb;
@@ -189,6 +190,7 @@
 }
 
 .dark {
+  --accent: #ffffff;
   --mentors-bg: #0f1419;
 --mentors-card-bg: #1a1d24;
 --mentors-border: #2a2d35;

@@ -4,23 +4,25 @@ import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
-  const socialIcons = [
-    {
-      name: "Instagram",
-      lightIcon: "/icons/Instagramlight.svg", // Show in light mode
-      darkIcon: "/icons/Instagramdark.svg", // Show in dark mode
-    },
-    {
-      name: "Twitter",
-      lightIcon: "/icons/Twitterlight.svg",
-      darkIcon: "/icons/Twitterdark.svg",
-    },
-    {
-      name: "LinkedIn",
-      lightIcon: "/icons/Linkedinlight.svg",
-      darkIcon: "/icons/Linkedindark.svg",
-    },
-  ];
+ const socialIcons = [
+  {
+    name: "Instagram",
+    lightIcon: "/icons/Instagramlight.svg", // Use DARK svg for light mode
+    darkIcon: "/icons/Instagramlight.svg", // Use LIGHT svg for dark mode
+  },
+  {
+    name: "Twitter",
+    lightIcon: "/icons/Twitterlight.svg", // Use DARK svg for light mode
+    darkIcon: "/icons/Twitterdark.svg", // Use LIGHT svg for dark mode
+  },
+  {
+    name: "LinkedIn",
+    lightIcon: "/icons/Linkedindark.svg", // Use DARK svg for light mode
+    darkIcon: "/icons/Linkedinlight.svg", // Use LIGHT svg for dark mode
+  },
+];
+
+
   return (
     <footer
       className="px-6 md:px-20 py-10 border-t transition-colors duration-300"
@@ -31,24 +33,30 @@ const Footer = () => {
       }}
     >
       {/* Top part */}
-      <div className="flex flex-col md:flex-row items-center justify-between mb-6 text-sm font-semibold text-center md:text-left">
+      <div className="flex flex-col md:flex-row items-center justify-between mb-6 text-md text-center md:text-left">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 mb-6">
           {/* Logo */}
-          <Link href="/" className="inline-block">
-            {/* Light theme: logo image */}
+          <Link
+            href="/"
+            className="flex-shrink-0 flex items-center w-[120px] sm:w-[160px]"
+          >
+            {/* Light mode → SVG logo */}
             <Image
               src="/img/peeralgoLogo.svg"
               alt="Peeralgo Logo"
-              width={200}
-              height={80}
+              width={160}
+              height={40}
               priority
-              className="w-[90px] h-auto dark:hidden"
+              style={{ width: "100%", height: "auto" }}
+              className="dark:hidden"
             />
 
-            {/* Dark theme: text “Peeralgo” */}
+            {/* Dark mode → Text logo */}
             <span
-              className="hidden dark:inline-block  text-2xl"
-              style={{ color: "var(--accent)" }}
+              className="hidden dark:inline-block text-xl sm:text-2xl tracking-wide"
+              style={{
+                color: "var(--accent)",
+              }}
             >
               Peeralgo
             </span>
@@ -58,17 +66,21 @@ const Footer = () => {
           <div className="flex gap-4">
             {socialIcons.map((social) => (
               <React.Fragment key={social.name}>
-                {/* Light mode icon */}
-                <img
+                {/* Light mode - show dark icons */}
+                <Image
                   src={social.lightIcon}
                   alt={social.name}
-                  className="w-10 h-10 cursor-pointer hover:opacity-80 dark:hidden"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 cursor-pointer hover:opacity-80 transition-opacity dark:hidden"
                 />
-                {/* Dark mode icon */}
-                <img
+                {/* Dark mode - show light icons */}
+                <Image
                   src={social.darkIcon}
                   alt={social.name}
-                  className="w-10 h-10 cursor-pointer hover:opacity-80 hidden dark:block"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 cursor-pointer hover:opacity-80 transition-opacity hidden dark:block"
                 />
               </React.Fragment>
             ))}
@@ -192,12 +204,14 @@ const Footer = () => {
               style={{ color: "var(--footer-link, #4b5563)" }}
             >
               <li className="hover:text-gray-400 cursor-pointer">Site Map</li>
-              <li className="hover:text-gray-400 cursor-pointer"> <Link
+              <li className="hover:text-gray-400 cursor-pointer">
+                <Link
                   href="/FindMentor"
                   className="hover:text-gray-400 cursor-pointer block w-full"
                 >
                   Find Mentor
-                </Link></li>
+                </Link>
+              </li>
               <li className="hover:text-gray-400 cursor-pointer">
                 Terms of Services
               </li>
