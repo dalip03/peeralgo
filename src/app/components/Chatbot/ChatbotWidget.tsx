@@ -88,13 +88,14 @@ export default function ChatbotWidget() {
       {isOpen && (
         <div
           className="
-    fixed bottom-4 right-4 z-50
-     max-w-[380px] 
-    w-[75%]
-    h-[600px]
+    fixed bottom-4 right-2 z-50
+    w-[95vw]              /* FULLY responsive (95% of screen width) */
+    max-w-[360px]         /* Max width on big screens */
+    h-[70vh]              /* Height responsive */
     bg-white dark:bg-gray-800 
-    rounded-lg shadow-2xl 
-    flex flex-col overflow-hidden 
+    rounded-xl shadow-2xl 
+    flex flex-col 
+    overflow-hidden 
     border border-gray-200 dark:border-gray-700
   "
         >
@@ -159,7 +160,6 @@ export default function ChatbotWidget() {
                 className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
         focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
               />
-
               <button
                 onClick={handleSend}
                 className="bg-[#3686fd] hover:bg-blue-400 text-white rounded-lg px-3 py-2 shrink-0"
