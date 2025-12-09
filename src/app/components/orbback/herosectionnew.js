@@ -375,7 +375,7 @@ export default function Herosectionnew({
         >
           <button
             onClick={() => router.push("/contact")}
-            className="px-6 py-2.5 rounded-md cursor-pointer shadow-sm transition-all text-base"
+            className="md:px-6 px-4 py-2.5 rounded-md cursor-pointer shadow-sm transition-all text-base"
             style={{
               background: "var(--card-bg)",
               border: "1px solid var(--border)",
@@ -386,7 +386,7 @@ export default function Herosectionnew({
           </button>
           <button
             onClick={() => router.push("/mentors")}
-            className="flex justify-center cursor-pointer items-center px-6 py-2.5 rounded-md shadow-sm transition-all text-base text-white"
+            className="flex justify-center cursor-pointer items-center md:px-6 px-4 py-2.5 rounded-md shadow-sm transition-all text-base text-white"
             style={{
               background: "var(--primary)",
             }}

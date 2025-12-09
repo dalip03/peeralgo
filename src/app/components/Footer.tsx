@@ -4,24 +4,23 @@ import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
- const socialIcons = [
-  {
-    name: "Instagram",
-    lightIcon: "/icons/Instagramlight.svg", // Use DARK svg for light mode
-    darkIcon: "/icons/Instagramlight.svg", // Use LIGHT svg for dark mode
-  },
-  {
-    name: "Twitter",
-    lightIcon: "/icons/Twitterlight.svg", // Use DARK svg for light mode
-    darkIcon: "/icons/Twitterdark.svg", // Use LIGHT svg for dark mode
-  },
-  {
-    name: "LinkedIn",
-    lightIcon: "/icons/Linkedindark.svg", // Use DARK svg for light mode
-    darkIcon: "/icons/Linkedinlight.svg", // Use LIGHT svg for dark mode
-  },
-];
-
+  const socialIcons = [
+    {
+      name: "Instagram",
+      lightIcon: "/icons/Instagramlight.svg", // Use DARK svg for light mode
+      darkIcon: "/icons/Instagramlight.svg", // Use LIGHT svg for dark mode
+    },
+    {
+      name: "Twitter",
+      lightIcon: "/icons/Twitterlight.svg", // Use DARK svg for light mode
+      darkIcon: "/icons/Twitterdark.svg", // Use LIGHT svg for dark mode
+    },
+    {
+      name: "LinkedIn",
+      lightIcon: "/icons/Linkedindark.svg", // Use DARK svg for light mode
+      darkIcon: "/icons/Linkedinlight.svg", // Use LIGHT svg for dark mode
+    },
+  ];
 
   return (
     <footer
@@ -40,23 +39,12 @@ const Footer = () => {
             href="/"
             className="flex-shrink-0 flex items-center w-[120px] sm:w-[160px]"
           >
-            {/* Light mode → SVG logo */}
-            <Image
-              src="/img/peeralgoLogo.svg"
-              alt="Peeralgo Logo"
-              width={160}
-              height={40}
-              priority
-              style={{ width: "100%", height: "auto" }}
-              className="dark:hidden"
-            />
-
-            {/* Dark mode → Text logo */}
             <span
-              className="hidden dark:inline-block text-xl sm:text-2xl tracking-wide"
-              style={{
-                color: "var(--accent)",
-              }}
+              className="
+      text-xl sm:text-2xl font-semibold tracking-wide 
+      text-[var(--logo-light-color)] 
+      dark:text-[var(--logo-dark-color)]
+    "
             >
               Peeralgo
             </span>
@@ -124,7 +112,7 @@ const Footer = () => {
               Stay updated with the latest updates about the tech space
             </h2>
             <form
-              className="flex flex-col sm:flex-row w-full gap-2 mt-2 border rounded-2xl bg-[rgba(0,0,0,0.05)] p-2 transition-colors duration-300"
+              className="flex flex-row w-full gap-2 mt-2 border rounded-2xl bg-[rgba(0,0,0,0.05)] p-2 transition-colors duration-300"
               style={{
                 borderColor: "var(--footer-input-border, #e5e7eb)",
               }}
@@ -137,7 +125,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="bg-primary text-white px-4 py-2 rounded-2xl hover:bg-blue-700 transition"
+                className="bg-blue-500 text-white px-4 py-2 rounded-3xl items-center  cursor-pointer transition"
               >
                 Signup
               </button>
