@@ -149,22 +149,23 @@ export default function ChatbotWidget() {
 
           {/* Input */}
           <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center w-full">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleSend()}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
+        focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
               />
+
               <button
                 onClick={handleSend}
-                className="bg-[#3686fd] hover:bg-blue-400 text-white rounded-lg px-4 py-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-[#3686fd] hover:bg-blue-400 text-white rounded-lg px-3 py-2 shrink-0"
                 disabled={!inputValue.trim()}
-                aria-label="Send message"
               >
-                <Send size={20} />
+                <Send size={18} />
               </button>
             </div>
           </div>
