@@ -111,25 +111,59 @@ const Footer = () => {
             >
               Stay updated with the latest updates about the tech space
             </h2>
-            <form
-              className="flex flex-row w-full gap-2 mt-2 border rounded-2xl bg-[rgba(0,0,0,0.05)] p-2 transition-colors duration-300"
-              style={{
-                borderColor: "var(--footer-input-border, #e5e7eb)",
-              }}
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-grow px-4 py-2 placeholder:text-gray-500 rounded-2xl focus:outline-none focus:ring-1 focus:ring-blue-100 bg-transparent"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-3xl items-center  cursor-pointer transition"
-              >
-                Signup
-              </button>
-            </form>
+           <form
+  className="
+    w-full 
+    flex flex-row 
+    items-center
+    gap-2 
+    mt-2 
+    border 
+    rounded-2xl 
+    bg-[rgba(0,0,0,0.05)] 
+    p-2 
+    transition-colors 
+    duration-300
+  "
+  style={{
+    borderColor: "var(--footer-input-border, #e5e7eb)",
+  }}
+>
+  <input
+    type="email"
+    placeholder="Enter your email"
+    className="
+      flex-grow 
+      min-w-0            /* prevents overflow on small screens */
+      px-3 
+      py-2 
+      rounded-2xl 
+      bg-transparent 
+      placeholder:text-gray-500 
+      focus:outline-none 
+      focus:ring-1 
+      focus:ring-blue-100
+    "
+    required
+  />
+
+  <button
+    type="submit"
+    className="
+      bg-blue-500 
+      text-white 
+      px-3 
+      py-2 
+      rounded-3xl 
+      cursor-pointer 
+      whitespace-nowrap /* prevents wrapping text */
+      text-sm
+    "
+  >
+    Signup
+  </button>
+</form>
+
           </div>
         </div>
 
