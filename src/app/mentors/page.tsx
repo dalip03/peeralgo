@@ -2,11 +2,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { mentors } from "../data/mentorsData";
 import { useRouter } from "next/navigation";
-import {
- 
-  FaFilter,
-  FaTimes,
-} from "react-icons/fa";
+import { FaFilter, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 
 /**
@@ -496,7 +492,8 @@ export default function MentorSearchPage() {
                         </span>
                         <span
                           style={{
-                            background: "var(--mentorsearch-btn-secondary-border)",
+                            background:
+                              "var(--mentorsearch-btn-secondary-border)",
                             color: "var(--accent)",
                             display: "inline-flex",
                             gap: 6,
@@ -521,7 +518,8 @@ export default function MentorSearchPage() {
                         <button
                           className="flex-1 py-2 px-4 cursor-pointer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                rounded-md border font-semibold text-sm"
                           style={{
-                            borderColor: "var(--mentorsearch-btn-secondary-border)",
+                            borderColor:
+                              "var(--mentorsearch-btn-secondary-border)",
                             color: "var(--accent)",
                             background: "var(--card-bg)",
                           }}
@@ -532,9 +530,11 @@ export default function MentorSearchPage() {
                         <button
                           className="flex-1 py-2 cursor-pointer px-4 rounded-md border font-semibold text-sm"
                           style={{
-                            borderColor: "var(--mentorsearch-btn-secondary-border)",
+                            borderColor:
+                              "var(--mentorsearch-btn-secondary-border)",
                             color: "var(--accent)",
-                            background: "var(--mentorsearch-btn-secondary-border)",
+                            background:
+                              "var(--mentorsearch-btn-secondary-border)",
                           }}
                         >
                           Book a Free Trial
@@ -550,7 +550,7 @@ export default function MentorSearchPage() {
 
         {/* Sidebar Filters - Desktop */}
         <aside
-          className="hidden lg:block w-full lg:max-w-xs rounded-xl p-6 flex-shrink-0 h-fit sticky "
+          className="hidden lg:block w-full lg:max-w-xs rounded-xl p-6 flex-shrink-0 h-fit sticky"
           style={{
             background: "var(--card-bg)",
             border: `1px solid var(--border)`,
@@ -562,6 +562,7 @@ export default function MentorSearchPage() {
           >
             Filter By
           </div>
+
           <div className="space-y-6">
             {/* Domain */}
             <div>
@@ -571,6 +572,7 @@ export default function MentorSearchPage() {
               >
                 Domain
               </label>
+
               <input
                 type="text"
                 placeholder="eg: frontend, backend, etc..."
@@ -578,63 +580,24 @@ export default function MentorSearchPage() {
                 onChange={(e) => setDomain(e.target.value)}
                 className="w-full px-3 py-2 rounded bg-[var(--card-bg)] border-none focus:outline-none placeholder:text-[var(--secondary-text)] placeholder:text-sm text-sm"
               />
+
               <div className="flex flex-wrap gap-2 mt-4">
                 {allDomains.map((dom) => (
                   <span
                     key={dom}
-                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium`}
                     onClick={() => setDomain(domain === dom ? "" : dom)}
-                    style={{
-                      background:
-                        domain === dom ? "var(--accent)" : "var(--card-bg)",
-                      color: domain === dom ? "#fff" : "var(--text-color)",
-                      border: `1px solid var(--border)`,
-                    }}
+                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium transition-all duration-200
+              ${
+                domain === dom
+                  ? "text-blue-600 border-blue-500 shadow-sm scale-[1.05]"
+                  : "text-[var(--text-color)] border-[var(--border)] bg-[var(--card-bg)]"
+              }
+            `}
+                    style={{ borderWidth: "1px" }}
                   >
                     {dom}
                   </span>
                 ))}
-              </div>
-            </div>
-
-            {/* Offering Mentorship For */}
-            <div>
-              <label
-                className="font-medium mb-2 block text-sm"
-                style={{ color: "var(--text-color)" }}
-              >
-                Offering Mentorship For
-              </label>
-              <select className="w-full px-3 py-2 rounded bg-[var(--card-bg)] border-none cursor-pointer focus:outline-none text-[var(--secondary-text)] text-sm">
-                <option>Select your experience</option>
-                <option>Freshers</option>
-                <option>Working Professionals</option>
-                <option>Managers</option>
-              </select>
-            </div>
-
-            {/* Pricing Slider */}
-            <div>
-              <label
-                className="font-medium mb-2 block text-sm"
-                style={{ color: "var(--text-color)" }}
-              >
-                Pricing
-              </label>
-              <input
-                type="range"
-                min={150}
-                max={7000}
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="w-full"
-              />
-              <div
-                className="flex justify-between text-xs mt-1"
-                style={{ color: "var(--secondary-text)" }}
-              >
-                <span>{minPrice}</span>
-                <span>{maxPrice}</span>
               </div>
             </div>
 
@@ -646,6 +609,7 @@ export default function MentorSearchPage() {
               >
                 Companies
               </label>
+
               <input
                 type="text"
                 placeholder="eg: amazon, google, microsoft etc."
@@ -653,18 +617,20 @@ export default function MentorSearchPage() {
                 onChange={(e) => setCompany(e.target.value)}
                 className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
+
               <div className="flex flex-wrap gap-2 mt-2">
                 {allCompanies.map((comp) => (
                   <span
                     key={comp}
-                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setCompany(company === comp ? "" : comp)}
-                    style={{
-                      background:
-                        company === comp ? "var(--accent)" : "var(--card-bg)",
-                      color: company === comp ? "#fff" : "var(--text-color)",
-                      border: `1px solid var(--border)`,
-                    }}
+                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium transition-all duration-200
+              ${
+                company === comp
+                  ? "text-blue-600 border-blue-500  shadow-sm scale-[1.05]"
+                  : "text-[var(--text-color)] border-[var(--border)] bg-[var(--card-bg)]"
+              }
+            `}
+                    style={{ borderWidth: "1px" }}
                   >
                     {comp}
                   </span>
@@ -680,6 +646,7 @@ export default function MentorSearchPage() {
               >
                 Skills
               </label>
+
               <input
                 type="text"
                 placeholder="eg: java, dsa, sql etc."
@@ -687,18 +654,20 @@ export default function MentorSearchPage() {
                 onChange={(e) => setSkill(e.target.value)}
                 className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
+
               <div className="flex flex-wrap gap-2 mt-2">
                 {allSkills.map((sk) => (
                   <span
                     key={sk}
-                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setSkill(skill === sk ? "" : sk)}
-                    style={{
-                      background:
-                        skill === sk ? "var(--accent)" : "var(--card-bg)",
-                      color: skill === sk ? "#fff" : "var(--text-color)",
-                      border: `1px solid var(--border)`,
-                    }}
+                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium transition-all duration-200
+              ${
+                skill === sk
+                  ? "text-blue-600 border-blue-500  shadow-sm scale-[1.05]"
+                  : "text-[var(--text-color)] border-[var(--border)] bg-[var(--card-bg)]"
+              }
+            `}
+                    style={{ borderWidth: "1px" }}
                   >
                     {sk}
                   </span>
@@ -714,6 +683,7 @@ export default function MentorSearchPage() {
               >
                 Tools
               </label>
+
               <input
                 type="text"
                 placeholder="eg: postman, figma etc."
@@ -721,18 +691,20 @@ export default function MentorSearchPage() {
                 onChange={(e) => setTool(e.target.value)}
                 className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
+
               <div className="flex flex-wrap gap-2 mt-2">
                 {allTools.map((toolI) => (
                   <span
                     key={toolI}
-                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setTool(tool === toolI ? "" : toolI)}
-                    style={{
-                      background:
-                        tool === toolI ? "var(--accent)" : "var(--card-bg)",
-                      color: tool === toolI ? "#fff" : "var(--text-color)",
-                      border: `1px solid var(--border)`,
-                    }}
+                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium transition-all duration-200
+              ${
+                tool === toolI
+                  ? "text-blue-600 border-blue-500  shadow-sm scale-[1.05]"
+                  : "text-[var(--text-color)] border-[var(--border)] bg-[var(--card-bg)]"
+              }
+            `}
+                    style={{ borderWidth: "1px" }}
                   >
                     {toolI}
                   </span>
@@ -748,6 +720,7 @@ export default function MentorSearchPage() {
               >
                 Languages
               </label>
+
               <input
                 type="text"
                 placeholder="eg: english, hindi, telugu etc."
@@ -755,18 +728,20 @@ export default function MentorSearchPage() {
                 onChange={(e) => setLanguage(e.target.value)}
                 className="w-full px-3 py-2 rounded bg-[var(--card-bg)] placeholder:text-sm border-none focus:outline-none mb-1 text-sm"
               />
+
               <div className="flex flex-wrap gap-2 mt-2">
                 {allLanguages.map((lang) => (
                   <span
                     key={lang}
-                    className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                     onClick={() => setLanguage(language === lang ? "" : lang)}
-                    style={{
-                      background:
-                        language === lang ? "var(--accent)" : "var(--card-bg)",
-                      color: language === lang ? "#fff" : "var(--text-color)",
-                      border: `1px solid var(--border)`,
-                    }}
+                    className={`px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium transition-all duration-200
+              ${
+                language === lang
+                  ? "text-blue-600 border-blue-500  shadow-sm scale-[1.05]"
+                  : "text-[var(--text-color)] border-[var(--border)] bg-[var(--card-bg)]"
+              }
+            `}
+                    style={{ borderWidth: "1px" }}
                   >
                     {lang}
                   </span>
@@ -821,14 +796,15 @@ export default function MentorSearchPage() {
                     {allDomains.map((dom) => (
                       <span
                         key={dom}
-                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setDomain(domain === dom ? "" : dom)}
-                        style={{
-                          background:
-                            domain === dom ? "var(--accent)" : "var(--card-bg)",
-                          color: domain === dom ? "#fff" : "var(--text-color)",
-                          border: `1px solid var(--border)`,
-                        }}
+                        className={`
+                  px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium border transition-all duration-200
+                  ${
+                    domain === dom
+                      ? "border-blue-500 text-blue-600 shadow-sm scale-[1.03]"
+                      : "border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-color)] hover:border-blue-400 hover:text-blue-500"
+                  }
+                `}
                       >
                         {dom}
                       </span>
@@ -896,17 +872,15 @@ export default function MentorSearchPage() {
                     {allCompanies.map((comp) => (
                       <span
                         key={comp}
-                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setCompany(company === comp ? "" : comp)}
-                        style={{
-                          background:
-                            company === comp
-                              ? "var(--accent)"
-                              : "var(--card-bg)",
-                          color:
-                            company === comp ? "#fff" : "var(--text-color)",
-                          border: `1px solid var(--border)`,
-                        }}
+                        className={`
+                  px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium border transition-all duration-200
+                  ${
+                    company === comp
+                      ? "border-blue-500 text-blue-600 shadow-sm scale-[1.03]"
+                      : "border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-color)] hover:border-blue-400 hover:text-blue-500"
+                  }
+                `}
                       >
                         {comp}
                       </span>
@@ -933,14 +907,15 @@ export default function MentorSearchPage() {
                     {allSkills.map((sk) => (
                       <span
                         key={sk}
-                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setSkill(skill === sk ? "" : sk)}
-                        style={{
-                          background:
-                            skill === sk ? "var(--accent)" : "var(--card-bg)",
-                          color: skill === sk ? "#fff" : "var(--text-color)",
-                          border: `1px solid var(--border)`,
-                        }}
+                        className={`
+                  px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium border transition-all duration-200
+                  ${
+                    skill === sk
+                      ? "border-blue-500 text-blue-600 shadow-sm scale-[1.03]"
+                      : "border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-color)] hover:border-blue-400 hover:text-blue-500"
+                  }
+                `}
                       >
                         {sk}
                       </span>
@@ -967,14 +942,15 @@ export default function MentorSearchPage() {
                     {allTools.map((toolI) => (
                       <span
                         key={toolI}
-                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() => setTool(tool === toolI ? "" : toolI)}
-                        style={{
-                          background:
-                            tool === toolI ? "var(--accent)" : "var(--card-bg)",
-                          color: tool === toolI ? "#fff" : "var(--text-color)",
-                          border: `1px solid var(--border)`,
-                        }}
+                        className={`
+                  px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium border transition-all duration-200
+                  ${
+                    tool === toolI
+                      ? "border-blue-500 text-blue-600 shadow-sm scale-[1.03]"
+                      : "border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-color)] hover:border-blue-400 hover:text-blue-500"
+                  }
+                `}
                       >
                         {toolI}
                       </span>
@@ -1001,19 +977,17 @@ export default function MentorSearchPage() {
                     {allLanguages.map((lang) => (
                       <span
                         key={lang}
-                        className="px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium"
                         onClick={() =>
                           setLanguage(language === lang ? "" : lang)
                         }
-                        style={{
-                          background:
-                            language === lang
-                              ? "var(--accent)"
-                              : "var(--card-bg)",
-                          color:
-                            language === lang ? "#fff" : "var(--text-color)",
-                          border: `1px solid var(--border)`,
-                        }}
+                        className={`
+                  px-4 py-2 rounded-2xl cursor-pointer text-xs font-medium border transition-all duration-200
+                  ${
+                    language === lang
+                      ? "border-blue-500 text-blue-600 shadow-sm scale-[1.03]"
+                      : "border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-color)] hover:border-blue-400 hover:text-blue-500"
+                  }
+                `}
                       >
                         {lang}
                       </span>
@@ -1021,7 +995,7 @@ export default function MentorSearchPage() {
                   </div>
                 </div>
 
-                {/* Apply Filters Button */}
+                {/* Apply Filters */}
                 <div
                   className="sticky bottom-0 pt-4 pb-2 border-t border-[var(--border)]"
                   style={{ background: "var(--card-bg)" }}
