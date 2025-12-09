@@ -86,7 +86,7 @@ export default function ChatbotWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white dark:bg-gray-800 rounded-lg shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700">
+        <div className="fixed bottom-6 right-6 z-50 w-[75%] max-w-[380px] h-[600px] bg-white dark:bg-gray-800 rounded-lg shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700">
           {/* Header */}
           <div className="bg-[#3686fd] text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
