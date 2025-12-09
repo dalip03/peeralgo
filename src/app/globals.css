@@ -190,6 +190,7 @@
 }
 
 .dark {
+  --logo-dark-color: #ffffff;
   --accent: #ffffff;
   --mentors-bg: #0f1419;
 --mentors-card-bg: #1a1d24;

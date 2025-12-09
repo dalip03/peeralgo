@@ -32,11 +32,10 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-10 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link
+        {/* <Link
           href="/"
           className="flex-shrink-0 flex items-center w-[120px] sm:w-[160px]"
         >
-          {/* Light mode → SVG logo */}
           <Image
             src="/img/peeralgoLogo.svg"
             alt="Peeralgo Logo"
@@ -47,12 +46,25 @@ const Header = () => {
             className="dark:hidden"
           />
 
-          {/* Dark mode → Text logo */}
           <span
-            className="hidden dark:inline-block  text-xl sm:text-2xl tracking-wide"
+            className="hidden dark:inline-block text-xl sm:text-2xl tracking-wide"
             style={{
-              color: "var(--accent)",
+              color: "var(--logo-dark-color)", 
             }}
+          >
+            Peeralgo
+          </span>
+        </Link> */}
+        <Link
+          href="/"
+          className="flex-shrink-0 flex items-center w-[120px] sm:w-[160px]"
+        >
+          <span
+            className="
+      text-xl sm:text-2xl font-semibold tracking-wide 
+      text-[var(--logo-light-color)] 
+      dark:text-[var(--logo-dark-color)]
+    "
           >
             Peeralgo
           </span>
